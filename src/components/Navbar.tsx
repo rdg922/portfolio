@@ -1,0 +1,160 @@
+"use client";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Navbar() {
+  const container = useRef<HTMLDivElement>(null);
+  const leftContentRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
+  const centerContentRef = useRef<HTMLDivElement>(null);
+
+  // ===== NAVBAR CONFIGURATION =====
+  const SCROLL_THRESHOLD = 20; // Pixels to scroll before switching states
+  const TRANSITION_DURATION = 0.8; // Animation duration in seconds (smoother at 0.8)
+  // ================================
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useGSAP(
+    () => {
+      const navContainer = container.current;
+      const leftContent = leftContentRef.current;
+      const rightContent = rightContentRef.current;
+      const centerContent = centerContentRef.current;
+
+      if (!navContainer || !leftContent || !rightContent || !centerContent)
+        return;
+
+      // Get full screen width for proper animation
+      const initialWidth = window.innerWidth;
+
+      // Set initial state - content spread out when at top
+      gsap.set(leftContent, { x: 0, scale: 1 });
+      gsap.set(rightContent, { x: 0, scale: 1 });
+      gsap.set(centerContent, { scale: 1, opacity: 1 });
+      gsap.set(navContainer, { width: initialWidth });
+
+      // Create timeline for smooth transitions
+      const scrollTimeline = gsap.timeline({ paused: true });
+
+      scrollTimeline.to(
+        navContainer,
+        {
+          width: initialWidth * 0.5,
+          duration: TRANSITION_DURATION,
+          ease: "power2.out",
+        },
+        0
+      );
+
+      // Create ScrollTrigger for binary switch
+      ScrollTrigger.create({
+        trigger: "body",
+        start: `${SCROLL_THRESHOLD}px top`,
+        onEnter: () => {
+          scrollTimeline.play();
+          // Delay the state change to allow outline to animate properly
+          gsap.delayedCall(0, () => setIsScrolled(true));
+        },
+        onLeaveBack: () => {
+          // Keep outline visible until animation completes
+          gsap.delayedCall(TRANSITION_DURATION, () => setIsScrolled(false));
+          scrollTimeline.reverse();
+        },
+      });
+    },
+    { scope: container }
+  );
+
+  return (
+    <nav
+      ref={container}
+      className={`fixed left-1/2 transform -translate-x-1/2 z-50 transition-all ease-out ${
+        isScrolled
+          ? "top-4 w-full bg-yellow-400 outline-4 outline-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg backdrop-blur-sm"
+          : "top-0 w-full pt-4 bg-lime-300 outline-b-4 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+      }`}
+      style={{
+        transitionDuration: `${TRANSITION_DURATION}s`,
+      }}
+    >
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20 relative">
+          {/* Left Content */}
+          <div ref={leftContentRef} className="flex items-center space-x-6">
+            <div className="flex-shrink-0">
+              <h1 className="text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
+                ⚡ PORTFOLIO
+              </h1>
+            </div>
+          </div>
+
+          {/* Center Content (always visible) */}
+          <div
+            ref={centerContentRef}
+            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <div className="hidden md:block">
+              <div className="ml-6 flex items-baseline space-x-2">
+                <a
+                  href="#home"
+                  className="bg-black text-white hover:bg-white hover:text-black px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                >
+                  HOME
+                </a>
+                <a
+                  href="#about"
+                  className="bg-white text-black hover:bg-black hover:text-white px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                >
+                  ABOUT
+                </a>
+                <a
+                  href="#projects"
+                  className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                >
+                  WORK
+                </a>
+                <a
+                  href="#contact"
+                  className="bg-cyan-400 text-black hover:bg-black hover:text-cyan-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                >
+                  CONTACT
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Content */}
+          <div ref={rightContentRef} className="flex items-center space-x-3">
+            <button className="bg-red-500 hover:bg-black text-white hover:text-red-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1">
+              🚀 HIRE ME
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button className="bg-orange-400 text-black hover:bg-black hover:text-orange-400 p-3 font-bold outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]">
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
