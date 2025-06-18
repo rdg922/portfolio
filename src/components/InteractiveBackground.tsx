@@ -181,6 +181,7 @@ export default function InteractiveBackground({
 
     // Add cursor particles at click position
     createCursorParticle(e.clientX, e.clientY);
+    handleBackgroundClick(e);
   };
 
   // Handle background clicks for particle explosion
