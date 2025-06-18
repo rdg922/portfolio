@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -13,29 +14,31 @@ export default function PageTransition({
 }: PageTransitionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Animate content in when component mounts
-    const container = containerRef.current;
-    if (!container) return;
+  useGSAP(
+    () => {
+      // Animate content in when component mounts
+      const container = containerRef.current;
+      if (!container) return;
 
-    gsap.fromTo(
-      container,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 0.3,
-      }
-    );
-  }, []);
+      gsap.fromTo(
+        container.children,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          delay: 0.3,
+          stagger: 0.2,
+        }
+      );
+    },
+    { scope: containerRef }
+  );
 
   return (
     <div className={`min-h-screen ${backgroundColor}`}>
-      <div ref={containerRef} className="opacity-0">
-        {children}
-      </div>
+      <div ref={containerRef}>{children}</div>
     </div>
   );
 }
