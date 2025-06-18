@@ -33,6 +33,10 @@ export default function GlobalCursor() {
         duration: 0.15,
         ease: "none",
       });
+
+      // Ensure no transition-all affects positioning
+      cursorDot.style.transition = "none";
+      cursor.style.transition = "none";
     };
 
     const handleMouseDown = () => {
