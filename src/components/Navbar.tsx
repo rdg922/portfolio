@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { triggerPageTransition } from "./PageTransition";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,10 +15,26 @@ export default function Navbar() {
 
   // ===== NAVBAR CONFIGURATION =====
   const SCROLL_THRESHOLD = 20; // Pixels to scroll before switching states
-  const TRANSITION_DURATION = 0.8; // Animation duration in seconds (smoother at 0.8)
+  const TRANSITION_DURATION = 0.6; // Animation duration in seconds (smoother at 0.8)
   // ================================
 
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleNavigation = (
+    url: string,
+    backgroundColor: string,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+    const target = event.currentTarget;
+    triggerPageTransition(url, target, backgroundColor);
+  };
+
+  const handleHireMe = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const target = event.currentTarget;
+    triggerPageTransition("/contact", target, "#67e8f9"); // cyan-400
+  };
 
   useGSAP(
     () => {
@@ -30,7 +47,25 @@ export default function Navbar() {
         return;
 
       // Get full screen width for proper animation
-      const initialWidth = window.innerWidth;
+      let initialWidth = window.innerWidth;
+
+      // Function to update widths and timeline
+      const updateWidths = () => {
+        initialWidth = window.innerWidth;
+        gsap.set(navContainer, { width: initialWidth });
+
+        // Update the timeline target width
+        scrollTimeline.clear();
+        scrollTimeline.to(
+          navContainer,
+          {
+            width: initialWidth * 0.5,
+            duration: TRANSITION_DURATION,
+            ease: "power2.out",
+          },
+          0
+        );
+      };
 
       // Set initial state - content spread out when at top
       gsap.set(leftContent, { x: 0, scale: 1 });
@@ -51,6 +86,13 @@ export default function Navbar() {
         0
       );
 
+      // Add resize event listener
+      const handleResize = () => {
+        updateWidths();
+      };
+
+      window.addEventListener("resize", handleResize);
+
       // Create ScrollTrigger for binary switch
       ScrollTrigger.create({
         trigger: "body",
@@ -66,6 +108,11 @@ export default function Navbar() {
           scrollTimeline.reverse();
         },
       });
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     },
     { scope: container }
   );
@@ -88,7 +135,7 @@ export default function Navbar() {
           <div ref={leftContentRef} className="flex items-center space-x-6">
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
-                ⚡ PORTFOLIO
+                ⚡ ROHIT
               </h1>
             </div>
           </div>
@@ -101,25 +148,29 @@ export default function Navbar() {
             <div className="hidden md:block">
               <div className="ml-6 flex items-baseline space-x-2">
                 <a
-                  href="#home"
+                  href="/"
+                  onClick={(e) => handleNavigation("/", "#fde047", e)}
                   className="bg-black text-white hover:bg-white hover:text-black px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   HOME
                 </a>
                 <a
-                  href="#about"
+                  href="/about"
+                  onClick={(e) => handleNavigation("/about", "#a3e635", e)}
                   className="bg-white text-black hover:bg-black hover:text-white px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   ABOUT
                 </a>
                 <a
-                  href="#projects"
+                  href="/work"
+                  onClick={(e) => handleNavigation("/work", "#c084fc", e)}
                   className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   WORK
                 </a>
                 <a
-                  href="#contact"
+                  href="/contact"
+                  onClick={(e) => handleNavigation("/contact", "#67e8f9", e)}
                   className="bg-cyan-400 text-black hover:bg-black hover:text-cyan-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   CONTACT
@@ -130,7 +181,10 @@ export default function Navbar() {
 
           {/* Right Content */}
           <div ref={rightContentRef} className="flex items-center space-x-3">
-            <button className="bg-red-500 hover:bg-black text-white hover:text-red-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1">
+            <button
+              onClick={handleHireMe}
+              className="bg-red-500 hover:bg-black text-white hover:text-red-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
+            >
               🚀 HIRE ME
             </button>
           </div>
