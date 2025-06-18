@@ -2,6 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { createCursorParticle } from "./GlobalCursor";
 
 interface InteractiveBackgroundProps {
   children: React.ReactNode;
@@ -11,7 +12,6 @@ export default function InteractiveBackground({
   children,
 }: InteractiveBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Create floating shapes data
@@ -142,17 +142,6 @@ export default function InteractiveBackground({
         ease: "power2.out",
         stagger: 0.02,
       });
-
-      // Move cursor
-      if (cursorRef.current) {
-        gsap.set(cursorRef.current, {
-          left: clientX,
-          top: clientY,
-          // x: clientX,
-          // y: clientY,
-          // duration: 0.1,
-        });
-      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -163,7 +152,9 @@ export default function InteractiveBackground({
   }, []);
 
   // Handle shape clicks
-  const handleShapeClick = (shapeId: number) => {
+  const handleShapeClick = (shapeId: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+
     gsap.to(`.shape-${shapeId}`, {
       scale: 1.5,
       rotation: "+=360",
@@ -187,6 +178,9 @@ export default function InteractiveBackground({
         ease: "power2.out",
       }
     );
+
+    // Add cursor particles at click position
+    createCursorParticle(e.clientX, e.clientY);
   };
 
   // Handle background clicks for particle explosion
@@ -197,7 +191,7 @@ export default function InteractiveBackground({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Create temporary particles
+    // Create temporary particles and cursor particles
     const particles = Array.from({ length: 8 }).map((_, i) => {
       const particle = document.createElement("div");
       particle.className =
@@ -220,20 +214,17 @@ export default function InteractiveBackground({
 
       return particle;
     });
+
+    // Add cursor particles at click position
+    createCursorParticle(e.clientX, e.clientY);
   };
 
   return (
     <section
       ref={containerRef}
-      className="pt-20 min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300 relative overflow-hidden cursor-crosshair"
+      className="pt-20 min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300 relative overflow-hidden"
       onClick={handleBackgroundClick}
     >
-      {/* Custom cursor */}
-      <div
-        ref={cursorRef}
-        className="fixed w-8 h-8 bg-black border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] pointer-events-none z-50 mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
-      ></div>
-
       {/* Interactive floating shapes */}
       {shapes.map((shape) => (
         <div
@@ -245,7 +236,7 @@ export default function InteractiveBackground({
             transform: `rotate(${shape.rotation}deg)`,
             boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)",
           }}
-          onClick={() => handleShapeClick(shape.id)}
+          onClick={(e) => handleShapeClick(shape.id, e)}
         >
           {/* Add pattern inside shapes */}
           <div className="w-full h-full relative overflow-hidden">
