@@ -87,22 +87,86 @@ export default function InteractiveBackground({
       const container = containerRef.current;
       if (!container) return;
 
-      // Animate all shapes on load
+      // Animate all shapes on load with improved stagger
       gsap.fromTo(
         ".floating-shape",
         {
           scale: 0,
           rotation: 0,
           opacity: 0,
+          y: 100,
         },
         {
           scale: 1,
           rotation: (i) => shapes[i]?.rotation || 0,
           opacity: 1,
-          duration: 1.5,
-          stagger: 0.1,
+          y: 0,
+          duration: 1.2,
+          stagger: {
+            amount: 0.8,
+            from: "random",
+          },
           ease: "back.out(1.7)",
-          delay: 0.5,
+          delay: 0.8,
+        }
+      );
+
+      // Animate grid cells
+      gsap.fromTo(
+        ".grid-cell",
+        {
+          scale: 0,
+          opacity: 0,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          stagger: {
+            amount: 2,
+            from: "random",
+            grid: [20, 20],
+          },
+          ease: "power2.out",
+          delay: 0.2,
+        }
+      );
+
+      // Animate background lines
+      gsap.fromTo(
+        ".bg-line",
+        {
+          scaleX: 0,
+          scaleY: 0,
+          opacity: 0,
+        },
+        {
+          scaleX: 1,
+          scaleY: 1,
+          opacity: 0.2,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power2.out",
+          delay: 1.2,
+        }
+      );
+
+      // Animate glitch elements
+      gsap.fromTo(
+        ".glitch-element",
+        {
+          scale: 0,
+          opacity: 0,
+          rotation: 180,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "back.out(2)",
+          delay: 1.5,
         }
       );
 
@@ -119,6 +183,7 @@ export default function InteractiveBackground({
           each: 0.2,
           from: "random",
         },
+        delay: 2,
       });
     },
     { scope: containerRef }
@@ -230,11 +295,11 @@ export default function InteractiveBackground({
       {shapes.map((shape) => (
         <div
           key={shape.id}
-          className={`floating-shape shape-${shape.id} absolute ${shape.size} ${shape.color} border-4 border-black cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}
+          className={`floating-shape shape-${shape.id} absolute ${shape.size} ${shape.color} border-4 border-black cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] opacity-0`}
           style={{
             left: `${shape.x}%`,
             top: `${shape.y}%`,
-            transform: `rotate(${shape.rotation}deg)`,
+            transform: `rotate(${shape.rotation}deg) translateY(100px) scale(0)`,
             boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)",
           }}
           onClick={(e) => handleShapeClick(shape.id, e)}
@@ -269,32 +334,23 @@ export default function InteractiveBackground({
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="grid grid-cols-20 gap-1 h-full">
           {Array.from({ length: 400 }).map((_, i) => (
-            <div key={i} className="bg-black"></div>
+            <div key={i} className="grid-cell bg-black opacity-0" style={{ transform: 'scale(0)' }}></div>
           ))}
         </div>
       </div>
 
       {/* Animated lines */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-full h-1 bg-black opacity-20 animate-pulse"></div>
-        <div
-          className="absolute top-3/4 left-0 w-full h-1 bg-black opacity-20 animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute left-1/4 top-0 w-1 h-full bg-black opacity-20 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute left-3/4 top-0 w-1 h-full bg-black opacity-20 animate-pulse"
-          style={{ animationDelay: "3s" }}
-        ></div>
+        <div className="bg-line absolute top-1/4 left-0 w-full h-1 bg-black opacity-0" style={{ transform: 'scaleX(0)' }}></div>
+        <div className="bg-line absolute top-3/4 left-0 w-full h-1 bg-black opacity-0" style={{ transform: 'scaleX(0)' }}></div>
+        <div className="bg-line absolute left-1/4 top-0 w-1 h-full bg-black opacity-0" style={{ transform: 'scaleY(0)' }}></div>
+        <div className="bg-line absolute left-3/4 top-0 w-1 h-full bg-black opacity-0" style={{ transform: 'scaleY(0)' }}></div>
       </div>
 
       {/* Glitch effect squares */}
-      <div className="absolute top-20 right-10 w-6 h-6 bg-red-500 border-2 border-black animate-ping"></div>
-      <div className="absolute bottom-40 left-20 w-4 h-4 bg-blue-500 border-2 border-black animate-bounce"></div>
-      <div className="absolute top-40 left-1/3 w-5 h-5 bg-green-500 border-2 border-black animate-pulse"></div>
+      <div className="glitch-element absolute top-20 right-10 w-6 h-6 bg-red-500 border-2 border-black animate-ping opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
+      <div className="glitch-element absolute bottom-40 left-20 w-4 h-4 bg-blue-500 border-2 border-black animate-bounce opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
+      <div className="glitch-element absolute top-40 left-1/3 w-5 h-5 bg-green-500 border-2 border-black animate-pulse opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
 
       {children}
     </section>

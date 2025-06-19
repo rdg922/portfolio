@@ -150,7 +150,13 @@ export default function Navbar() {
               <div className="ml-6 flex items-baseline space-x-2">
                 <a
                   href="/"
-                  onClick={(e) => handleNavigation("/", "bg-yellow-300", e)}
+                  onClick={(e) =>
+                    handleNavigation(
+                      "/",
+                      "bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300",
+                      e
+                    )
+                  }
                   className="bg-black text-white hover:bg-white hover:text-black px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   HOME
