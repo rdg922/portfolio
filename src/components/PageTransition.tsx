@@ -20,25 +20,28 @@ export default function PageTransition({
       const container = containerRef.current;
       if (!container) return;
 
-      gsap.fromTo(
-        container.children,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          delay: 0.3,
-          stagger: 0.2,
-        }
-      );
+      // Set initial state immediately to prevent flash
+      gsap.set(container, { opacity: 1 });
+      gsap.set(container.children, { opacity: 0, y: 30 });
+
+      // Animate content in
+      gsap.to(container.children, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 0.3,
+        stagger: 0.2,
+      });
     },
     { scope: containerRef }
   );
 
   return (
     <div className={`min-h-screen ${backgroundColor}`}>
-      <div ref={containerRef}>{children}</div>
+      <div ref={containerRef} style={{ opacity: 0 }}>
+        {children}
+      </div>
     </div>
   );
 }
@@ -96,7 +99,7 @@ export function triggerPageTransition(
   }
 
   // Set overlay properties
-  overlay.style.backgroundColor = backgroundColor;
+  overlay.className = `fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-auto scale-0 origin-center ${backgroundColor}`;
   overlay.style.transformOrigin = `${buttonCenterX}px ${buttonCenterY}px`;
   overlay.style.transform = `scale(0) rotate(${rotation}deg)`;
   overlay.style.pointerEvents = "all";

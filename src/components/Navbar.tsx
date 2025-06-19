@@ -120,7 +120,7 @@ export default function Navbar() {
   return (
     <nav
       ref={container}
-      className={`fixed left-1/2 transform -translate-x-1/2 z-50 transition-all ease-out ${
+      className={`fixed left-1/2 transform -translate-x-1/2 z-[10000] transition-all ease-out ${
         isScrolled
           ? "top-4 w-full bg-yellow-400 outline-4 outline-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg backdrop-blur-sm"
           : "top-0 w-full pt-4 bg-lime-300 outline-b-4 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
@@ -149,28 +149,30 @@ export default function Navbar() {
               <div className="ml-6 flex items-baseline space-x-2">
                 <a
                   href="/"
-                  onClick={(e) => handleNavigation("/", "#fde047", e)}
+                  onClick={(e) => handleNavigation("/", "bg-yellow-300", e)}
                   className="bg-black text-white hover:bg-white hover:text-black px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   HOME
                 </a>
                 <a
                   href="/about"
-                  onClick={(e) => handleNavigation("/about", "#a3e635", e)}
+                  onClick={(e) => handleNavigation("/about", "bg-lime-400", e)}
                   className="bg-white text-black hover:bg-black hover:text-white px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   ABOUT
                 </a>
                 <a
                   href="/work"
-                  onClick={(e) => handleNavigation("/work", "#c084fc", e)}
+                  onClick={(e) => handleNavigation("/work", "bg-purple-400", e)}
                   className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   WORK
                 </a>
                 <a
                   href="/contact"
-                  onClick={(e) => handleNavigation("/contact", "#67e8f9", e)}
+                  onClick={(e) =>
+                    handleNavigation("/contact", "bg-cyan-400", e)
+                  }
                   className="bg-cyan-400 text-black hover:bg-black hover:text-cyan-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   CONTACT
