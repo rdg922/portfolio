@@ -87,7 +87,8 @@ export default function Navbar() {
       );
 
       // Add resize event listener
-      const handleResize = () => {
+      const handleResize = (e: UIEvent) => {
+        console.log(e);
         updateWidths();
       };
 
