@@ -334,23 +334,48 @@ export default function InteractiveBackground({
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="grid grid-cols-20 gap-1 h-full">
           {Array.from({ length: 400 }).map((_, i) => (
-            <div key={i} className="grid-cell bg-black opacity-0" style={{ transform: 'scale(0)' }}></div>
+            <div
+              key={i}
+              className="grid-cell bg-black opacity-0"
+              style={{ transform: "scale(0)" }}
+            ></div>
           ))}
         </div>
       </div>
 
       {/* Animated lines */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="bg-line absolute top-1/4 left-0 w-full h-1 bg-black opacity-0" style={{ transform: 'scaleX(0)' }}></div>
-        <div className="bg-line absolute top-3/4 left-0 w-full h-1 bg-black opacity-0" style={{ transform: 'scaleX(0)' }}></div>
-        <div className="bg-line absolute left-1/4 top-0 w-1 h-full bg-black opacity-0" style={{ transform: 'scaleY(0)' }}></div>
-        <div className="bg-line absolute left-3/4 top-0 w-1 h-full bg-black opacity-0" style={{ transform: 'scaleY(0)' }}></div>
+        <div
+          className="bg-line absolute top-1/4 left-0 w-full h-1 bg-black opacity-0"
+          style={{ transform: "scaleX(0)" }}
+        ></div>
+        <div
+          className="bg-line absolute top-3/4 left-0 w-full h-1 bg-black opacity-0"
+          style={{ transform: "scaleX(0)" }}
+        ></div>
+        <div
+          className="bg-line absolute left-1/4 top-0 w-1 h-full bg-black opacity-0"
+          style={{ transform: "scaleY(0)" }}
+        ></div>
+        <div
+          className="bg-line absolute left-3/4 top-0 w-1 h-full bg-black opacity-0"
+          style={{ transform: "scaleY(0)" }}
+        ></div>
       </div>
 
       {/* Glitch effect squares */}
-      <div className="glitch-element absolute top-20 right-10 w-6 h-6 bg-red-500 border-2 border-black animate-ping opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
-      <div className="glitch-element absolute bottom-40 left-20 w-4 h-4 bg-blue-500 border-2 border-black animate-bounce opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
-      <div className="glitch-element absolute top-40 left-1/3 w-5 h-5 bg-green-500 border-2 border-black animate-pulse opacity-0" style={{ transform: 'scale(0) rotate(180deg)' }}></div>
+      <div
+        className="glitch-element absolute top-20 right-10 w-6 h-6 bg-red-500 border-2 border-black animate-ping opacity-0"
+        style={{ transform: "scale(0) rotate(180deg)" }}
+      ></div>
+      <div
+        className="glitch-element absolute bottom-40 left-20 w-4 h-4 bg-blue-500 border-2 border-black animate-bounce opacity-0"
+        style={{ transform: "scale(0) rotate(180deg)" }}
+      ></div>
+      <div
+        className="glitch-element absolute top-40 left-1/3 w-5 h-5 bg-green-500 border-2 border-black animate-pulse opacity-0"
+        style={{ transform: "scale(0) rotate(180deg)" }}
+      ></div>
 
       {children}
     </section>
