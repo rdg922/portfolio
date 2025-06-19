@@ -61,8 +61,7 @@ export function TransitionOverlay() {
         height: 100vh;
         z-index: 9999;
         pointer-events: none;
-        transform: scale(0);
-        transform-origin: center;
+        clip-path: circle(0px at 50% 50%);
       `;
       document.body.appendChild(overlay);
     }
@@ -87,26 +86,25 @@ export function triggerPageTransition(
   const buttonCenterX = buttonRect.left + buttonRect.width / 2;
   const buttonCenterY = buttonRect.top + buttonRect.height / 2;
 
-  // Get button rotation if any
-  const computedStyle = window.getComputedStyle(buttonElement);
-  const transform = computedStyle.transform;
-  let rotation = 0;
-  if (transform && transform !== "none") {
-    const values = transform.split("(")[1].split(")")[0].split(",");
-    const a = parseFloat(values[0]);
-    const b = parseFloat(values[1]);
-    rotation = Math.round(Math.atan2(b, a) * (180 / Math.PI));
-  }
+  // Calculate exact radius needed to cover screen from button position
+  const maxDistance = Math.max(
+    Math.sqrt(buttonCenterX ** 2 + buttonCenterY ** 2),
+    Math.sqrt((window.innerWidth - buttonCenterX) ** 2 + buttonCenterY ** 2),
+    Math.sqrt(buttonCenterX ** 2 + (window.innerHeight - buttonCenterY) ** 2),
+    Math.sqrt(
+      (window.innerWidth - buttonCenterX) ** 2 +
+        (window.innerHeight - buttonCenterY) ** 2
+    )
+  );
 
-  // Set overlay properties
-  overlay.className = `fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-auto scale-0 origin-center ${backgroundColor}`;
-  overlay.style.transformOrigin = `${buttonCenterX}px ${buttonCenterY}px`;
-  overlay.style.transform = `scale(0) rotate(${rotation}deg)`;
+  // Set overlay to full screen with clipping mask
+  overlay.className = `fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-auto ${backgroundColor}`;
+  overlay.style.clipPath = `circle(0px at ${buttonCenterX}px ${buttonCenterY}px)`;
   overlay.style.pointerEvents = "all";
 
-  // Animate overlay expansion
+  // Animate clipping mask expansion
   gsap.to(overlay, {
-    scale: 3,
+    clipPath: `circle(${maxDistance}px at ${buttonCenterX}px ${buttonCenterY}px)`,
     duration: 0.8,
     ease: "power2.inOut",
     onComplete: () => {

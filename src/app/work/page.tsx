@@ -302,7 +302,7 @@ export default function WorkPage() {
       <PageTransition backgroundColor="bg-gray-50">
         <div className="min-h-screen bg-gray-50 text-gray-900 relative overflow-hidden">
           {/* Mathematical background grid */}
-          <div className="fixed inset-0 opacity-5 pointer-events-none">
+          <div className="fixed inset-0 opacity-10 pointer-events-none">
             <div
               className="w-full h-full"
               style={{
@@ -339,8 +339,8 @@ export default function WorkPage() {
               key={index}
               className="math-symbol fixed pointer-events-none text-2xl font-bold opacity-10 select-none"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(index * 37) % 100}%`,
+                top: `${(index * 23 + 17) % 100}%`,
                 color:
                   index % 3 === 0
                     ? "#000"
@@ -493,7 +493,7 @@ export default function WorkPage() {
                           </a>
 
                           <div className="font-mono text-xs text-gray-500 bg-gray-100 px-3 py-1 border border-gray-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                            {Math.floor(Math.random() * 99) + 1}% complete
+                            {((index + 1) * 23) % 100}% complete
                           </div>
                         </div>
                       </div>
