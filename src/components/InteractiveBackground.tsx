@@ -101,13 +101,13 @@ export default function InteractiveBackground({
           rotation: (i) => shapes[i]?.rotation || 0,
           opacity: 1,
           y: 0,
-          duration: 1.2,
+          duration: 0.6,
           stagger: {
             amount: 0.8,
             from: "random",
           },
           ease: "back.out(1.7)",
-          delay: 0.8,
+          delay: 0.7,
         }
       );
 
@@ -121,9 +121,9 @@ export default function InteractiveBackground({
         {
           scale: 1,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.5,
           stagger: {
-            amount: 2,
+            amount: 1,
             from: "random",
             grid: [20, 20],
           },
@@ -144,10 +144,10 @@ export default function InteractiveBackground({
           scaleX: 1,
           scaleY: 1,
           opacity: 0.2,
-          duration: 1,
-          stagger: 0.3,
+          duration: 0.8,
+          stagger: 0.1,
           ease: "power2.out",
-          delay: 1.2,
+          delay: 0.8,
         }
       );
 

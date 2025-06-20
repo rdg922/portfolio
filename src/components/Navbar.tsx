@@ -30,10 +30,10 @@ export default function Navbar() {
     triggerPageTransition(url, target, backgroundColor);
   };
 
-  const handleHireMe = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleContactClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const target = event.currentTarget;
-    triggerPageTransition("/contact", target, "#67e8f9"); // cyan-400
+    triggerPageTransition("/contact", target, "bg-cyan-400"); // cyan-400
   };
 
   useGSAP(
@@ -152,32 +152,23 @@ export default function Navbar() {
                       e
                     )
                   }
-                  className="bg-black text-white hover:bg-white hover:text-black px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                  className="bg-yellow-400 text-black hover:bg-black hover:text-yellow-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   HOME
                 </a>
                 <a
                   href="/about"
                   onClick={(e) => handleNavigation("/about", "bg-lime-400", e)}
-                  className="bg-white text-black hover:bg-black hover:text-white px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                  className="bg-lime-400 text-black hover:bg-black hover:text-lime-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   ABOUT
                 </a>
                 <a
                   href="/work"
-                  onClick={(e) => handleNavigation("/work", "bg-gray-50", e)}
-                  className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                  onClick={(e) => handleNavigation("/work", "bg-gray-100", e)}
+                  className="bg-gray-100 text-black hover:bg-black hover:text-gray-100 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   WORK
-                </a>
-                <a
-                  href="/contact"
-                  onClick={(e) =>
-                    handleNavigation("/contact", "bg-cyan-400", e)
-                  }
-                  className="bg-cyan-400 text-black hover:bg-black hover:text-cyan-400 px-4 py-2 font-bold text-sm uppercase tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
-                >
-                  CONTACT
                 </a>
               </div>
             </div>
@@ -186,10 +177,10 @@ export default function Navbar() {
           {/* Right Content */}
           <div ref={rightContentRef} className="flex items-center space-x-3">
             <button
-              onClick={handleHireMe}
-              className="bg-red-500 hover:bg-black text-white hover:text-red-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
+              onClick={handleContactClick}
+              className="bg-cyan-500 hover:bg-black text-white hover:text-cyan-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
             >
-              🚀 HIRE ME
+              CONTACT
             </button>
           </div>
 

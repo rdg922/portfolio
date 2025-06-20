@@ -31,49 +31,54 @@ const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "project-2",
-    title: "Quantum Dashboard",
+    id: "dino-luzzi",
+    title: "Dino Luzzi E-Commerce Site",
     description:
-      "Real-time data visualization tool for quantum computing research labs",
-    technologies: ["Vue.js", "D3.js", "Python", "WebGL", "Docker"],
+      "Won Open Source Club Hackathon with interactive 3D elements in NextJS, TailwindCSS, and Three.js",
+    technologies: ["NextJS", "Three.js", "TailwindCSS", "React"],
     link: "#",
     year: "2024",
   },
   {
-    id: "project-3",
-    title: "Blockchain Validator",
+    id: "wave-function",
+    title: "Wave Function Collapse & Generative Grammar Research",
     description:
-      "Decentralized validation system for smart contracts with automated testing",
-    technologies: ["Solidity", "Web3.js", "Next.js", "IPFS", "Hardhat"],
+      "Implemented Generative Grammar and Wave Function Collapse algorithms to procedurally create video game content in the style of traditional 'Legend of Zelda' content",
+    technologies: [
+      "Python",
+      "Algorithm Design",
+      "Game Development",
+      "Research",
+    ],
     link: "#",
     year: "2023",
   },
   {
-    id: "project-4",
-    title: "AR Workshop",
+    id: "tournament-platform",
+    title: "Programming Competition Hosting Platform",
     description:
-      "Augmented reality platform for collaborative 3D modeling and prototyping",
-    technologies: ["Unity", "C#", "ARCore", "WebRTC", "Firebase"],
-    link: "#",
-    year: "2023",
-  },
-  {
-    id: "project-5",
-    title: "Voice Analytics",
-    description:
-      "ML-powered voice analysis tool for healthcare diagnostics and monitoring",
-    technologies: ["Python", "PyTorch", "FastAPI", "React", "PostgreSQL"],
+      "Full-stack programming tournament hosting solution for local high school club using React and Firebase",
+    technologies: ["React", "Firebase", "JavaScript", "CSS"],
     link: "#",
     year: "2022",
   },
   {
-    id: "project-6",
-    title: "Crypto Sentinel",
+    id: "badminton-platform",
+    title: "UF Badminton Tournament Platform",
     description:
-      "Automated security auditing system for DeFi protocols and smart contracts",
-    technologies: ["Rust", "Ethereum", "GraphQL", "Redis", "Kubernetes"],
+      "Alternative tournament hosting platform using Next.js and PostgreSQL to ensure 100% payment fulfillment for tournaments",
+    technologies: ["NextJS", "PostgreSQL", "Payment Processing", "TypeScript"],
     link: "#",
-    year: "2022",
+    year: "2024",
+  },
+  {
+    id: "open-source-monorepo",
+    title: "UF Open Source Club Full-stack Monorepo",
+    description:
+      "Created Full-stack monorepo for improved code reusability and sharing with enhanced Git workflows",
+    technologies: ["TypeScript", "Monorepo", "Git", "Full-stack"],
+    link: "#",
+    year: "2025",
   },
 ];
 
@@ -372,9 +377,6 @@ export default function WorkPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-12 gap-8 items-end">
                 <div className="col-span-8 relative">
-                  {/* Header background shape */}
-                  <div className="absolute -top-8 -left-8 w-96 h-32 bg-yellow-400 border-4 border-black rotate-1 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] opacity-80 -z-10"></div>
-
                   <h1 className="text-7xl md:text-9xl font-black tracking-tight leading-none relative">
                     <span className="block">MY</span>
                     <span className="block text-red-500 ml-12">WORK</span>
@@ -382,15 +384,9 @@ export default function WorkPage() {
                   <div className="w-32 h-1 bg-black mt-4 ml-12"></div>
                 </div>
                 <div className="col-span-4 relative">
-                  {/* Info box background shapes */}
-                  {/* <div className="absolute -top-4 -right-4 w-full h-full bg-red-400 border-2 border-black rotate-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"></div> */}
-
                   <div className="border-2 border-dotted border-gray-400 p-6 bg-white/50 relative z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     <p className="text-sm font-mono leading-relaxed">
-                      f(x) = creativity × technology
-                      <br />
-                      where x = {projects.length} projects
-                      <br />∫ passion dt = ∞
+                      Some of my top projects...,
                     </p>
                   </div>
                 </div>

@@ -7,10 +7,20 @@ import PageTransition, {
 } from "../components/PageTransition";
 
 export default function Home() {
-  const handleExploreClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleConnectClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const target = event.currentTarget;
-    triggerPageTransition("/about", target, "#a3e635"); // lime-400
+    triggerPageTransition("/contact", target, "bg-cyan-400"); // cyan-400
+  };
+
+  const handleResumeDownload = () => {
+    // Create a temporary link element to trigger download
+    const link = document.createElement("a");
+    link.href = "/resume.pdf"; // Text version for now
+    link.download = "Rohit-Dasgupta-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -38,12 +48,41 @@ export default function Home() {
                   <span className="text-purple-600">CLICK THE SHAPES!</span>
                 </p>
               </div>
-              <button
-                onClick={handleExploreClick}
-                className="bg-purple-500 hover:bg-black text-white hover:text-purple-500 px-12 py-6 font-black text-xl uppercase tracking-wide border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] transform rotate-1 hover:rotate-3 hover:scale-105"
-              >
-                🔥 EXPLORE NOW 🔥
-              </button>
+
+              {/* Action Buttons Section */}
+              <div className="max-w-4xl mx-auto px-4">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 transform -rotate-1">
+                    <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tight">
+                      📄 GET MY RESUME
+                    </h3>
+                    <p className="text-lg font-bold text-black mb-6 uppercase tracking-wide">
+                      Download my latest resume with all experience and skills
+                    </p>
+                    <button
+                      onClick={handleResumeDownload}
+                      className="bg-green-500 hover:bg-black text-white hover:text-green-500 px-8 py-4 font-black text-lg uppercase tracking-wide border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] w-full"
+                    >
+                      📥 DOWNLOAD RESUME
+                    </button>
+                  </div>
+
+                  <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 transform rotate-1">
+                    <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tight">
+                      💬 LET'S CONNECT
+                    </h3>
+                    <p className="text-lg font-bold text-black mb-6 uppercase tracking-wide">
+                      Ready to discuss opportunities or collaborate?
+                    </p>
+                    <button
+                      onClick={handleConnectClick}
+                      className="bg-cyan-500 hover:bg-black text-white hover:text-cyan-500 px-8 py-4 font-black text-lg uppercase tracking-wide border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] w-full"
+                    >
+                      🤝 GET IN TOUCH
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </InteractiveBackground>
         </PageTransition>

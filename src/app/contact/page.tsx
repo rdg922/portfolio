@@ -86,56 +86,63 @@ export default function Contact() {
                     📧 EMAIL ME
                   </h3>
                   <p className="text-lg font-bold text-black uppercase">
-                    HELLO@BRUTALPORTFOLIO.COM
+                    R.DASGUPTA@UFL.EDU
                   </p>
                 </div>
 
                 <div className="bg-pink-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-1">
                   <h3 className="text-2xl font-black text-black mb-4 uppercase">
+                    � PHONE
+                  </h3>
+                  <p className="text-lg font-bold text-black uppercase">
+                    (561) 809-4158
+                  </p>
+                </div>
+
+                <div className="bg-purple-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-2">
+                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
                     💬 SOCIAL MEDIA
                   </h3>
                   <div className="space-y-2">
                     <a
-                      href="#"
+                      href="https://linkedin.com/in/dasgupta-rohit"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
                     >
-                      TWITTER: @BRUTALDEV
+                      LINKEDIN: /IN/DASGUPTA-ROHIT
                     </a>
                     <a
-                      href="#"
+                      href="https://github.com/rdg922"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
                     >
-                      GITHUB: /BRUTALCODER
-                    </a>
-                    <a
-                      href="#"
-                      className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
-                    >
-                      LINKEDIN: /IN/BRUTAL
+                      GITHUB: /RDG922
                     </a>
                   </div>
                 </div>
 
-                <div className="bg-green-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-2">
+                <div className="bg-green-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-2">
                   <h3 className="text-2xl font-black text-black mb-4 uppercase">
                     🕐 AVAILABILITY
                   </h3>
                   <p className="text-lg font-bold text-black uppercase">
-                    AVAILABLE FOR FREELANCE
+                    AVAILABLE FOR INTERNSHIPS
                     <br />
                     RESPONSE TIME: 24 HOURS
                   </p>
                 </div>
 
-                <div className="bg-purple-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-2">
+                <div className="bg-orange-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-1">
                   <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    💰 SERVICES
+                    � SERVICES
                   </h3>
                   <ul className="space-y-1 text-black font-bold uppercase">
-                    <li>• WEB DEVELOPMENT</li>
-                    <li>• UI/UX DESIGN</li>
-                    <li>• ANIMATIONS & GSAP</li>
-                    <li>• CONSULTING</li>
+                    <li>• FULL-STACK DEVELOPMENT</li>
+                    <li>• AWS CLOUD SOLUTIONS</li>
+                    <li>• AI/ML INTEGRATION</li>
+                    <li>• TECHNICAL CONSULTING</li>
                   </ul>
                 </div>
               </div>
@@ -171,10 +178,10 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
             <div className="bg-white text-black border-4 border-white shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] p-6 transform rotate-1 inline-block">
               <p className="font-black text-lg uppercase tracking-wide">
-                © 2025 BRUTAL PORTFOLIO
+                © 2025 ROHIT DASGUPTA
                 <br />
                 <span className="text-sm">
-                  BUILT WITH NEXT.JS & GSAP POWER!
+                  BUILT WITH NEXT.JS, REACT, & TAILWIND CSS
                 </span>
               </p>
             </div>
