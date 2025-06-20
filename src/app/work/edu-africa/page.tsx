@@ -4,12 +4,96 @@ import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 import Navbar from "../../../components/Navbar";
 import PageTransition, {
   TransitionOverlay,
 } from "../../../components/PageTransition";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Add image loading hook
+const useImageLoader = () => {
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+
+  const handleImageLoad = (src: string) => {
+    setLoadedImages((prev) => new Set([...prev, src]));
+  };
+
+  const handleImageError = (src: string) => {
+    setFailedImages((prev) => new Set([...prev, src]));
+  };
+
+  const isLoaded = (src: string) => loadedImages.has(src);
+  const hasFailed = (src: string) => failedImages.has(src);
+
+  return { handleImageLoad, handleImageError, isLoaded, hasFailed };
+};
+
+// Image component with loading states
+const MediaDisplay = ({
+  src,
+  alt,
+  className,
+}: {
+  src: string; // Just string paths from public directory
+  alt: string;
+  className: string;
+}) => {
+  const { handleImageLoad, handleImageError, hasFailed } = useImageLoader();
+  const [loading, setLoading] = useState(true);
+
+  const handleLoad = () => {
+    setLoading(false);
+    handleImageLoad(src);
+  };
+
+  const handleError = () => {
+    setLoading(false);
+    handleImageError(src);
+  };
+
+  if (hasFailed(src)) {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center border border-gray-400">
+        <div className="text-center">
+          <div className="text-2xl mb-2 opacity-60">📷</div>
+          <div className="font-mono text-xs text-gray-600">
+            Image unavailable
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      {loading && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center z-10">
+          <div className="text-center">
+            <div className="animate-pulse text-2xl mb-2">📸</div>
+            <div className="font-mono text-xs text-gray-600">
+              Loading image...
+            </div>
+          </div>
+        </div>
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        width={500}
+        height={500}
+        className={`w-full h-full ${className} ${
+          loading ? "opacity-0" : "opacity-100"
+        } transition-opacity duration-300`}
+        onLoad={handleLoad}
+        onError={handleError}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+  );
+};
 
 interface ProjectSection {
   id: string;
@@ -18,12 +102,11 @@ interface ProjectSection {
   imageAlt: string;
 }
 
-interface ExperienceSection {
+interface ProjectSection {
   id: string;
   title: string;
-  stat: string;
   description: string;
-  color: string;
+  imageAlt: string;
 }
 
 const projectSections: ProjectSection[] = [
@@ -86,118 +169,73 @@ interface ExperienceSection {
   extendedText?: string;
   photoCluster?: string[];
   color: string;
-  reflectionQuote?: string;
 }
 
 const experienceSections: ExperienceSection[] = [
   {
     id: "arrival",
-    title: "First Steps in Ghana",
-    subtitle: "Culture Shock and Wonder",
+    title: "Landing in Cape Town",
+    subtitle: "From Arrival Hall to Agile Development",
     description:
-      "Landing in Accra was my first real encounter with African culture beyond textbooks and documentaries. The vibrant energy, the warmth of the people, and the complexity of urban Ghana immediately challenged my preconceptions.",
+      "Arriving at Cape Town International Airport, our group was greeted by our EDU Africa facilitator and the iconic view of Table Mountain.  We settled into our accommodation at Curiocity on Kloof Street, the vibrant hub that would be our home base for the next several weeks. ",
     extendedText:
-      "Walking through the bustling streets of Osu, I was struck by the juxtaposition of modern technology and traditional practices. Mobile money transactions happening next to street vendors selling traditional kente cloth. Solar panels on buildings that had been there for decades. This wasn't the Africa I had imagined—it was far more complex, dynamic, and forward-thinking.",
+      "The first few days were a deep dive into the complex context of South Africa. The city orientation walk and a powerful workshop with the Institute for Justice & Reconciliation provided a necessary foundation, highlighting the nation's journey from Apartheid to democracy.  This context was crucial as we prepared to work with Safe Cities. It was clear our project wasn't just about code; it was about understanding the societal needs that drive community-led organizations.",
     photoCluster: [
-      "airport_arrival",
-      "accra_streets",
-      "first_meal",
-      "university_campus",
+      "/images/IMG_3669.jpg",
+      "/images/73127295-ccba-422f-8f0d-adeeb72a7b6f.jpg",
     ],
     color: "bg-emerald-400",
-    reflectionQuote:
-      "My first realization: I had so much to unlearn before I could truly learn.",
   },
   {
-    id: "education_system",
-    title: "Understanding Local Education",
-    subtitle: "Beyond the Digital Divide",
+    id: "safe_cities_mission",
+    title: "The Safe Cities Project",
+    subtitle: "Secure Collaboration for Community Impact",
     description:
-      "Visiting rural schools opened my eyes to the real challenges and innovative solutions already happening in African education. Teachers were doing incredible work with limited resources, and students showed remarkable resilience and creativity.",
+      "Our team was assigned to work with Safe Cities on a critical internal tool: a secure project management platform.  The goal was to create a centralized system, a clone of Notion and Google Drive, to help them manage projects, store documents, and collaborate efficiently without relying on multiple third-party services.",
     extendedText:
-      "In a small village school outside Kumasi, I watched a teacher use hand-drawn diagrams to explain complex mathematical concepts that students grasped immediately. The 'digital divide' wasn't just about access to technology—it was about relevant, culturally appropriate content. Students weren't waiting for solutions; they were creating them. I saw mobile apps built by teenage programmers, peer-to-peer learning networks, and community-funded internet cafes that became educational hubs.",
+      "During our on-site orientation with our contact, Samantha May, at their offices in Elsiesriver, we learned about the challenges they faced with data security and workflow management.  Our mission was to apply the Software Engineering Agile Methodology to design and build a prototype.  This in-house solution needed to be robust and secure, empowering the Safe Cities team to coordinate their community-focused work more effectively.",
     photoCluster: [
-      "rural_school",
-      "teacher_chalkboard",
-      "students_learning",
-      "village_classroom",
-      "community_center",
+      "/images/IMG_3861.jpg",
+      "/images/ccc7ed5f-f8ed-4a9d-aacd-e3aa7c7d6950.jpg",
+      "/images/IMG_4342.jpg",
     ],
     color: "bg-green-500",
-    reflectionQuote:
-      "Innovation doesn't require the latest technology—it requires understanding real needs.",
   },
   {
-    id: "community_integration",
-    title: "Living with Host Families",
-    subtitle: "Learning Through Daily Life",
+    id: "durban_interlude",
+    title: "Durban and St. Lucia",
+    subtitle: "Engineering, Environment, and Estuaries",
     description:
-      "Staying with local families taught me more about education, community, and values than any classroom could. Every meal was a lesson, every conversation a window into different worldviews.",
+      "Our program included a trip to Durban and St. Lucia, providing a broader view of South Africa's diversity. The urban energy of Durban contrasted sharply with the natural wonder of the iSimangaliso Wetlands Park, home to one of the world's largest estuaries. ",
     extendedText:
-      "My host mother, Akosua, was a primary school teacher who had been educating children for 25 years. She taught me that education extends far beyond formal schooling. Children learned responsibility by helping with family businesses, gained financial literacy through market transactions, and developed problem-solving skills through daily challenges like water collection and power outages. The community itself was a classroom, with elders as professors and life experiences as curriculum.",
-    photoCluster: [
-      "host_family",
-      "family_dinner",
-      "market_lessons",
-      "storytelling_evening",
-    ],
+      "A highlight was the two-day engagement with the Faculty of Accounting & Informatics and the Faculty of Engineering & the Built Environment at Durban University of Technology (DUT).  Collaborating with DUT students and faculty on their student-led projects offered new perspectives on technology's application in different socio-economic settings.  This experience, combined with the safari in Hluhluwe-iMfolozi, reinforced the need for adaptable and context-aware engineering solutions. ",
+    photoCluster: ["/images/IMG_7663.jpg", "/images/IMG_4463.jpg"],
     color: "bg-teal-400",
-    reflectionQuote:
-      "The most profound education happens in the spaces between formal lessons.",
   },
   {
-    id: "collaborative_work",
-    title: "Building Together",
-    subtitle: "Co-creation Over Charity",
+    id: "collaborative_development",
+    title: "From Pitch to Prototype",
+    subtitle: "An Agile Journey with Safe Cities",
     description:
-      "Working directly with local developers and educators taught me the importance of collaboration over charity. They weren't looking for handouts—they were looking for partners who respected their expertise and local knowledge.",
+      "Our development process was iterative, marked by key presentations where we refined our project. We started with a Project Proposal Pitch at the EDU Africa office and followed up with several Project Updates at the Cape Town Lodge Hotel.  Each presentation was an opportunity to incorporate feedback and ensure our solution met the client's needs.",
     extendedText:
-      "Kwame, a brilliant developer from Accra, became my mentor rather than my mentee. He showed me how to build applications that worked on 2G networks, how to design interfaces that made sense in multilingual contexts, and how to create solutions that communities could maintain and improve themselves. We spent late nights coding together, not because I was helping him, but because we were solving problems that neither of us could tackle alone.",
+      "Working as a team, we dedicated our on-site days to direct collaboration with the Safe Cities staff, while our off-site time was spent in focused development sprints.  This blend of client-facing meetings and remote teamwork was essential. We learned to communicate technical ideas to a non-technical audience and adapt our design based on real-world operational requirements, truly integrating Computer Science principles with the needs of our internship host. ",
     photoCluster: [
-      "coding_together",
-      "team_meetings",
-      "whiteboard_planning",
-      "late_night_debugging",
-      "solution_testing",
+      "/images/IMG_4361.jpg",
+      "/images/8f9dae0c-ea40-418a-b96e-de918590f7c7.jpg",
     ],
     color: "bg-lime-400",
-    reflectionQuote:
-      "The best solutions emerge when different perspectives collaborate as equals.",
   },
   {
-    id: "perspective_shift",
-    title: "Redefining Development",
-    subtitle: "From Savior to Student",
+    id: "lasting_impact",
+    title: "Final Showcase and Reflection",
+    subtitle: "Delivering a Tool for Transformation",
     description:
-      "The trip fundamentally changed how I think about 'development' and 'helping.' I realized that sustainable change comes from amplifying existing efforts, not imposing external solutions.",
+      "The program culminated in a final poster presentation at the Cape Town Lodge Hotel, where we showcased our project management platform prototype to our internship hosts and other stakeholders.  This was our chance to demonstrate the value and functionality of the tool we had spent weeks building.",
     extendedText:
-      "I arrived thinking I would 'help' solve educational problems in Africa. I left understanding that the problems I thought existed were often misunderstood, and the solutions were already being developed by people who understood the context better than I ever could. My role wasn't to be a savior—it was to be a bridge, connecting resources and knowledge across different contexts while learning from approaches that challenged Western assumptions about education and technology.",
-    photoCluster: [
-      "reflection_moment",
-      "community_gathering",
-      "farewell_ceremony",
-    ],
-    color: "bg-green-600",
-    reflectionQuote:
-      "True development means recognizing that everyone has something to teach and something to learn.",
-  },
-  {
-    id: "ongoing_impact",
-    title: "Continuing the Journey",
-    subtitle: "Relationships Beyond the Trip",
-    description:
-      "The study abroad program ended, but the relationships and lessons continue. The platform we built together is now being used and improved by the communities themselves, exactly as it should be.",
-    extendedText:
-      "Two years later, I still receive updates from teachers using the platform, suggestions from students for new features, and innovations from developers who have taken the codebase in directions I never imagined. The project has become truly theirs, which was always the goal. More importantly, the friendships and professional relationships formed during those three months continue to challenge and inspire my work today. They've made me a better developer, a more thoughtful designer, and a more globally-minded person.",
-    photoCluster: [
-      "platform_usage",
-      "ongoing_collaboration",
-      "global_connections",
-      "impact_stories",
-    ],
+      "The experience was about more than just delivering a product. It was a transformative learning journey that enhanced our professional and intercultural skills.  Presenting our work, wrapping up the internship, and participating in the final reflection session crystallized the immense growth we underwent.  We left with not only a significant project for our portfolios but also a deeper understanding of engineering's role in a global, societal context. ",
+    photoCluster: ["/images/IMG_3861.jpg", "/images/IMG_4463.jpg"],
     color: "bg-emerald-500",
-    reflectionQuote:
-      "The end of a program is just the beginning of real collaboration.",
   },
 ];
 
@@ -351,15 +389,13 @@ export default function EduAfricaPage() {
               <div className="grid grid-cols-12 gap-8 items-center">
                 <div className="col-span-8">
                   <h1 className="text-6xl md:text-8xl font-black leading-none mb-6">
-                    <span className="block text-gray-900">EDU</span>
-                    <span className="block text-green-600 ml-16">AFRICA</span>
+                    <span className="block text-gray-900">SWE Internship</span>
+                    <span className="block text-green-600 ml-16">
+                      in South Africa
+                    </span>
                   </h1>
                   <div className="w-40 h-2 bg-green-600 ml-16 mb-8"></div>
-                  <p className="text-xl text-gray-700 max-w-lg ml-16 leading-relaxed mb-12">
-                    Transforming education across Africa through technology,
-                    community engagement, and culturally relevant learning
-                    experiences.
-                  </p>
+                  <p className="text-xl text-gray-700 max-w-lg ml-16 leading-relaxed mb-12"></p>
 
                   {/* Content Switcher - Moved to Hero */}
                   <div ref={switcherRef} className="ml-16">
@@ -401,15 +437,12 @@ export default function EduAfricaPage() {
                 </div>
                 <div className="col-span-4">
                   <div className="relative">
-                    <div className="w-full h-64 bg-gradient-to-br from-green-200 to-emerald-300 border-2 border-dotted border-gray-400 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-5xl mb-4">🌍</div>
-                        <div className="font-mono text-sm text-gray-600">
-                          educational_impact.render()
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-yellow-400 border-2 border-black rotate-45"></div>
+                    <Image
+                      src={"/images/2025-05-17-007.jpg"}
+                      width={500}
+                      height={400}
+                      className="w-full h-full"
+                    />
                   </div>
                 </div>
               </div>
@@ -668,12 +701,6 @@ export default function EduAfricaPage() {
                               {section.extendedText}
                             </p>
                           )}
-
-                          {section.reflectionQuote && (
-                            <blockquote className="bg-white/60 border-2 border-dotted border-gray-600 p-6 italic text-lg text-gray-900 font-medium">
-                              "{section.reflectionQuote}"
-                            </blockquote>
-                          )}
                         </div>
 
                         {/* Photo cluster */}
@@ -684,133 +711,64 @@ export default function EduAfricaPage() {
                                 Memories from {section.title.toLowerCase()}
                               </span>
 
-                              {/* Dynamic photo grid layouts */}
-                              {index % 3 === 0 && (
-                                // Layout 1: Large top, two small bottom
-                                <div className="space-y-3">
-                                  <div className="w-full h-40 bg-gradient-to-br from-gray-300 to-gray-400 border border-gray-500 flex items-center justify-center">
-                                    <div className="text-center">
-                                      <div className="text-2xl mb-1">📸</div>
-                                      <div className="font-mono text-xs text-gray-700">
-                                        {section.photoCluster[0]}
-                                      </div>
-                                    </div>
+                              {/* Dynamic photo grid layouts - Simplified for fewer, larger images */}
+                              {section.photoCluster.length === 1 && (
+                                // Single large image
+                                <div className="w-full h-64 border border-gray-500 overflow-hidden relative">
+                                  <MediaDisplay
+                                    src={section.photoCluster[0]}
+                                    alt={`Memory from ${section.title}`}
+                                    className="object-cover"
+                                  />
+                                </div>
+                              )}
+
+                              {section.photoCluster.length === 2 && (
+                                // Two images layout
+                                <div className="space-y-4">
+                                  <div className="w-full h-56 border border-gray-500 overflow-hidden relative">
+                                    <MediaDisplay
+                                      src={section.photoCluster[0]}
+                                      alt={`Memory from ${section.title}`}
+                                      className="object-cover"
+                                    />
                                   </div>
-                                  <div className="grid grid-cols-2 gap-3">
+                                  <div className="w-4/5 h-48 border border-gray-500 ml-auto overflow-hidden relative">
+                                    <MediaDisplay
+                                      src={section.photoCluster[1]}
+                                      alt={`Memory from ${section.title}`}
+                                      className="object-cover"
+                                    />
+                                  </div>
+                                </div>
+                              )}
+
+                              {section.photoCluster.length === 3 && (
+                                // Three images layout
+                                <div className="space-y-4">
+                                  <div className="w-full h-48 border border-gray-500 overflow-hidden relative">
+                                    <MediaDisplay
+                                      src={section.photoCluster[0]}
+                                      alt={`Memory from ${section.title}`}
+                                      className="object-cover"
+                                    />
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-4">
                                     {section.photoCluster
                                       .slice(1, 3)
                                       .map((photo, photoIndex) => (
                                         <div
                                           key={photoIndex}
-                                          className="h-24 bg-gradient-to-br from-gray-200 to-gray-350 border border-gray-500 flex items-center justify-center"
+                                          className="h-40 border border-gray-500 overflow-hidden relative"
                                         >
-                                          <div className="text-center">
-                                            <div className="text-lg mb-1">
-                                              📷
-                                            </div>
-                                            <div className="font-mono text-xs text-gray-700">
-                                              {photo}
-                                            </div>
-                                          </div>
+                                          <MediaDisplay
+                                            src={photo}
+                                            alt={`Memory from ${section.title}`}
+                                            className="object-cover"
+                                          />
                                         </div>
                                       ))}
                                   </div>
-                                  {section.photoCluster[3] && (
-                                    <div className="w-3/4 h-28 bg-gradient-to-br from-gray-250 to-gray-400 border border-gray-500 mx-auto flex items-center justify-center">
-                                      <div className="text-center">
-                                        <div className="text-xl mb-1">🖼️</div>
-                                        <div className="font-mono text-xs text-gray-700">
-                                          {section.photoCluster[3]}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-
-                              {index % 3 === 1 && (
-                                // Layout 2: Three stacked different sizes
-                                <div className="space-y-3">
-                                  <div className="w-full h-32 bg-gradient-to-br from-gray-300 to-gray-400 border border-gray-500 flex items-center justify-center">
-                                    <div className="text-center">
-                                      <div className="text-2xl mb-1">📸</div>
-                                      <div className="font-mono text-xs text-gray-700">
-                                        {section.photoCluster[0]}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="w-4/5 h-36 bg-gradient-to-br from-gray-200 to-gray-350 border border-gray-500 ml-auto flex items-center justify-center">
-                                    <div className="text-center">
-                                      <div className="text-xl mb-1">📷</div>
-                                      <div className="font-mono text-xs text-gray-700">
-                                        {section.photoCluster[1]}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="grid grid-cols-3 gap-2">
-                                    {section.photoCluster
-                                      .slice(2, 5)
-                                      .map((photo, photoIndex) => (
-                                        <div
-                                          key={photoIndex}
-                                          className="h-20 bg-gradient-to-br from-gray-250 to-gray-400 border border-gray-500 flex items-center justify-center"
-                                        >
-                                          <div className="text-center">
-                                            <div className="text-sm mb-1">
-                                              🖼️
-                                            </div>
-                                            <div className="font-mono text-xs text-gray-700">
-                                              {photo}
-                                            </div>
-                                          </div>
-                                        </div>
-                                      ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              {index % 3 === 2 && (
-                                // Layout 3: Side by side with bottom
-                                <div className="space-y-3">
-                                  <div className="grid grid-cols-2 gap-3">
-                                    {section.photoCluster
-                                      .slice(0, 2)
-                                      .map((photo, photoIndex) => (
-                                        <div
-                                          key={photoIndex}
-                                          className="h-32 bg-gradient-to-br from-gray-300 to-gray-400 border border-gray-500 flex items-center justify-center"
-                                        >
-                                          <div className="text-center">
-                                            <div className="text-xl mb-1">
-                                              📸
-                                            </div>
-                                            <div className="font-mono text-xs text-gray-700">
-                                              {photo}
-                                            </div>
-                                          </div>
-                                        </div>
-                                      ))}
-                                  </div>
-                                  {section.photoCluster[2] && (
-                                    <div className="w-full h-28 bg-gradient-to-br from-gray-200 to-gray-350 border border-gray-500 flex items-center justify-center">
-                                      <div className="text-center">
-                                        <div className="text-2xl mb-1">📷</div>
-                                        <div className="font-mono text-xs text-gray-700">
-                                          {section.photoCluster[2]}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {section.photoCluster[3] && (
-                                    <div className="w-2/3 h-24 bg-gradient-to-br from-gray-250 to-gray-400 border border-gray-500 ml-auto flex items-center justify-center">
-                                      <div className="text-center">
-                                        <div className="text-lg mb-1">🖼️</div>
-                                        <div className="font-mono text-xs text-gray-700">
-                                          {section.photoCluster[3]}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
                                 </div>
                               )}
                             </div>
@@ -841,20 +799,22 @@ export default function EduAfricaPage() {
                 <div className="text-center mt-32 max-w-4xl mx-auto">
                   <div className="bg-white border-2 border-dotted border-gray-400 p-12">
                     <h3 className="text-4xl font-black mb-8 text-gray-900">
-                      The Journey Continues
+                      Ubuntu Lives On
                     </h3>
                     <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                      This study abroad experience fundamentally changed not
-                      just how I approach technology and education, but how I
-                      see my role as a global citizen. The relationships built
-                      and lessons learned continue to shape every project I work
-                      on.
+                      Those four weeks in South Africa—three in Cape Town and
+                      one exploring Durban and Saint Lucia—fundamentally
+                      transformed how I approach technology, community, and my
+                      role as a global citizen. Working with Safe Cities taught
+                      me that sustainable change comes from relationships, not
+                      just solutions.
                     </p>
                     <p className="text-lg text-gray-600 leading-relaxed italic">
-                      The platform was just the beginning—the real impact has
-                      been the ongoing collaborations, cross-cultural
-                      friendships, and expanded worldview that make me a better
-                      developer and human being.
+                      The platform was just the beginning. The real impact has
+                      been the ongoing collaboration with South African
+                      communities, the Ubuntu philosophy that now guides my
+                      work, and the understanding that the best technology
+                      amplifies human connection rather than replacing it.
                     </p>
                     <div className="w-32 h-2 bg-green-600 mx-auto mt-8"></div>
                   </div>

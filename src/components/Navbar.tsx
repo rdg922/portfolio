@@ -52,19 +52,17 @@ export default function Navbar() {
       // Function to update widths and timeline
       const updateWidths = () => {
         initialWidth = window.innerWidth;
-        gsap.set(navContainer, { width: initialWidth });
 
-        // Update the timeline target width
-        scrollTimeline.clear();
-        scrollTimeline.to(
-          navContainer,
-          {
-            width: initialWidth * 0.5,
-            duration: TRANSITION_DURATION,
-            ease: "power2.out",
-          },
-          0
-        );
+        // Check current scroll position to determine width
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > SCROLL_THRESHOLD;
+
+        // Set width based on scroll state
+        if (shouldBeScrolled) {
+          gsap.set(navContainer, { width: initialWidth * 0.5 });
+        } else {
+          gsap.set(navContainer, { width: initialWidth });
+        }
       };
 
       // Set initial state - content spread out when at top
@@ -72,19 +70,6 @@ export default function Navbar() {
       gsap.set(rightContent, { x: 0, scale: 1 });
       gsap.set(centerContent, { scale: 1, opacity: 1 });
       gsap.set(navContainer, { width: initialWidth });
-
-      // Create timeline for smooth transitions
-      const scrollTimeline = gsap.timeline({ paused: true });
-
-      scrollTimeline.to(
-        navContainer,
-        {
-          width: initialWidth * 0.5,
-          duration: TRANSITION_DURATION,
-          ease: "power2.out",
-        },
-        0
-      );
 
       // Add resize event listener
       const handleResize = (e: UIEvent) => {
@@ -99,14 +84,24 @@ export default function Navbar() {
         trigger: "body",
         start: `${SCROLL_THRESHOLD}px top`,
         onEnter: () => {
-          scrollTimeline.play();
+          // Animate to current screen width * 0.5
+          gsap.to(navContainer, {
+            width: window.innerWidth * 0.5,
+            duration: TRANSITION_DURATION,
+            ease: "power2.out",
+          });
           // Delay the state change to allow outline to animate properly
           gsap.delayedCall(0, () => setIsScrolled(true));
         },
         onLeaveBack: () => {
           // Keep outline visible until animation completes
           gsap.delayedCall(TRANSITION_DURATION, () => setIsScrolled(false));
-          scrollTimeline.reverse();
+          // Animate to current screen width
+          gsap.to(navContainer, {
+            width: window.innerWidth,
+            duration: TRANSITION_DURATION,
+            ease: "power2.out",
+          });
         },
       });
 
