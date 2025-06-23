@@ -46,49 +46,8 @@ const projects: Project[] = [
     description:
       "Won Open Source Club Hackathon with interactive 3D elements in NextJS, TailwindCSS, and Three.js",
     technologies: ["NextJS", "Three.js", "TailwindCSS", "React"],
-    link: "#",
+    link: "/work/dino-luzzi",
     year: "2024",
-  },
-  {
-    id: "wave-function",
-    title: "Wave Function Collapse & Generative Grammar Research",
-    description:
-      "Implemented Generative Grammar and Wave Function Collapse algorithms to procedurally create video game content in the style of traditional 'Legend of Zelda' content",
-    technologies: [
-      "Python",
-      "Algorithm Design",
-      "Game Development",
-      "Research",
-    ],
-    link: "#",
-    year: "2023",
-  },
-  {
-    id: "tournament-platform",
-    title: "Programming Competition Hosting Platform",
-    description:
-      "Full-stack programming tournament hosting solution for local high school club using React and Firebase",
-    technologies: ["React", "Firebase", "JavaScript", "CSS"],
-    link: "#",
-    year: "2022",
-  },
-  {
-    id: "badminton-platform",
-    title: "UF Badminton Tournament Platform",
-    description:
-      "Alternative tournament hosting platform using Next.js and PostgreSQL to ensure 100% payment fulfillment for tournaments",
-    technologies: ["NextJS", "PostgreSQL", "Payment Processing", "TypeScript"],
-    link: "#",
-    year: "2024",
-  },
-  {
-    id: "open-source-monorepo",
-    title: "UF Open Source Club Full-stack Monorepo",
-    description:
-      "Created Full-stack monorepo for improved code reusability and sharing with enhanced Git workflows",
-    technologies: ["TypeScript", "Monorepo", "Git", "Full-stack"],
-    link: "#",
-    year: "2025",
   },
 ];
 
@@ -179,7 +138,7 @@ export default function WorkPage() {
           // Project card subtle lift
           gsap.to(project, {
             y: -8,
-            rotation: index % 2 === 0 ? 0.8 : -0.8,
+            rotation: index % 3 === 0 ? 0.8 : -0.8,
             duration: 0.4,
             ease: "power2.out",
           });
@@ -407,7 +366,7 @@ export default function WorkPage() {
           {/* Projects Grid */}
           <div className="relative z-10 px-8 pb-20">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20">
                 {projects.map((project, index) => (
                   <div
                     key={project.id}
