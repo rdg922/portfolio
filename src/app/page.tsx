@@ -44,8 +44,11 @@ export default function Home() {
                   <div className="absolute inset-0 bg-red-500 animate-pulse"></div>
                 </div>
                 <p className="text-xl md:text-2xl font-bold text-black mb-8 uppercase tracking-wide">
-                  ⚡ MOVE YOUR MOUSE ⚡<br />
-                  <span className="text-purple-600">CLICK THE SHAPES!</span>
+                  Full Stack Developer
+                  <br />
+                  <span className="text-purple-600">
+                    CS + Math @ the University of Florida{" "}
+                  </span>
                 </p>
               </div>
 

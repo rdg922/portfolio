@@ -33,8 +33,43 @@ export default function Contact() {
             <div className="absolute top-10 right-10 w-8 h-8 bg-blue-500 border-2 border-black transform -rotate-12"></div>
             <div className="absolute bottom-0 left-1/3 w-4 h-4 bg-green-500 border-2 border-black"></div>
 
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid gap-12">
               {/* Contact Form */}
+              {/* Contact Info */}
+              <div className="space-y-6">
+                <div className="bg-yellow-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-1">
+                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
+                    📧 EMAIL ME
+                  </h3>
+                  <p className="text-lg font-bold text-black uppercase">
+                    R.DASGUPTA@UFL.EDU
+                  </p>
+                </div>
+
+                <div className="bg-purple-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-2">
+                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
+                    💬 SOCIAL MEDIA
+                  </h3>
+                  <div className="space-y-2">
+                    <a
+                      href="https://linkedin.com/in/dasgupta-rohit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
+                    >
+                      LINKEDIN: /IN/DASGUPTA-ROHIT
+                    </a>
+                    <a
+                      href="https://github.com/rdg922"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
+                    >
+                      GITHUB: /RDG922
+                    </a>
+                  </div>
+                </div>
+              </div>
               <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 transform -rotate-1">
                 <h2 className="text-3xl font-black text-black mb-6 uppercase tracking-tight">
                   💌 SEND A MESSAGE
@@ -77,74 +112,6 @@ export default function Contact() {
                     🚀 SEND MESSAGE
                   </button>
                 </form>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-6">
-                <div className="bg-yellow-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-1">
-                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    📧 EMAIL ME
-                  </h3>
-                  <p className="text-lg font-bold text-black uppercase">
-                    R.DASGUPTA@UFL.EDU
-                  </p>
-                </div>
-
-                <div className="bg-pink-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-1">
-                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    � PHONE
-                  </h3>
-                  <p className="text-lg font-bold text-black uppercase">
-                    (561) 809-4158
-                  </p>
-                </div>
-
-                <div className="bg-purple-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-2">
-                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    💬 SOCIAL MEDIA
-                  </h3>
-                  <div className="space-y-2">
-                    <a
-                      href="https://linkedin.com/in/dasgupta-rohit"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
-                    >
-                      LINKEDIN: /IN/DASGUPTA-ROHIT
-                    </a>
-                    <a
-                      href="https://github.com/rdg922"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-lg font-bold text-black uppercase hover:text-white transition-colors"
-                    >
-                      GITHUB: /RDG922
-                    </a>
-                  </div>
-                </div>
-
-                <div className="bg-green-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-2">
-                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    🕐 AVAILABILITY
-                  </h3>
-                  <p className="text-lg font-bold text-black uppercase">
-                    AVAILABLE FOR INTERNSHIPS
-                    <br />
-                    RESPONSE TIME: 24 HOURS
-                  </p>
-                </div>
-
-                <div className="bg-orange-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 transform rotate-1">
-                  <h3 className="text-2xl font-black text-black mb-4 uppercase">
-                    � SERVICES
-                  </h3>
-                  <ul className="space-y-1 text-black font-bold uppercase">
-                    <li>• FULL-STACK DEVELOPMENT</li>
-                    <li>• AWS CLOUD SOLUTIONS</li>
-                    <li>• AI/ML INTEGRATION</li>
-                    <li>• TECHNICAL CONSULTING</li>
-                  </ul>
-                </div>
               </div>
             </div>
 
