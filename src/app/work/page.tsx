@@ -456,10 +456,6 @@ export default function WorkPage() {
                               →
                             </span>
                           </a>
-
-                          <div className="font-mono text-xs text-gray-500 bg-gray-100 px-3 py-1 border border-gray-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                            {((index + 1) * 23) % 100}% complete
-                          </div>
                         </div>
                       </div>
                     </div>

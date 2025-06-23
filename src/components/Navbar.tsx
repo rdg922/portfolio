@@ -30,12 +30,6 @@ export default function Navbar() {
     triggerPageTransition(url, target, backgroundColor);
   };
 
-  const handleContactClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const target = event.currentTarget;
-    triggerPageTransition("/contact", target, "bg-cyan-400"); // cyan-400
-  };
-
   useGSAP(
     () => {
       const navContainer = container.current;
@@ -176,12 +170,22 @@ export default function Navbar() {
 
           {/* Right Content */}
           <div ref={rightContentRef} className="flex items-center space-x-3">
-            <button
-              onClick={handleContactClick}
-              className="bg-cyan-500 hover:bg-black text-white hover:text-cyan-500 px-6 py-3 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
+            <a
+              href="https://github.com/rdg922"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-900 hover:bg-black text-white hover:text-gray-300 px-4 py-2 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
             >
-              CONTACT
-            </button>
+              GITHUB
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dasgupta-rohit/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 hover:bg-black text-white hover:text-blue-400 px-4 py-2 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform rotate-1"
+            >
+              LINKEDIN
+            </a>
           </div>
 
           {/* Mobile menu button */}
