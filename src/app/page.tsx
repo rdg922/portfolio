@@ -96,10 +96,7 @@ export default function Home() {
               </div>
 
               {/* Scroll Down Indicator */}
-              <div
-                ref={scrollIndicatorRef}
-                className="absolute py-30 left-1/2 transform -translate-x-1/2"
-              >
+              <div className="absolute py-30 left-1/2 transform -translate-x-1/2">
                 <div className="flex items-center border-2 border-black px-8 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 animate-bounce">
                   {/* Left down arrow */}
                   <div className="text-black text-xl mr-4 animate-pulse">↓</div>
