@@ -175,7 +175,6 @@ const experienceSections: ExperienceSection[] = [
 ];
 
 export default function ExperiencePage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const experienceSectionsRef = useRef<HTMLDivElement[]>([]);
 
   useGSAP(() => {

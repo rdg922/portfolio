@@ -1,5 +1,6 @@
 "use client";
 import { useNavbar } from "../contexts/NavbarContext";
+import Link from "next/link";
 
 export default function Navbar() {
   const { isScrolled, handleNavigation, navbarRefs, config } = useNavbar();
@@ -24,7 +25,7 @@ export default function Navbar() {
           <div ref={leftContentRef} className="flex items-center space-x-6">
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
-                <a
+                <Link
                   href="/"
                   onClick={(e) =>
                     handleNavigation(
@@ -36,7 +37,7 @@ export default function Navbar() {
                   className=" bg-yellow-300 px-4 py-2 tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   ROHIT
-                </a>
+                </Link>
               </h1>
             </div>
           </div>

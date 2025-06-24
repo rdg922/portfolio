@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import PageTransition, {
-  TransitionOverlay,
-  triggerPageTransition,
-} from "./PageTransition";
-import Footer from "@/components/Footer";
+import { triggerPageTransition } from "./PageTransition";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,7 +57,6 @@ const projects: Project[] = [
 ];
 
 export default function WorkPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -433,7 +428,7 @@ export default function WorkPage() {
                         <div className="grid grid-cols-2 gap-1 w-32">
                           {project.technologies
                             .slice(0, 4)
-                            .map((tech, techIndex) => (
+                            .map((tech) => (
                               <div
                                 key={tech}
                                 className="text-[8px] font-black bg-white border border-black px-1 py-0.5 text-center leading-none uppercase tracking-tight shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"

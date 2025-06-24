@@ -11,7 +11,6 @@ import PageTransition, {
 } from "../../../components/PageTransition";
 
 export default function EduAfricaPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const projectCardRef = useRef<HTMLDivElement>(null);
   const experienceCardRef = useRef<HTMLDivElement>(null);
 

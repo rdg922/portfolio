@@ -73,7 +73,6 @@ const projectSections: ProjectSection[] = [
 ];
 
 export default function ProjectPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const projectSectionsRef = useRef<HTMLDivElement[]>([]);
 
   useGSAP(() => {
