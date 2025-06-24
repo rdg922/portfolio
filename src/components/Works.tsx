@@ -426,26 +426,24 @@ export default function WorkPage() {
                       {/* Tech stack overlay - neobrutalist badges */}
                       <div className="tech-stack absolute top-3 right-3 bg-yellow-400 border-2 border-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                         <div className="grid grid-cols-2 gap-1 w-32">
-                          {project.technologies
-                            .slice(0, 4)
-                            .map((tech) => (
-                              <div
-                                key={tech}
-                                className="text-[8px] font-black bg-white border border-black px-1 py-0.5 text-center leading-none uppercase tracking-tight shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
-                                style={
-                                  {
-                                    // writingMode:
-                                    //   tech.length > 6
-                                    //     ? "vertical-rl"
-                                    //     : "horizontal-tb",
-                                    // textOrientation:
-                                    //   tech.length > 6 ? "mixed" : "initial",
-                                  }
+                          {project.technologies.slice(0, 4).map((tech) => (
+                            <div
+                              key={tech}
+                              className="text-[8px] font-black bg-white border border-black px-1 py-0.5 text-center leading-none uppercase tracking-tight shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                              style={
+                                {
+                                  // writingMode:
+                                  //   tech.length > 6
+                                  //     ? "vertical-rl"
+                                  //     : "horizontal-tb",
+                                  // textOrientation:
+                                  //   tech.length > 6 ? "mixed" : "initial",
                                 }
-                              >
-                                {tech}
-                              </div>
-                            ))}
+                              }
+                            >
+                              {tech}
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>

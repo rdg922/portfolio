@@ -20,9 +20,9 @@ interface NavbarContextType {
     event: React.MouseEvent<HTMLAnchorElement>
   ) => void;
   navbarRefs: {
-    container: React.RefObject<HTMLDivElement>;
-    leftContentRef: React.RefObject<HTMLDivElement>;
-    rightContentRef: React.RefObject<HTMLDivElement>;
+    container: React.RefObject<HTMLDivElement | null>;
+    leftContentRef: React.RefObject<HTMLDivElement | null>;
+    rightContentRef: React.RefObject<HTMLDivElement | null>;
   };
   config: {
     SCROLL_THRESHOLD: number;
