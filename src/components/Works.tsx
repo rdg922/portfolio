@@ -275,8 +275,8 @@ export default function WorkPage() {
   return (
     <>
       <div className="min-h-screen bg-gray-50 text-gray-900 relative overflow-hidden">
-        {/* Mathematical background grid */}
-        <div className="fixed inset-0 opacity-10 pointer-events-none">
+        {/* Mathematical background grid - contained within work section */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div
             className="w-full h-full"
             style={{
@@ -288,8 +288,8 @@ export default function WorkPage() {
           />
         </div>
 
-        {/* Neobrutalist floating shapes with shadows */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {/* Neobrutalist floating shapes with shadows - contained within work section */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Large geometric shapes */}
           <div className="absolute top-20 left-1/4 w-32 h-32 bg-yellow-400 border-4 border-black rotate-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] opacity-80 animate-pulse"></div>
           <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-red-500 border-4 border-black -rotate-45 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] opacity-70"></div>
@@ -307,11 +307,11 @@ export default function WorkPage() {
           <div className="absolute top-2/3 right-1/2 w-10 h-10 bg-teal-500 border-2 border-black rotate-60 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] opacity-50 rounded-full"></div>
         </div>
 
-        {/* Floating mathematical symbols */}
+        {/* Floating mathematical symbols - contained within work section */}
         {mathSymbols.map((symbol, index) => (
           <div
             key={index}
-            className="math-symbol fixed pointer-events-none text-2xl font-bold opacity-10 select-none"
+            className="math-symbol absolute pointer-events-none text-2xl font-bold opacity-10 select-none"
             style={{
               left: `${(index * 37) % 100}%`,
               top: `${(index * 23 + 17) % 100}%`,
@@ -327,17 +327,17 @@ export default function WorkPage() {
           </div>
         ))}
 
-        {/* Random corner icons with neobrutalist style */}
-        <div className="corner-icon fixed top-8 right-8 text-3xl opacity-20 rotate-12 bg-yellow-300 w-16 h-16 flex items-center justify-center border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        {/* Random corner icons with neobrutalist style - contained within work section */}
+        <div className="corner-icon absolute top-8 right-8 text-3xl opacity-20 rotate-12 bg-yellow-300 w-16 h-16 flex items-center justify-center border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           ⚡
         </div>
-        <div className="corner-icon fixed top-1/4 left-8 text-2xl opacity-15 -rotate-12 bg-red-300 w-12 h-12 flex items-center justify-center border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <div className="corner-icon absolute top-1/4 left-8 text-2xl opacity-15 -rotate-12 bg-red-300 w-12 h-12 flex items-center justify-center border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
           ∞
         </div>
-        <div className="corner-icon fixed bottom-1/3 right-12 text-xl opacity-25 rotate-45 bg-blue-300 w-10 h-10 flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+        <div className="corner-icon absolute bottom-1/3 right-12 text-xl opacity-25 rotate-45 bg-blue-300 w-10 h-10 flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           ◊
         </div>
-        <div className="corner-icon fixed bottom-8 left-1/4 text-2xl opacity-20 -rotate-6 bg-green-300 w-14 h-14 flex items-center justify-center border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <div className="corner-icon absolute bottom-8 left-1/4 text-2xl opacity-20 -rotate-6 bg-green-300 w-14 h-14 flex items-center justify-center border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
           ※
         </div>
 

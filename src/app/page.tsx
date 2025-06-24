@@ -96,9 +96,11 @@ export default function Home() {
               </div>
             </div>
           </InteractiveBackground>
+        </PageTransition>
+        <div>
           <WorkPage />
           <Footer />
-        </PageTransition>
+        </div>
       </div>
     </>
   );
