@@ -105,10 +105,10 @@ export default function SwampHacks2025Page() {
   }, []);
 
   const techStack = [
-    { name: "React Native", color: "bg-blue-400", icon: "📱" },
-    { name: "OpenAI API", color: "bg-green-400", icon: "🤖" },
-    { name: "OpenFoodFacts", color: "bg-orange-400", icon: "🏷️" },
-    { name: "Tailwind CSS", color: "bg-purple-400", icon: "🎨" },
+    { name: "React Native", color: "bg-blue-400" },
+    { name: "OpenAI API", color: "bg-green-400" },
+    { name: "OpenFoodFacts", color: "bg-orange-400" },
+    { name: "Tailwind CSS", color: "bg-purple-400" },
   ];
 
   const features = [
@@ -191,6 +191,25 @@ export default function SwampHacks2025Page() {
                     </p>
                   </div>
                 </div>
+
+                {/* Technology Stack - moved to header */}
+                <div className="col-span-12 lg:col-span-4">
+                  <div className="bg-purple-100 border-4 border-black rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                    <h2 className="text-2xl font-black mb-4 text-center">
+                      TECH STACK
+                    </h2>
+                    <div className="grid grid-cols-2 gap-3">
+                      {techStack.map((tech, index) => (
+                        <div
+                          key={tech.name}
+                          className={`${tech.color} border-2 border-black rounded-xl p-3 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
+                        >
+                          <h3 className="font-black text-sm">{tech.name}</h3>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -199,31 +218,6 @@ export default function SwampHacks2025Page() {
           <div className="relative z-10 px-8 pb-20">
             <div className="max-w-7xl mx-auto">
               {/* Project Overview */}
-              {/* Technology Stack */}
-              <div
-                ref={(el) => {
-                  if (el) gridItemsRef.current[1] = el;
-                }}
-                className="mb-16"
-              >
-                <div className="bg-purple-100 border-4 border-black rounded-3xl p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                  <h2 className="text-4xl font-black mb-8 text-center">
-                    TECH STACK
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {techStack.map((tech, index) => (
-                      <div
-                        key={tech.name}
-                        className={`${tech.color} border-3 border-black rounded-2xl p-6 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
-                      >
-                        <div className="text-4xl mb-3">{tech.icon}</div>
-                        <h3 className="font-black text-lg">{tech.name}</h3>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
               <div
                 ref={(el) => {
                   if (el) gridItemsRef.current[0] = el;
@@ -266,7 +260,7 @@ export default function SwampHacks2025Page() {
 
               <div
                 ref={(el) => {
-                  if (el) gridItemsRef.current[2] = el;
+                  if (el) gridItemsRef.current[1] = el;
                 }}
                 className="mb-16"
               >
@@ -327,7 +321,7 @@ export default function SwampHacks2025Page() {
               {/* Call to Action */}
               <div
                 ref={(el) => {
-                  if (el) gridItemsRef.current[4] = el;
+                  if (el) gridItemsRef.current[3] = el;
                 }}
                 className="text-center"
               >

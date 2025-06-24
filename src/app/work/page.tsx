@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -19,6 +20,7 @@ interface Project {
   technologies: string[];
   link: string;
   year: string;
+  image: string;
 }
 
 const projects: Project[] = [
@@ -30,6 +32,7 @@ const projects: Project[] = [
     technologies: ["React Native", "OpenAI API", "OpenFoodFacts", "Tailwind"],
     link: "/work/swamphacks-2025",
     year: "2025",
+    image: "/images/swamphacks/image.png",
   },
   {
     id: "edu-africa",
@@ -39,6 +42,7 @@ const projects: Project[] = [
     technologies: ["NextJS", "TRPC", "Drizzle", "Postgres", "Tailwind"],
     link: "/work/edu-africa",
     year: "2025",
+    image: "/images/2025-05-17-007.jpg",
   },
   {
     id: "dino-luzzi",
@@ -48,6 +52,7 @@ const projects: Project[] = [
     technologies: ["NextJS", "Three.js", "TailwindCSS", "React"],
     link: "/work/dino-luzzi",
     year: "2024",
+    image: "/images/dino-luzzi/Dino Page 2.webp",
   },
 ];
 
@@ -389,13 +394,22 @@ export default function WorkPage() {
                         className="project-image relative w-full overflow-hidden border-b-2 border-dotted border-gray-400"
                         style={{ aspectRatio: "2.39/1" }}
                       >
-                        {/* Placeholder gradient */}
-                        <div className="w-full h-full bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 flex items-center justify-center">
-                          <div className="text-center">
-                            <div className="text-6xl mb-4 opacity-50">◊</div>
-                            <div className="font-mono text-sm opacity-60 uppercase tracking-wider">
-                              {project.title.replace(/\s+/g, "_")}.render()
-                            </div>
+                        {/* Project Image */}
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+
+                        {/* Image overlay for better text readability */}
+                        <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
+
+                        {/* Project title overlay */}
+                        <div className="absolute bottom-4 left-4 z-10">
+                          <div className="font-mono text-sm bg-white/90 px-3 py-1 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm">
+                            {project.title.replace(/\s+/g, "_")}
                           </div>
                         </div>
 
