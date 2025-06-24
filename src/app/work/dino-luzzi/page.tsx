@@ -242,7 +242,7 @@ export default function DinoLuzziPage() {
               {/* Project Overview */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[0] = el;
+                  sectionsRef.current[0] = el as HTMLDivElement;
                 }}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
