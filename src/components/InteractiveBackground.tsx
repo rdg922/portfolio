@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { createCursorParticle } from "./GlobalCursor";
@@ -12,7 +12,6 @@ export default function InteractiveBackground({
   children,
 }: InteractiveBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Create floating shapes data
   const shapes = [
@@ -194,8 +193,6 @@ export default function InteractiveBackground({
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
 
-      setMousePosition({ x: clientX, y: clientY });
-
       const mouseX = (clientX / innerWidth - 0.5) * 2;
       const mouseY = (clientY / innerHeight - 0.5) * 2;
 
@@ -258,7 +255,7 @@ export default function InteractiveBackground({
     const y = e.clientY - rect.top;
 
     // Create temporary particles and cursor particles
-    const particles = Array.from({ length: 8 }).map((_, i) => {
+    Array.from({ length: 8 }).forEach(() => {
       const particle = document.createElement("div");
       particle.className =
         "absolute w-4 h-4 bg-black border-2 border-white pointer-events-none";
@@ -277,8 +274,6 @@ export default function InteractiveBackground({
         ease: "power2.out",
         onComplete: () => particle.remove(),
       });
-
-      return particle;
     });
 
     // Add cursor particles at click position

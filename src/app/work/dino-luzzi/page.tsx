@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 import PageTransition, {
   TransitionOverlay,
 } from "../../../components/PageTransition";
@@ -14,7 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function DinoLuzziPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const raceTrackRef = useRef<HTMLDivElement>(null);
   const carRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -49,8 +49,6 @@ export default function DinoLuzziPage() {
         end: "bottom center",
         onUpdate: (self) => {
           const progress = self.progress;
-          const windowHeight = window.innerHeight;
-          const documentHeight = document.documentElement.scrollHeight;
 
           gsap.set(carRef.current, {
             x: progress * (window.innerWidth + 200) - 100,
@@ -226,8 +224,8 @@ export default function DinoLuzziPage() {
 
                   <p className="text-xl font-light max-w-3xl mx-auto leading-relaxed text-white">
                     🏁 A high-speed 24-hour hackathon project that earned us the
-                    Dino Luzzi award! We turbocharged Dino Luzzi's website with
-                    interactive 3D elements, smooth animations, and a
+                    Dino Luzzi award! We turbocharged Dino Luzzi&apos;s website
+                    with interactive 3D elements, smooth animations, and a
                     racing-inspired design.
                   </p>
                 </div>
@@ -261,7 +259,7 @@ export default function DinoLuzziPage() {
                     <p className="text-lg leading-relaxed mb-6 text-gray-900">
                       For the 2024 OSCHack 24-hour hackathon, two of my friends
                       and I tackled the challenge to redesign the website of{" "}
-                      <strong>Dino Luzzi</strong>, one of the hackathon's
+                      <strong>Dino Luzzi</strong>, one of the hackathon&apos;s
                       sponsors. Our mission: create new functionality, UI/UX
                       design, and style to make it more engaging and easier for
                       people to purchase the product.
@@ -293,9 +291,11 @@ export default function DinoLuzziPage() {
                 <div className="relative">
                   {/* Dino Page 1 */}
                   <div className="aspect-video border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
-                    <img
+                    <Image
                       src="/images/dino-luzzi/Dino Page 1.webp"
                       alt="Dino Luzzi Website - Before Redesign"
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 text-xs font-black border border-black">
@@ -311,16 +311,18 @@ export default function DinoLuzziPage() {
               {/* 3D Implementation */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[1] = el;
+                  if (el) sectionsRef.current[1] = el as HTMLDivElement;
                 }}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
                 <div className="order-2 lg:order-1 relative">
                   {/* Dino Page 2 */}
                   <div className="aspect-video border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
-                    <img
+                    <Image
                       src="/images/dino-luzzi/Dino Page 2.webp"
                       alt="Dino Luzzi Website - Interactive 3D Elements"
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-1 text-xs font-black border border-black">
@@ -349,10 +351,14 @@ export default function DinoLuzziPage() {
                     <p className="text-lg leading-relaxed mb-6 text-gray-900">
                       We decided to give the website interactive 3D elements,
                       including a
-                      <strong> 3D can that follows the user's mouse</strong> and
-                      a<strong> racecar that drives down the webpage</strong>,
-                      revealing the features of Dino Luzzi's product as it races
-                      along.
+                      <strong>
+                        {" "}
+                        3D can that follows the user&apos;s mouse
+                      </strong>{" "}
+                      and a
+                      <strong> racecar that drives down the webpage</strong>,
+                      revealing the features of Dino Luzzi&apos;s product as it
+                      races along.
                     </p>
 
                     <p className="text-lg leading-relaxed text-gray-900">
@@ -369,7 +375,7 @@ export default function DinoLuzziPage() {
               {/* My Contributions */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[2] = el;
+                  if (el) sectionsRef.current[2] = el as HTMLDivElement;
                 }}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
@@ -423,9 +429,11 @@ export default function DinoLuzziPage() {
                 <div className="relative">
                   {/* Dino Page 3 */}
                   <div className="aspect-video border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
-                    <img
+                    <Image
                       src="/images/dino-luzzi/Dino Page 3.webp"
                       alt="Dino Luzzi Website - Development Process"
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 right-3 bg-purple-500 text-white px-2 py-1 text-xs font-black border border-black">
@@ -441,7 +449,7 @@ export default function DinoLuzziPage() {
               {/* Video Demo Section */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[3] = el;
+                  if (el) sectionsRef.current[3] = el as HTMLDivElement;
                 }}
                 className="text-center"
               >
@@ -482,7 +490,7 @@ export default function DinoLuzziPage() {
               {/* Victory Section */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[4] = el;
+                  if (el) sectionsRef.current[4] = el as HTMLDivElement;
                 }}
                 className="text-center"
               >
@@ -499,9 +507,11 @@ export default function DinoLuzziPage() {
                   <div className="relative">
                     {/* Winning photo */}
                     <div className="aspect-video border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
-                      <img
+                      <Image
                         src="/images/dino-luzzi/Dino Win.webp"
                         alt="Dino Luzzi Award Winners"
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute top-3 right-3 bg-yellow-500 text-black px-2 py-1 text-xs font-black border border-black">
@@ -540,7 +550,7 @@ export default function DinoLuzziPage() {
               {/* Links Section */}
               <section
                 ref={(el) => {
-                  if (el) sectionsRef.current[5] = el;
+                  if (el) sectionsRef.current[5] = el as HTMLDivElement;
                 }}
                 className="text-center"
               >

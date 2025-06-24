@@ -1,9 +1,7 @@
 "use client";
-import { useRef } from "react";
 import InteractiveBackground from "../components/InteractiveBackground";
 import PageTransition, {
   TransitionOverlay,
-  triggerPageTransition,
 } from "../components/PageTransition";
 import WorkPage from "@/components/Works";
 import Footer from "@/components/Footer";

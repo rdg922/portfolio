@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer";
 import WorkPage from "@/components/Works";
 import PageTransition, { TransitionOverlay } from "@/components/PageTransition";
-export default function () {
+
+function WorkPageRoute() {
   return (
     <>
       <TransitionOverlay />
@@ -12,3 +13,5 @@ export default function () {
     </>
   );
 }
+
+export default WorkPageRoute;

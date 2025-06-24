@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -15,7 +15,6 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SwampHacks2025Page() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const gridItemsRef = useRef<HTMLDivElement[]>([]);
 
@@ -229,7 +228,7 @@ export default function SwampHacks2025Page() {
                         TECH STACK
                       </h2>
                       <div className="grid grid-cols-2 gap-3">
-                        {techStack.map((tech, index) => (
+                        {techStack.map((tech) => (
                           <div
                             key={tech.name}
                             className={`${tech.color} border-2 border-black rounded-xl p-3 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
@@ -339,7 +338,7 @@ export default function SwampHacks2025Page() {
                     KEY FEATURES
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {features.map((feature, index) => (
+                    {features.map((feature) => (
                       <div
                         key={feature.title}
                         className={`${feature.color} border-3 border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
