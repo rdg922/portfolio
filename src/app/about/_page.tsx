@@ -9,7 +9,6 @@ export default function About() {
   return (
     <>
       <TransitionOverlay />
-      <Navbar />
       <PageTransition backgroundColor="bg-lime-400">
         {/* Hero Section */}
         <div className="pt-32 pb-20 px-4">

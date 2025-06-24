@@ -6,7 +6,6 @@ export default function () {
   return (
     <>
       <TransitionOverlay />
-      <Navbar />
       <PageTransition backgroundColor="bg-gray-50">
         <WorkPage />
       </PageTransition>

@@ -9,6 +9,7 @@ import PageTransition, {
   TransitionOverlay,
 } from "../../../components/PageTransition";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,7 +121,6 @@ export default function DinoLuzziPage() {
   return (
     <>
       <TransitionOverlay />
-      <Navbar />
       <PageTransition backgroundColor="bg-red-500">
         <div className="min-h-screen bg-red-500 text-white relative overflow-hidden">
           {/* Racing track background pattern */}
@@ -555,7 +555,7 @@ export default function DinoLuzziPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <a
+                  <Link
                     href="https://github.com/rdg922/hackathon"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -572,9 +572,9 @@ export default function DinoLuzziPage() {
                     <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
-                  </a>
+                  </Link>
 
-                  <a
+                  <Link
                     href="https://hackathon-s3ma.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -591,9 +591,9 @@ export default function DinoLuzziPage() {
                     <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
-                  </a>
+                  </Link>
 
-                  <a
+                  <Link
                     href="https://devpost.com/software/dino-luzzi-website"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -610,7 +610,7 @@ export default function DinoLuzziPage() {
                     <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </section>
             </div>

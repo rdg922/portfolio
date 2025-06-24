@@ -160,7 +160,6 @@ export default function ProjectPage() {
   return (
     <>
       <TransitionOverlay />
-      <Navbar />
       <PageTransition backgroundColor="bg-gray-50">
         <div className="min-h-screen bg-gray-50 text-gray-900 relative">
           {/* Hero Section */}
@@ -611,7 +610,7 @@ export default function ProjectPage() {
           {/* Bottom Navigation */}
           <div className="py-16 px-8 border-t-2 border-dotted border-gray-300 bg-white">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
-              <a
+              <Link
                 href="/#my-work"
                 className="group flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
               >
@@ -621,33 +620,33 @@ export default function ProjectPage() {
                 <span className="font-mono text-sm uppercase">
                   Back to Work
                 </span>
-              </a>
+              </Link>
 
               <div className="flex space-x-8">
-                <a
+                <Link
                   href="/work/edu-africa/experience"
                   className="text-gray-600 hover:text-green-600 transition-colors"
                 >
                   View Experience
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-600 hover:text-green-600 transition-colors"
                 >
                   Live Site
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-600 hover:text-green-600 transition-colors"
                 >
                   Case Study
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-600 hover:text-green-600 transition-colors"
                 >
                   GitHub
-                </a>
+                </Link>
               </div>
             </div>
           </div>

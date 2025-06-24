@@ -8,6 +8,7 @@ import PageTransition, {
 } from "../components/PageTransition";
 import WorkPage from "@/components/Works";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   const handleResumeDownload = () => {
@@ -24,7 +25,6 @@ export default function Home() {
     <>
       <TransitionOverlay />
       <div className="min-h-screen">
-        <Navbar />
         <PageTransition backgroundColor="bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300">
           {/* Hero Section */}
           <InteractiveBackground>
@@ -74,22 +74,22 @@ export default function Home() {
                       Check out my code and professional profile
                     </p>
                     <div className="flex gap-2 justify-center">
-                      <a
+                      <Link
                         href="https://github.com/rdg922"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block bg-gray-900 hover:bg-black text-white hover:text-gray-300 px-8 py-4 font-black text-lg uppercase tracking-wide border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] text-center"
                       >
                         GITHUB
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href="https://www.linkedin.com/in/dasgupta-rohit/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block bg-blue-600 hover:bg-black text-white hover:text-blue-400 px-8 py-4 font-black text-lg uppercase tracking-wide border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] text-center"
                       >
                         LINKEDIN
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

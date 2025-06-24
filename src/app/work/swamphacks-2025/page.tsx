@@ -11,6 +11,7 @@ import PageTransition, {
 } from "../../../components/PageTransition";
 import Footer from "@/components/Footer";
 import { SiDevpost, SiGithub } from "@icons-pack/react-simple-icons";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -169,7 +170,6 @@ export default function SwampHacks2025Page() {
   return (
     <>
       <TransitionOverlay />
-      <Navbar />
       <PageTransition backgroundColor="bg-yellow-50">
         <div className="min-h-screen bg-yellow-50 text-gray-900 relative overflow-hidden">
           {/* Grid background pattern */}
@@ -377,22 +377,22 @@ export default function SwampHacks2025Page() {
                     Check out our complete app demonstration and walkthrough
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a
+                    <Link
                       href="https://youtu.be/6tzbO22YZks"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex gap-2 bg-black text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-800 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
                     >
                       <SiGithub /> GITHUB
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="https://youtu.be/6tzbO22YZks"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex gap-2 bg-black text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-800 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
                     >
                       <SiDevpost /> DEVPOST
-                    </a>
+                    </Link>
                     <button
                       onClick={(e) => {
                         triggerPageTransition(
