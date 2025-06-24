@@ -74,8 +74,7 @@ export function TransitionOverlay() {
 export function triggerPageTransition(
   targetUrl: string,
   buttonElement: HTMLElement,
-  backgroundColor: string = "#fde047", // Default yellow-300
-  textColor: string = "#000000"
+  backgroundColor: string = "bg-yellow-300"
 ) {
   const overlay = document.getElementById("transition-overlay");
 

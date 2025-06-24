@@ -121,16 +121,16 @@ export default function DinoLuzziPage() {
     <>
       <TransitionOverlay />
       <Navbar />
-      <PageTransition backgroundColor="bg-red-50">
-        <div className="min-h-screen bg-red-50 text-gray-900 relative overflow-hidden">
+      <PageTransition backgroundColor="bg-red-500">
+        <div className="min-h-screen bg-red-500 text-white relative overflow-hidden">
           {/* Racing track background pattern */}
-          <div className="fixed inset-0 opacity-5 pointer-events-none">
+          <div className="fixed inset-0 opacity-10 pointer-events-none">
             <div
               className="w-full h-full"
               style={{
                 backgroundImage: `
-                  repeating-linear-gradient(90deg, transparent 0px, transparent 20px, #000 20px, #000 40px),
-                  repeating-linear-gradient(0deg, transparent 0px, transparent 100px, #000 100px, #000 110px)
+                  repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 20px, rgba(0,0,0,0.5) 20px, rgba(0,0,0,0.5) 40px),
+                  repeating-linear-gradient(0deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 100px, rgba(0,0,0,0.5) 100px, rgba(0,0,0,0.5) 110px)
                 `,
               }}
             />
@@ -140,13 +140,13 @@ export default function DinoLuzziPage() {
           <div className="fixed inset-0 pointer-events-none overflow-hidden">
             {/* Racing flags */}
             <div
-              className="checkered-flag absolute top-20 left-1/4 w-16 h-12 bg-gradient-to-r from-black via-white to-black border-2 border-black opacity-20 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="checkered-flag absolute top-20 left-1/4 w-16 h-12 bg-gradient-to-r from-white via-black to-white border-2 border-white opacity-30 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]"
               style={{
                 backgroundImage: `
                      repeating-conic-gradient(
                        from 0deg at 50% 50%,
-                       black 0deg 45deg,
-                       white 45deg 90deg
+                       white 0deg 45deg,
+                       black 45deg 90deg
                      )
                    `,
                 backgroundSize: "8px 8px",
@@ -154,14 +154,14 @@ export default function DinoLuzziPage() {
             ></div>
 
             {/* Tire marks and racing elements */}
-            <div className="racing-element absolute top-1/3 right-1/4 w-20 h-8 bg-black border-2 border-gray-800 rotate-45 opacity-30 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"></div>
-            <div className="racing-element absolute bottom-1/4 left-12 w-24 h-6 bg-yellow-400 border-2 border-black rotate-12 opacity-40 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"></div>
-            <div className="racing-element absolute bottom-20 right-1/3 w-16 h-16 bg-red-600 border-2 border-black -rotate-12 opacity-35 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"></div>
+            <div className="racing-element absolute top-1/3 right-1/4 w-20 h-8 bg-white border-2 border-gray-200 rotate-45 opacity-40 rounded-full shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)]"></div>
+            <div className="racing-element absolute bottom-1/4 left-12 w-24 h-6 bg-yellow-300 border-2 border-white rotate-12 opacity-50 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)]"></div>
+            <div className="racing-element absolute bottom-20 right-1/3 w-16 h-16 bg-white border-2 border-gray-200 -rotate-12 opacity-45 rounded-full shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)]"></div>
 
             {/* Speed lines */}
-            <div className="absolute top-1/2 left-8 w-32 h-1 bg-black opacity-20 rotate-12"></div>
-            <div className="absolute top-3/4 right-8 w-24 h-1 bg-black opacity-15 -rotate-12"></div>
-            <div className="absolute top-16 right-16 w-20 h-1 bg-black opacity-25 rotate-45"></div>
+            <div className="absolute top-1/2 left-8 w-32 h-1 bg-white opacity-30 rotate-12"></div>
+            <div className="absolute top-3/4 right-8 w-24 h-1 bg-white opacity-25 -rotate-12"></div>
+            <div className="absolute top-16 right-16 w-20 h-1 bg-white opacity-35 rotate-45"></div>
           </div>
 
           {/* Racing car that follows scroll */}
@@ -180,34 +180,34 @@ export default function DinoLuzziPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center relative">
                 {/* Racing stripes background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-red-600 opacity-10 transform skew-y-1"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-red-300 to-white opacity-20 transform skew-y-1"></div>
 
                 <div className="relative">
                   <div className="flex items-center justify-center mb-6">
                     <div
-                      className="checkered-flag w-8 h-6 mr-4 border border-black"
+                      className="checkered-flag w-8 h-6 mr-4 border border-white"
                       style={{
                         backgroundImage: `
                              repeating-conic-gradient(
                                from 0deg at 50% 50%,
-                               black 0deg 45deg,
-                               white 45deg 90deg
+                               white 0deg 45deg,
+                               black 45deg 90deg
                              )
                            `,
                         backgroundSize: "4px 4px",
                       }}
                     ></div>
-                    <span className="font-mono text-sm uppercase tracking-wider bg-yellow-400 px-3 py-1 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <span className="font-mono text-sm uppercase tracking-wider bg-yellow-400 px-3 py-1 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black">
                       Dino Luzzi Award Winner 🏆
                     </span>
                     <div
-                      className="checkered-flag w-8 h-6 ml-4 border border-black"
+                      className="checkered-flag w-8 h-6 ml-4 border border-white"
                       style={{
                         backgroundImage: `
                              repeating-conic-gradient(
                                from 0deg at 50% 50%,
-                               black 0deg 45deg,
-                               white 45deg 90deg
+                               white 0deg 45deg,
+                               black 45deg 90deg
                              )
                            `,
                         backgroundSize: "4px 4px",
@@ -216,16 +216,16 @@ export default function DinoLuzziPage() {
                   </div>
 
                   <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none mb-6">
-                    <span className="block text-red-600">DINO</span>
+                    <span className="block text-white">DINO</span>
                     <span className="block text-black">LUZZI</span>
-                    <span className="block text-yellow-500 text-5xl md:text-6xl">
+                    <span className="block text-yellow-300 text-5xl md:text-6xl">
                       REDESIGN
                     </span>
                   </h1>
 
-                  <div className="w-32 h-2 bg-black mx-auto mb-8"></div>
+                  <div className="w-32 h-2 bg-white mx-auto mb-8"></div>
 
-                  <p className="text-xl font-light max-w-3xl mx-auto leading-relaxed">
+                  <p className="text-xl font-light max-w-3xl mx-auto leading-relaxed text-white">
                     🏁 A high-speed 24-hour hackathon project that earned us the
                     Dino Luzzi award! We turbocharged Dino Luzzi's website with
                     interactive 3D elements, smooth animations, and a
@@ -248,16 +248,18 @@ export default function DinoLuzziPage() {
               >
                 <div>
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-red-600 border-2 border-black font-black text-white text-xl flex items-center justify-center rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
+                    <div className="w-12 h-12 bg-white border-2 border-black font-black text-red-500 text-xl flex items-center justify-center rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                       01
                     </div>
-                    <h2 className="text-4xl font-black">THE CHALLENGE</h2>
+                    <h2 className="text-4xl font-black text-white">
+                      THE CHALLENGE
+                    </h2>
                   </div>
 
                   <div className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 border border-black rotate-45"></div>
 
-                    <p className="text-lg leading-relaxed mb-6">
+                    <p className="text-lg leading-relaxed mb-6 text-gray-900">
                       For the 2024 OSCHack 24-hour hackathon, two of my friends
                       and I tackled the challenge to redesign the website of{" "}
                       <strong>Dino Luzzi</strong>, one of the hackathon's
@@ -269,15 +271,21 @@ export default function DinoLuzziPage() {
                     <div className="grid grid-cols-3 gap-4 mt-8">
                       <div className="text-center p-4 bg-red-100 border border-red-300">
                         <div className="text-2xl mb-2">⚡</div>
-                        <div className="font-mono text-sm">React</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          React
+                        </div>
                       </div>
                       <div className="text-center p-4 bg-yellow-100 border border-yellow-300">
                         <div className="text-2xl mb-2">🎮</div>
-                        <div className="font-mono text-sm">Three.js</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          Three.js
+                        </div>
                       </div>
                       <div className="text-center p-4 bg-blue-100 border border-blue-300">
                         <div className="text-2xl mb-2">🌊</div>
-                        <div className="font-mono text-sm">Framer Motion</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          Framer Motion
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -331,13 +339,15 @@ export default function DinoLuzziPage() {
                     <div className="w-12 h-12 bg-yellow-500 border-2 border-black font-black text-black text-xl flex items-center justify-center -rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                       02
                     </div>
-                    <h2 className="text-4xl font-black">INTERACTIVE 3D</h2>
+                    <h2 className="text-4xl font-black text-white">
+                      INTERACTIVE 3D
+                    </h2>
                   </div>
 
                   <div className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
                     <div className="absolute -top-2 -left-2 w-6 h-6 bg-blue-500 border border-black rounded-full"></div>
 
-                    <p className="text-lg leading-relaxed mb-6">
+                    <p className="text-lg leading-relaxed mb-6 text-gray-900">
                       We decided to give the website interactive 3D elements,
                       including a
                       <strong> 3D can that follows the user's mouse</strong> and
@@ -346,7 +356,7 @@ export default function DinoLuzziPage() {
                       along.
                     </p>
 
-                    <p className="text-lg leading-relaxed">
+                    <p className="text-lg leading-relaxed text-gray-900">
                       We built the website using <strong>React</strong> and used
                       <strong> Three.js and react-three-fiber</strong> for the
                       3D animations. On top of this, we used{" "}
@@ -369,13 +379,13 @@ export default function DinoLuzziPage() {
                     <div className="w-12 h-12 bg-green-500 border-2 border-black font-black text-white text-xl flex items-center justify-center rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                       03
                     </div>
-                    <h2 className="text-4xl font-black">MY ROLE</h2>
+                    <h2 className="text-4xl font-black text-white">MY ROLE</h2>
                   </div>
 
                   <div className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 border border-black rotate-45"></div>
 
-                    <p className="text-lg leading-relaxed mb-6">
+                    <p className="text-lg leading-relaxed mb-6 text-gray-900">
                       I was in charge of embedding the{" "}
                       <strong>3D models</strong> and all of the{" "}
                       <strong>2D styles and animations</strong> my teammates had
@@ -385,19 +395,27 @@ export default function DinoLuzziPage() {
                     <div className="grid grid-cols-2 gap-4 mt-6">
                       <div className="p-4 bg-gray-100 border border-gray-300 text-center">
                         <div className="text-2xl mb-2">🎨</div>
-                        <div className="font-mono text-sm">3D Modeling</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          3D Modeling
+                        </div>
                       </div>
                       <div className="p-4 bg-gray-100 border border-gray-300 text-center">
                         <div className="text-2xl mb-2">🔧</div>
-                        <div className="font-mono text-sm">Physics Engine</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          Physics Engine
+                        </div>
                       </div>
                       <div className="p-4 bg-gray-100 border border-gray-300 text-center">
                         <div className="text-2xl mb-2">💫</div>
-                        <div className="font-mono text-sm">Animations</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          Animations
+                        </div>
                       </div>
                       <div className="p-4 bg-gray-100 border border-gray-300 text-center">
                         <div className="text-2xl mb-2">🎭</div>
-                        <div className="font-mono text-sm">UI/UX Design</div>
+                        <div className="font-mono text-sm text-gray-900">
+                          UI/UX Design
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -432,7 +450,7 @@ export default function DinoLuzziPage() {
                   <div className="w-12 h-12 bg-blue-600 border-2 border-black font-black text-white text-xl flex items-center justify-center -rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                     04
                   </div>
-                  <h2 className="text-4xl font-black">DEMO VIDEO</h2>
+                  <h2 className="text-4xl font-black text-white">DEMO VIDEO</h2>
                 </div>
 
                 <div className="max-w-4xl mx-auto">
@@ -440,7 +458,7 @@ export default function DinoLuzziPage() {
                     <div className="absolute -top-2 -left-2 w-6 h-6 bg-red-500 border border-black rounded-full"></div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-500 border border-black rotate-45"></div>
 
-                    <p className="text-lg mb-8">
+                    <p className="text-lg mb-8 text-gray-900">
                       Watch our website in action! 🏎️💨
                     </p>
 
@@ -473,7 +491,9 @@ export default function DinoLuzziPage() {
                   <div className="w-12 h-12 bg-yellow-400 border-2 border-black font-black text-black text-xl flex items-center justify-center rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                     🏆
                   </div>
-                  <h2 className="text-4xl font-black">VICTORY LAP</h2>
+                  <h2 className="text-4xl font-black text-white">
+                    VICTORY LAP
+                  </h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -503,11 +523,11 @@ export default function DinoLuzziPage() {
                         🏁
                       </div>
 
-                      <h3 className="text-3xl font-black mb-6 text-center">
+                      <h3 className="text-3xl font-black mb-6 text-center text-gray-900">
                         WE WON! 🎉
                       </h3>
 
-                      <p className="text-lg leading-relaxed text-center">
+                      <p className="text-lg leading-relaxed text-center text-gray-900">
                         After 24 hours of coding, designing, and racing against
                         the clock, our team earned the prestigious Dino Luzzi
                         award! The judges were impressed by our innovative 3D
@@ -526,10 +546,12 @@ export default function DinoLuzziPage() {
                 className="text-center"
               >
                 <div className="flex items-center justify-center mb-8">
-                  <div className="w-12 h-12 bg-black border-2 border-gray-600 font-black text-white text-xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
+                  <div className="w-12 h-12 bg-white border-2 border-gray-600 font-black text-white text-xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mr-4">
                     🔗
                   </div>
-                  <h2 className="text-4xl font-black">CHECK IT OUT</h2>
+                  <h2 className="text-4xl font-black text-white">
+                    CHECK IT OUT
+                  </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -541,11 +563,13 @@ export default function DinoLuzziPage() {
                   >
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-800 border border-black rounded-full"></div>
                     <div className="text-4xl mb-4">📁</div>
-                    <h3 className="font-black text-xl mb-2">GitHub Repo</h3>
+                    <h3 className="font-black text-xl mb-2 text-gray-900">
+                      GitHub Repo
+                    </h3>
                     <p className="text-sm text-gray-600 font-mono">
                       View the source code
                     </p>
-                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform">
+                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
                   </a>
@@ -558,11 +582,13 @@ export default function DinoLuzziPage() {
                   >
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 border border-black rotate-45"></div>
                     <div className="text-4xl mb-4">🌐</div>
-                    <h3 className="font-black text-xl mb-2">Live Demo</h3>
+                    <h3 className="font-black text-xl mb-2 text-gray-900">
+                      Live Demo
+                    </h3>
                     <p className="text-sm text-gray-600 font-mono">
                       Experience the site
                     </p>
-                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform">
+                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
                   </a>
@@ -575,11 +601,13 @@ export default function DinoLuzziPage() {
                   >
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 border border-black rounded-full"></div>
                     <div className="text-4xl mb-4">🏆</div>
-                    <h3 className="font-black text-xl mb-2">Devpost</h3>
+                    <h3 className="font-black text-xl mb-2 text-gray-900">
+                      Devpost
+                    </h3>
                     <p className="text-sm text-gray-600 font-mono">
                       Official submission
                     </p>
-                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform">
+                    <div className="mt-4 text-2xl group-hover:scale-110 transition-transform text-gray-900">
                       →
                     </div>
                   </a>

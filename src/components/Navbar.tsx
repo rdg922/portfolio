@@ -11,7 +11,7 @@ export default function Navbar() {
   const container = useRef<HTMLDivElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
-  const centerContentRef = useRef<HTMLDivElement>(null);
+  // const centerContentRef = useRef<HTMLDivElement>(null);
 
   // ===== NAVBAR CONFIGURATION =====
   const SCROLL_THRESHOLD = 20; // Pixels to scroll before switching states
@@ -35,9 +35,10 @@ export default function Navbar() {
       const navContainer = container.current;
       const leftContent = leftContentRef.current;
       const rightContent = rightContentRef.current;
-      const centerContent = centerContentRef.current;
+      // const centerContent = centerContentRef.current;
 
-      if (!navContainer || !leftContent || !rightContent || !centerContent)
+      if (!navContainer || !leftContent || !rightContent)
+        // || !centerContent)
         return;
 
       // Get full screen width for proper animation
@@ -62,7 +63,7 @@ export default function Navbar() {
       // Set initial state - content spread out when at top
       gsap.set(leftContent, { x: 0, scale: 1 });
       gsap.set(rightContent, { x: 0, scale: 1 });
-      gsap.set(centerContent, { scale: 1, opacity: 1 });
+      // gsap.set(centerContent, { scale: 1, opacity: 1 });
       gsap.set(navContainer, { width: initialWidth });
 
       // Add resize event listener
@@ -125,13 +126,25 @@ export default function Navbar() {
           <div ref={leftContentRef} className="flex items-center space-x-6">
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
-                ⚡ ROHIT
+                <a
+                  href="/"
+                  onClick={(e) =>
+                    handleNavigation(
+                      "/",
+                      "bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300",
+                      e
+                    )
+                  }
+                  className=" bg-yellow-300 px-4 py-2 tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                >
+                  ROHIT
+                </a>
               </h1>
             </div>
           </div>
 
           {/* Center Content (always visible) */}
-          <div
+          {/* <div
             ref={centerContentRef}
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
@@ -152,7 +165,7 @@ export default function Navbar() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Right Content */}
           <div ref={rightContentRef} className="flex items-center space-x-3">

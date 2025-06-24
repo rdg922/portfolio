@@ -6,7 +6,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Navbar from "./Navbar";
-import PageTransition, { TransitionOverlay } from "./PageTransition";
+import PageTransition, {
+  TransitionOverlay,
+  triggerPageTransition,
+} from "./PageTransition";
 import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +22,7 @@ interface Project {
   link: string;
   year: string;
   image: string;
+  backgroundColor: string;
 }
 
 const projects: Project[] = [
@@ -31,6 +35,7 @@ const projects: Project[] = [
     link: "/work/swamphacks-2025",
     year: "2025",
     image: "/images/swamphacks/image.png",
+    backgroundColor: "bg-yellow-50",
   },
   {
     id: "edu-africa",
@@ -41,6 +46,7 @@ const projects: Project[] = [
     link: "/work/edu-africa",
     year: "2025",
     image: "/images/2025-05-17-007.jpg",
+    backgroundColor: "bg-gray-50",
   },
   {
     id: "dino-luzzi",
@@ -51,6 +57,7 @@ const projects: Project[] = [
     link: "/work/dino-luzzi",
     year: "2024",
     image: "/images/dino-luzzi/Dino Page 2.webp",
+    backgroundColor: "bg-red-50",
   },
 ];
 
@@ -172,14 +179,15 @@ export default function WorkPage() {
       }
     });
 
-    // Floating mathematical symbols animation
+    // Floating mathematical symbols animation - enhanced
     const mathSymbols = document.querySelectorAll(".math-symbol");
     mathSymbols.forEach((symbol, index) => {
       gsap.to(symbol, {
-        y: "random(-20, 20)",
-        x: "random(-10, 10)",
+        y: "random(-30, 30)",
+        x: "random(-20, 20)",
         rotation: "random(-180, 180)",
-        duration: "random(3, 6)",
+        scale: "random(0.8, 1.2)",
+        duration: "random(4, 8)",
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -187,19 +195,29 @@ export default function WorkPage() {
       });
     });
 
-    // Interactive neobrutalist shapes animation
+    // Interactive neobrutalist shapes animation - enhanced
     const neoBrutalistShapes = document.querySelectorAll(".neo-shape");
     neoBrutalistShapes.forEach((shape, index) => {
       // Continuous floating animation
       gsap.to(shape, {
-        y: "random(-30, 30)",
-        x: "random(-20, 20)",
-        rotation: "random(-15, 15)",
-        duration: "random(4, 8)",
+        y: "random(-40, 40)",
+        x: "random(-30, 30)",
+        rotation: "random(-20, 20)",
+        scale: "random(0.9, 1.1)",
+        duration: "random(5, 10)",
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
         delay: index * 0.3,
+      });
+
+      // Additional slow rotation
+      gsap.to(shape, {
+        rotation: "+=360",
+        duration: "random(20, 30)",
+        repeat: -1,
+        ease: "none",
+        delay: index * 0.7,
       });
 
       // Hover interaction for mouse proximity
@@ -274,7 +292,10 @@ export default function WorkPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 text-gray-900 relative overflow-hidden">
+      <div
+        id="my-work"
+        className="min-h-screen bg-gray-50 text-gray-900 relative overflow-hidden"
+      >
         {/* Mathematical background grid - contained within work section */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div
@@ -355,7 +376,7 @@ export default function WorkPage() {
               <div className="col-span-4 relative">
                 <div className="border-2 border-dotted border-gray-400 p-6 bg-white/50 relative z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <p className="text-sm font-mono leading-relaxed">
-                    Some of my top projects...,
+                    Some of my top projects...!
                   </p>
                 </div>
               </div>
@@ -454,17 +475,20 @@ export default function WorkPage() {
 
                       {/* Action area */}
                       <div className="flex items-center justify-between">
-                        <a
-                          href={project.link}
-                          className="group inline-flex items-center space-x-2 text-black hover:text-red-500 transition-colors duration-300 bg-yellow-300 px-4 py-2 border-2 border-black font-black uppercase text-sm tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-200"
+                        <button
+                          onClick={(e) => {
+                            triggerPageTransition(
+                              project.link,
+                              e.currentTarget,
+                              project.backgroundColor
+                            );
+                          }}
+                          className={`group inline-flex items-center space-x-2 text-black hover:text-red-500 transition-colors duration-300 px-4 py-2 border-2 border-black font-black uppercase text-sm tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-200 cursor-pointer`}
                         >
                           <span className="font-mono text-sm uppercase tracking-wider">
-                            View Project
+                            View Project →
                           </span>
-                          <span className="group-hover:translate-x-1 transition-transform duration-300">
-                            →
-                          </span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

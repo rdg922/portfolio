@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import Navbar from "../../../components/Navbar";
 import PageTransition, {
   TransitionOverlay,
+  triggerPageTransition,
 } from "../../../components/PageTransition";
 import Footer from "@/components/Footer";
 import { SiDevpost, SiGithub } from "@icons-pack/react-simple-icons";
@@ -84,20 +85,43 @@ export default function SwampHacks2025Page() {
       });
     });
 
-    // Floating shapes animation
+    // Floating shapes animation - enhanced
     const floatingShapes = document.querySelectorAll(".floating-shape");
     floatingShapes.forEach((shape, index) => {
+      // More dynamic random movement
       gsap.to(shape, {
-        y: "random(-30, 30)",
-        x: "random(-20, 20)",
-        rotation: "random(-20, 20)",
-        duration: "random(4, 8)",
+        y: "random(-40, 40)",
+        x: "random(-30, 30)",
+        rotation: "random(-30, 30)",
+        scale: "random(0.8, 1.2)",
+        duration: "random(3, 7)",
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-        delay: index * 0.2,
+        delay: index * 0.3,
+      });
+
+      // Additional rotation animation
+      gsap.to(shape, {
+        rotation: "+=360",
+        duration: "random(15, 25)",
+        repeat: -1,
+        ease: "none",
+        delay: index * 0.5,
       });
     });
+
+    // Parallax effect for background grid
+    const gridBackground = document.querySelector(".grid-background");
+    if (gridBackground) {
+      gsap.to(gridBackground, {
+        backgroundPosition: "100px 100px",
+        duration: 20,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -149,7 +173,7 @@ export default function SwampHacks2025Page() {
       <PageTransition backgroundColor="bg-yellow-50">
         <div className="min-h-screen bg-yellow-50 text-gray-900 relative overflow-hidden">
           {/* Grid background pattern */}
-          <div className="fixed inset-0 opacity-10 pointer-events-none">
+          <div className="grid-background fixed inset-0 opacity-10 pointer-events-none">
             <div
               className="w-full h-full"
               style={{
@@ -168,6 +192,12 @@ export default function SwampHacks2025Page() {
             <div className="floating-shape absolute bottom-1/4 left-12 w-28 h-28 bg-lime-400 border-4 border-black rounded-2xl shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] opacity-40"></div>
             <div className="floating-shape absolute bottom-20 right-1/3 w-20 h-36 bg-orange-400 border-4 border-black rounded-full shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] opacity-55"></div>
             <div className="floating-shape absolute top-1/2 left-8 w-16 h-16 bg-indigo-400 border-3 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] opacity-45"></div>
+            {/* Additional floating shapes for more animation */}
+            <div className="floating-shape absolute top-3/4 left-1/3 w-12 h-20 bg-purple-400 border-3 border-black rounded-xl shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] opacity-35"></div>
+            <div className="floating-shape absolute top-10 right-12 w-18 h-18 bg-yellow-400 border-3 border-black rounded-full shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] opacity-50"></div>
+            <div className="floating-shape absolute bottom-1/3 right-8 w-14 h-26 bg-teal-400 border-3 border-black rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] opacity-40"></div>
+            <div className="floating-shape absolute top-2/3 right-1/2 w-22 h-14 bg-red-400 border-3 border-black rounded-lg shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] opacity-45"></div>
+            <div className="floating-shape absolute bottom-1/2 left-1/4 w-10 h-24 bg-blue-400 border-2 border-black rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] opacity-30"></div>
           </div>
 
           {/* Header Section */}
@@ -193,20 +223,36 @@ export default function SwampHacks2025Page() {
                 </div>
 
                 {/* Technology Stack - moved to header */}
-                <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-purple-100 border-4 border-black rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                    <h2 className="text-2xl font-black mb-4 text-center">
-                      TECH STACK
-                    </h2>
-                    <div className="grid grid-cols-2 gap-3">
-                      {techStack.map((tech, index) => (
-                        <div
-                          key={tech.name}
-                          className={`${tech.color} border-2 border-black rounded-xl p-3 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
-                        >
-                          <h3 className="font-black text-sm">{tech.name}</h3>
-                        </div>
-                      ))}
+                <div className="col-span-12 lg:col-span-4 h-full">
+                  <div className="flex flex-col place-content-between gap-8 h-full">
+                    <div className="bg-purple-100 border-4 border-black rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                      <h2 className="text-2xl font-black mb-4 text-center">
+                        TECH STACK
+                      </h2>
+                      <div className="grid grid-cols-2 gap-3">
+                        {techStack.map((tech, index) => (
+                          <div
+                            key={tech.name}
+                            className={`${tech.color} border-2 border-black rounded-xl p-3 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300`}
+                          >
+                            <h3 className="font-black text-sm">{tech.name}</h3>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div
+                      className="bg-purple-100 border-4 border-black rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-3 border-black px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-100 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all text-center cursor-pointer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        triggerPageTransition(
+                          "/#my-work",
+                          e.currentTarget,
+                          "bg-gray-50"
+                        );
+                      }}
+                    >
+                      ← Back to work
                     </div>
                   </div>
                 </div>
@@ -347,12 +393,18 @@ export default function SwampHacks2025Page() {
                     >
                       <SiDevpost /> DEVPOST
                     </a>
-                    <a
-                      href="/work"
+                    <button
+                      onClick={(e) => {
+                        triggerPageTransition(
+                          "/#my-work",
+                          e.currentTarget,
+                          "bg-gray-50"
+                        );
+                      }}
                       className="bg-white text-black border-3 border-black px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-100 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
                     >
                       ← BACK TO WORK
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

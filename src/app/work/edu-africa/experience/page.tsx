@@ -240,10 +240,9 @@ export default function ExperiencePage() {
                     <button
                       onClick={(e) =>
                         triggerPageTransition(
-                          "/work",
+                          "/#my-work",
                           e.currentTarget,
-                          "bg-gray-900",
-                          "#ffffff"
+                          "bg-gray-50"
                         )
                       }
                       className="group inline-flex items-center space-x-2 bg-white border-2 border-gray-900 px-6 py-3 hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
@@ -261,8 +260,7 @@ export default function ExperiencePage() {
                         triggerPageTransition(
                           "/work/edu-africa/project",
                           e.currentTarget,
-                          "bg-green-600",
-                          "#ffffff"
+                          "bg-green-600"
                         )
                       }
                       className="group inline-flex items-center space-x-2 bg-green-600 border-2 border-green-600 px-6 py-3 text-white hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
@@ -457,7 +455,7 @@ export default function ExperiencePage() {
           <div className="py-16 px-8 border-t-2 border-dotted border-gray-300 bg-white">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
               <a
-                href="/work"
+                href="/#my-work"
                 className="group flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
               >
                 <span className="group-hover:-translate-x-1 transition-transform">
