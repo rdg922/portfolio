@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import Navbar from "../components/Navbar";
 import InteractiveBackground from "../components/InteractiveBackground";
 import PageTransition, {
@@ -65,7 +66,6 @@ export default function Home() {
                       📥 DOWNLOAD RESUME
                     </button>
                   </div>
-
                   <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 transform rotate-1">
                     <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tight">
                       CONNECT WITH ME
@@ -92,6 +92,25 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Scroll Down Indicator */}
+              <div
+                ref={scrollIndicatorRef}
+                className="absolute py-30 left-1/2 transform -translate-x-1/2"
+              >
+                <div className="flex items-center border-2 border-black px-8 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 animate-bounce">
+                  {/* Left down arrow */}
+                  <div className="text-black text-xl mr-4 animate-pulse">↓</div>
+
+                  {/* Text */}
+                  <span className="font-mono text-sm uppercase tracking-wider text-black font-bold">
+                    Scroll Down
+                  </span>
+
+                  {/* Right down arrow */}
+                  <div className="text-black text-xl ml-4 animate-pulse">↓</div>
                 </div>
               </div>
             </div>
