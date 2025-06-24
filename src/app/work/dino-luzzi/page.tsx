@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Navbar from "../../../components/Navbar";
 import PageTransition, {
   TransitionOverlay,
 } from "../../../components/PageTransition";

@@ -1,6 +1,5 @@
 // Commented out for now
 "use client";
-import Navbar from "../../components/Navbar";
 import PageTransition, {
   TransitionOverlay,
 } from "../../components/PageTransition";

@@ -1,6 +1,5 @@
 "use client";
 import { useRef } from "react";
-import Navbar from "../components/Navbar";
 import InteractiveBackground from "../components/InteractiveBackground";
 import PageTransition, {
   TransitionOverlay,
