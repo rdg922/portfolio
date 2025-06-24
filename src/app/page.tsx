@@ -5,6 +5,8 @@ import PageTransition, {
   TransitionOverlay,
   triggerPageTransition,
 } from "../components/PageTransition";
+import WorkPage from "@/components/Works";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const handleResumeDownload = () => {
@@ -94,6 +96,8 @@ export default function Home() {
               </div>
             </div>
           </InteractiveBackground>
+          <WorkPage />
+          <Footer />
         </PageTransition>
       </div>
     </>
