@@ -56,7 +56,7 @@ const projects: Project[] = [
     link: "/work/dino-luzzi",
     year: "2024",
     image: "/images/dino-luzzi/Dino Page 2.webp",
-    backgroundColor: "bg-red-50",
+    backgroundColor: "bg-red-500",
   },
 ];
 
