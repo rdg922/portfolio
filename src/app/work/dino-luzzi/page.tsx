@@ -10,6 +10,10 @@ import PageTransition, {
 } from "../../../components/PageTransition";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+// Note: Client components can't export metadata directly in app router
+// Metadata would need to be in a layout.tsx or moved to a server component
 
 gsap.registerPlugin(ScrollTrigger);
 

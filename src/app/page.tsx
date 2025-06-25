@@ -28,7 +28,7 @@ export default function Home() {
         <PageTransition backgroundColor="bg-gradient-to-br from-yellow-300 via-pink-300 to-cyan-300">
           {/* Hero Section */}
           <InteractiveBackground>
-            <div className="text-center px-4 relative z-10">
+            <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
               <div className="max-w-4xl mx-auto bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 transform -rotate-1 mb-8 hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-rotate-2 transition-all duration-300">
                 <h1 className="text-6xl md:text-8xl font-black text-black mb-6 uppercase tracking-tight transform rotate-1">
                   ROHIT
@@ -94,21 +94,21 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Scroll Down Indicator */}
-              <div className="absolute py-30 left-1/2 transform -translate-x-1/2">
-                <div className="flex items-center border-2 border-black px-8 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 animate-bounce">
-                  {/* Left down arrow */}
-                  <div className="text-black text-xl mr-4 animate-pulse">↓</div>
+            {/* Fixed Scroll Down Indicator */}
+            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+              <div className="flex items-center bg-white border-2 border-black px-8 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 animate-bounce">
+                {/* Left down arrow */}
+                <div className="text-black text-xl mr-4 animate-pulse">↓</div>
 
-                  {/* Text */}
-                  <span className="font-mono text-sm uppercase tracking-wider text-black font-bold">
-                    Scroll Down
-                  </span>
+                {/* Text */}
+                <span className="font-mono text-sm uppercase tracking-wider text-black font-bold">
+                  Scroll Down
+                </span>
 
-                  {/* Right down arrow */}
-                  <div className="text-black text-xl ml-4 animate-pulse">↓</div>
-                </div>
+                {/* Right down arrow */}
+                <div className="text-black text-xl ml-4 animate-pulse">↓</div>
               </div>
             </div>
           </InteractiveBackground>
