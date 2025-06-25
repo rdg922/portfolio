@@ -629,7 +629,6 @@ export default function DinoLuzziPage() {
             </div>
           </div>
         </div>
-        <Footer />
       </PageTransition>
     </>
   );

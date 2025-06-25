@@ -8,7 +8,6 @@ import PageTransition, {
   TransitionOverlay,
   triggerPageTransition,
 } from "../../../components/PageTransition";
-import Footer from "@/components/Footer";
 import { SiDevpost, SiGithub } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
 
@@ -409,7 +408,6 @@ export default function SwampHacks2025Page() {
             </div>
           </div>
         </div>
-        <Footer />
       </PageTransition>
     </>
   );

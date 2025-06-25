@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import WorkPage from "@/components/Works";
 import PageTransition, { TransitionOverlay } from "@/components/PageTransition";
 import type { Metadata } from "next";
@@ -21,7 +20,6 @@ function WorkPageRoute() {
       <PageTransition backgroundColor="bg-gray-50">
         <WorkPage />
       </PageTransition>
-      <Footer />
     </>
   );
 }

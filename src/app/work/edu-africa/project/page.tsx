@@ -604,50 +604,6 @@ export default function ProjectPage() {
               })}
             </div>
           </div>
-
-          {/* Bottom Navigation */}
-          <div className="py-16 px-8 border-t-2 border-dotted border-gray-300 bg-white">
-            <div className="max-w-6xl mx-auto flex justify-between items-center">
-              <Link
-                href="/#my-work"
-                className="group flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
-              >
-                <span className="group-hover:-translate-x-1 transition-transform">
-                  ←
-                </span>
-                <span className="font-mono text-sm uppercase">
-                  Back to Work
-                </span>
-              </Link>
-
-              <div className="flex space-x-8">
-                <Link
-                  href="/work/edu-africa/experience"
-                  className="text-gray-600 hover:text-green-600 transition-colors"
-                >
-                  View Experience
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-600 hover:text-green-600 transition-colors"
-                >
-                  Live Site
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-600 hover:text-green-600 transition-colors"
-                >
-                  Case Study
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-600 hover:text-green-600 transition-colors"
-                >
-                  GitHub
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </PageTransition>
     </>

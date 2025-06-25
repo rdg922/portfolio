@@ -9,7 +9,6 @@ import PageTransition, {
   TransitionOverlay,
   triggerPageTransition,
 } from "../../../components/PageTransition";
-import Footer from "@/components/Footer";
 
 export default function EduAfricaPage() {
   const projectCardRef = useRef<HTMLDivElement>(null);
@@ -243,9 +242,6 @@ export default function EduAfricaPage() {
               </div>
             </div>
           </div>
-
-          {/* Bottom Navigation */}
-          <Footer />
         </div>
       </PageTransition>
     </>
