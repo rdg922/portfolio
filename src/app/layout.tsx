@@ -17,20 +17,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ROHIT DASGUPTA | Full Stack Developer & CS Student",
-  description: "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida. Explore my projects, experience, and skills.",
-  keywords: ["Rohit Dasgupta", "Full Stack Developer", "Computer Science", "Mathematics", "University of Florida", "Portfolio", "Web Development"],
+  description:
+    "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida. Explore my projects, experience, and skills.",
+  keywords: [
+    "Rohit Dasgupta",
+    "Full Stack Developer",
+    "Computer Science",
+    "Mathematics",
+    "University of Florida",
+    "Portfolio",
+    "Web Development",
+  ],
   authors: [{ name: "Rohit Dasgupta" }],
   creator: "Rohit Dasgupta",
   openGraph: {
     title: "ROHIT DASGUPTA | Full Stack Developer & CS Student",
-    description: "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida",
+    description:
+      "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "ROHIT DASGUPTA | Full Stack Developer & CS Student",
-    description: "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida",
+    description:
+      "Portfolio of Rohit Dasgupta - Full Stack Developer specializing in CS + Math at the University of Florida",
   },
 };
 

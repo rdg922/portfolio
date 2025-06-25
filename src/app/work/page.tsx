@@ -5,10 +5,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "ROHIT DASGUPTA | Work & Projects",
-  description: "Explore the portfolio of work and projects by Rohit Dasgupta - Full Stack Developer. See my latest web development projects, technical skills, and creative solutions.",
+  description:
+    "Explore the portfolio of work and projects by Rohit Dasgupta - Full Stack Developer. See my latest web development projects, technical skills, and creative solutions.",
   openGraph: {
     title: "ROHIT DASGUPTA | Work & Projects",
-    description: "Explore the portfolio of work and projects by Rohit Dasgupta - Full Stack Developer",
+    description:
+      "Explore the portfolio of work and projects by Rohit Dasgupta - Full Stack Developer",
   },
 };
 
