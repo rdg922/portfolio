@@ -7,7 +7,6 @@ import PageTransition, {
   triggerPageTransition,
 } from "../components/PageTransition";
 import WorkPage from "@/components/Works";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function Home() {
@@ -113,10 +112,7 @@ export default function Home() {
             </div>
           </InteractiveBackground>
         </PageTransition>
-        <div>
-          <WorkPage />
-          <Footer />
-        </div>
+        <WorkPage />
       </div>
     </>
   );
