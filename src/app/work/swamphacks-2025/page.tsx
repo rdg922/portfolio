@@ -376,7 +376,7 @@ export default function SwampHacks2025Page() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link
-                      href="https://youtu.be/6tzbO22YZks"
+                      href="https://github.com/rdg922/swamphacks"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex gap-2 bg-black text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-800 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
@@ -384,7 +384,7 @@ export default function SwampHacks2025Page() {
                       <SiGithub /> GITHUB
                     </Link>
                     <Link
-                      href="https://youtu.be/6tzbO22YZks"
+                      href="https://devpost.com/software/ecoscan-ef6jpg?_gl=1*13ld3f*_gcl_au*MTgxNzU4MDI1OS4xNzQ0NjY1MTA2*_ga*MTgwNjAzMzE4Ni4xNzQ0NjY1MTA3*_ga_0YHJK3Y10M*MTc0NDY2NTEwNi4xLjEuMTc0NDY2NTU3Ni4wLjAuMA.."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex gap-2 bg-black text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-gray-800 transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"

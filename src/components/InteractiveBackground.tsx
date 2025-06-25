@@ -283,7 +283,7 @@ export default function InteractiveBackground({
   return (
     <section
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden"
       onClick={handleBackgroundClick}
     >
       {/* Interactive floating shapes */}

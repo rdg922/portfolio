@@ -1,7 +1,10 @@
 "use client";
+import { useRef } from "react";
+import Navbar from "../components/Navbar";
 import InteractiveBackground from "../components/InteractiveBackground";
 import PageTransition, {
   TransitionOverlay,
+  triggerPageTransition,
 } from "../components/PageTransition";
 import WorkPage from "@/components/Works";
 import Footer from "@/components/Footer";
@@ -26,7 +29,7 @@ export default function Home() {
           {/* Hero Section */}
           <InteractiveBackground>
             <div className="text-center px-4 relative z-10">
-              <div className="bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 transform -rotate-1 mb-8 hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-rotate-2 transition-all duration-300">
+              <div className="max-w-4xl mx-auto bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 transform -rotate-1 mb-8 hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-rotate-2 transition-all duration-300">
                 <h1 className="text-6xl md:text-8xl font-black text-black mb-6 uppercase tracking-tight transform rotate-1">
                   ROHIT
                   <br />
