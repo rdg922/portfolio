@@ -317,14 +317,11 @@ export default function DinoLuzziPage() {
                   <div className="aspect-video border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
                     <Image
                       src="/images/dino-luzzi/Dino Page 1.webp"
-                      alt="Dino Luzzi Website - Before Redesign"
+                      alt="landing page"
                       width={800}
                       height={450}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 text-xs font-black border border-black">
-                      BEFORE
-                    </div>
                   </div>
 
                   {/* Racing decoration */}
@@ -349,9 +346,6 @@ export default function DinoLuzziPage() {
                       height={450}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-1 text-xs font-black border border-black">
-                      AFTER
-                    </div>
                   </div>
 
                   {/* Speed lines decoration */}
