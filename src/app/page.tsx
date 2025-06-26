@@ -95,7 +95,7 @@ export default function Home() {
               </div>
             </div>{" "}
             {/* Fixed Scroll Down Indicator */}
-            <div className="fixed bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50">
               <div className="flex items-center bg-white border-2 border-black px-4 sm:px-8 py-2 sm:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 animate-bounce">
                 {/* Left down arrow */}
                 <div className="text-black text-lg sm:text-xl mr-2 sm:mr-4 animate-pulse">

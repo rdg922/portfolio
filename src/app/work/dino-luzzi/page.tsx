@@ -169,7 +169,7 @@ export default function DinoLuzziPage() {
           {/* Racing car that follows scroll */}
           <div
             ref={carRef}
-            className="fixed top-1/2 transform -translate-y-1/2 z-30 pointer-events-none"
+            className="absolute top-1/2 transform -translate-y-1/2 z-30 pointer-events-none"
           >
             <div className="text-6xl transform -rotate-12">🏎️</div>
             <div className="absolute -top-2 -right-2 text-yellow-400 text-2xl">
@@ -177,9 +177,9 @@ export default function DinoLuzziPage() {
             </div>
           </div>
 
-          {/* Back to Works button */}
+          {/* Back to Works button - desktop only */}
           <div
-            className="fixed top-28 left-8 z-50"
+            className="hidden lg:block absolute top-28 left-8 z-50"
             onClick={(e) => {
               e.preventDefault();
               triggerPageTransition("/#my-work", e.currentTarget, "bg-gray-50");
@@ -253,6 +253,32 @@ export default function DinoLuzziPage() {
                     racing-inspired design.
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Back to Works button - below header */}
+          <div className="lg:hidden relative z-10 pb-8 px-8">
+            <div className="max-w-6xl mx-auto flex justify-center">
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  triggerPageTransition(
+                    "/#my-work",
+                    e.currentTarget,
+                    "bg-gray-50"
+                  );
+                }}
+              >
+                <Link
+                  href="/#my-work"
+                  className="group bg-white border-2 border-black px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 font-black text-black flex items-center gap-2"
+                >
+                  <span className="text-xl group-hover:translate-x-[-4px] transition-transform duration-300">
+                    ←
+                  </span>
+                  Back to Works
+                </Link>
               </div>
             </div>
           </div>
