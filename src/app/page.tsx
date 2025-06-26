@@ -68,9 +68,9 @@ export default function Home() {
                   <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 transform rotate-1">
                     <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tight">
                       CONNECT WITH ME
-                    </h3>
+                    </h3>{" "}
                     <p className="text-lg font-bold text-black mb-6 uppercase tracking-wide">
-                      Check out my code and professional profile
+                      CHECK OUT MY CODE AND PROFILE
                     </p>
                     <div className="flex gap-2 justify-center">
                       <Link

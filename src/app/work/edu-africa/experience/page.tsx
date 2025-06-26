@@ -221,7 +221,7 @@ export default function ExperiencePage() {
           </div>
 
           {/* Hero Section */}
-          <div className="relative pt-40 pb-20 px-8 z-10">
+          <div className="relative py-60 px-8 z-10">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-12 gap-8 items-center">
                 <div className="col-span-8">
@@ -261,10 +261,10 @@ export default function ExperiencePage() {
                           triggerPageTransition(
                             "/#my-work",
                             e.currentTarget,
-                            "bg-green-600"
+                            "bg-gray-50"
                           )
                         }
-                        className="group relative overflow-hidden bg-amber-50 text-green-800 px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-500 hover:scale-105 cursor-pointer border-2 border-green-800"
+                        className="group relative overflow-hidden bg-amber-50 text-green-800 px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-500 hover:scale-105 cursor-pointer border-2 border-green-800 z-20"
                       >
                         <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-amber-50 transition-colors duration-300">
                           More Adventures
@@ -280,7 +280,7 @@ export default function ExperiencePage() {
                             "bg-gray-900"
                           )
                         }
-                        className="group relative overflow-hidden bg-transparent border-2 border-amber-200 text-amber-100 px-8 py-4 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105 cursor-pointer"
+                        className="group relative overflow-hidden bg-transparent border-2 border-amber-200 text-amber-100 px-8 py-4 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105 cursor-pointer z-20"
                       >
                         <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-green-800 transition-colors duration-300">
                           Technical Deep Dive
