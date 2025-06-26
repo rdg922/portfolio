@@ -38,21 +38,21 @@ export default function Navbar() {
   return (
     <nav
       ref={container}
-      className={`fixed left-1/2 transform -translate-x-1/2 z-[10000] transition-all ease-out ${
+      className={`fixed left-1/2 transform -translate-x-1/2 z-[10000] transition-all ease-out py-2 ${
         isScrolled
           ? "top-4 w-[95%] max-w-7xl bg-yellow-400 outline-4 outline-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg backdrop-blur-sm"
-          : "top-0 w-full pt-4 bg-lime-300 outline-b-4 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          : "top-0 w-full bg-lime-300 outline-b-4 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
       }`}
       style={{
         transitionDuration: `${TRANSITION_DURATION}s`,
       }}
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 relative">
+        <div className="flex items-center justify-between h-12 sm:h-16 lg:h-20 relative">
           {/* Left Content */}
           <div ref={leftContentRef} className="flex items-center space-x-6">
             <div className="flex-shrink-0">
-              <h1 className="text-xl sm:text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-black text-black uppercase tracking-tight transform -rotate-1">
                 <Link
                   href="/"
                   onClick={(e) =>
@@ -62,7 +62,7 @@ export default function Navbar() {
                       e
                     )
                   }
-                  className=" bg-yellow-300 px-3 sm:px-4 py-2 tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                  className="bg-yellow-300 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
                 >
                   ROHIT
                 </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
               href="https://github.com/rdg922"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:block bg-gray-900 hover:bg-black text-white hover:text-gray-300 px-3 sm:px-4 py-2 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
+              className="hidden md:block bg-gray-900 hover:bg-black text-white hover:text-gray-300 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 font-black text-xs sm:text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform -rotate-1"
             >
               GITHUB
             </a>
@@ -112,7 +112,7 @@ export default function Navbar() {
               href="https://www.linkedin.com/in/dasgupta-rohit/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:block bg-blue-600 hover:bg-black text-white hover:text-blue-400 px-3 sm:px-4 py-2 font-black text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform rotate-1"
+              className="hidden md:block bg-blue-600 hover:bg-black text-white hover:text-blue-400 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 font-black text-xs sm:text-sm uppercase tracking-wide outline-2 outline-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transform rotate-1"
             >
               LINKEDIN
             </a>

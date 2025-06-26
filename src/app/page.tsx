@@ -40,11 +40,11 @@ export default function Home() {
                 <div className="w-full h-2 bg-black mb-6 relative overflow-hidden">
                   <div className="absolute inset-0 bg-red-500 animate-pulse"></div>
                 </div>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-8 uppercase tracking-wide">
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-black uppercase tracking-wide">
                   Full Stack Developer
                   <br />
                   <span className="text-purple-600">
-                    CS + Math @ the University of Florida{" "}
+                    CS + Math @ University of Florida{" "}
                   </span>
                 </p>
               </div>{" "}
