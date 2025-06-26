@@ -200,18 +200,19 @@ export default function ProjectPage() {
       <PageTransition backgroundColor="bg-gray-900">
         <div className="min-h-screen bg-gray-900 text-white relative">
           {/* Hero Section */}
-          <div className="relative pt-60 pb-20 px-8 bg-gray-900">
+          <div className="relative pt-40 sm:pt-60 pb-12 sm:pb-20 px-4 sm:px-8 bg-gray-900">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-12 gap-8 items-center">
-                <div className="col-span-8">
-                  <h1 className="text-6xl md:text-8xl font-black leading-none mb-6">
+              <div className="flex flex-col items-center text-center lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center lg:text-left">
+                {/* Header content - centered on mobile, left-aligned on desktop */}
+                <div className="w-full lg:col-span-8 mb-8 lg:mb-0">
+                  <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black leading-none mb-4 sm:mb-6">
                     <span className="block text-white">Safe Cities</span>
-                    <span className="block text-yellow-400 ml-16">
+                    <span className="block text-yellow-400 lg:ml-16">
                       Project Platform
                     </span>
                   </h1>
-                  <div className="w-40 h-2 bg-yellow-400 ml-16 mb-8"></div>
-                  <p className="text-xl text-gray-300 max-w-lg ml-16 leading-relaxed mb-8">
+                  <div className="w-24 sm:w-40 h-1 sm:h-2 bg-yellow-400 mx-auto lg:mx-0 lg:ml-16 mb-4 sm:mb-8"></div>
+                  <p className="text-base sm:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0 lg:ml-16 leading-relaxed mb-6 sm:mb-8">
                     A comprehensive project management platform designed for
                     Safe Cities South Africa. Built with modern web technologies
                     to streamline programme coordination and enhance team
@@ -219,7 +220,7 @@ export default function ProjectPage() {
                   </p>
 
                   {/* Navigation Links */}
-                  <div className="ml-16 flex flex-wrap gap-4">
+                  <div className="lg:ml-16 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
                     <button
                       onClick={(e) =>
                         triggerPageTransition(
@@ -228,9 +229,9 @@ export default function ProjectPage() {
                           "bg-gray-50"
                         )
                       }
-                      className="group inline-flex items-center space-x-2 bg-white border-2 border-white px-6 py-3 text-gray-900 hover:bg-gray-900 hover:text-white hover:border-yellow-400 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                      className="group inline-flex items-center justify-center space-x-2 bg-white border-2 border-white px-4 sm:px-6 py-2 sm:py-3 text-gray-900 hover:bg-gray-900 hover:text-white hover:border-yellow-400 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer text-sm sm:text-base"
                     >
-                      <span className="font-mono text-sm uppercase tracking-wider">
+                      <span className="font-mono uppercase tracking-wider">
                         See more works
                       </span>
                       <span className="group-hover:translate-x-1 transition-transform">
@@ -246,9 +247,9 @@ export default function ProjectPage() {
                           "bg-green-600"
                         )
                       }
-                      className="group inline-flex items-center space-x-2 bg-green-600 border-2 border-green-600 px-6 py-3 text-white hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                      className="group inline-flex items-center justify-center space-x-2 bg-green-600 border-2 border-green-600 px-4 sm:px-6 py-2 sm:py-3 text-white hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer text-sm sm:text-base"
                     >
-                      <span className="font-mono text-sm uppercase tracking-wider">
+                      <span className="font-mono uppercase tracking-wider">
                         View Experience
                       </span>
                       <span className="group-hover:translate-x-1 transition-transform">
@@ -257,14 +258,16 @@ export default function ProjectPage() {
                     </button>
                   </div>
                 </div>
-                <div className="col-span-4">
-                  <div className="relative border-4 border-yellow-400 shadow-[8px_8px_0px_0px_#facc15]">
+
+                {/* Image - below text on mobile, right side on desktop */}
+                <div className="w-full max-w-md lg:max-w-none lg:col-span-4 mt-8 lg:mt-0">
+                  <div className="relative border-2 sm:border-4 border-yellow-400 shadow-[4px_4px_0px_0px_#facc15] sm:shadow-[8px_8px_0px_0px_#facc15] rounded-lg lg:rounded-none">
                     <Image
                       src={"/images/safe-cities/System Architecture.png"}
                       alt="Safe Cities Project Management Platform Architecture"
                       width={500}
                       height={400}
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-cover rounded-lg lg:rounded-none"
                     />
                   </div>
                 </div>
@@ -273,42 +276,42 @@ export default function ProjectPage() {
           </div>
 
           {/* Project Sections */}
-          <div className="py-20 px-8 bg-gray-900">
-            <div className="max-w-7xl mx-auto space-y-24">
+          <div className="py-12 sm:py-20 px-4 sm:px-8 bg-gray-900">
+            <div className="max-w-7xl mx-auto space-y-16 sm:space-y-24">
               {projectSections.map((section, index) => (
                 <div
                   key={section.id}
                   ref={(el) => {
                     if (el) projectSectionsRef.current[index] = el;
                   }}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center"
                 >
                   {/* Content */}
                   <div
                     className={`${
                       index % 2 === 0 ? "lg:order-1" : "lg:order-2"
-                    } space-y-6`}
+                    } space-y-4 sm:space-y-6`}
                   >
                     <div className="inline-block">
-                      <span className="bg-yellow-400 text-gray-900 px-4 py-2 font-mono text-sm uppercase tracking-wider font-bold">
+                      <span className="bg-yellow-400 text-gray-900 px-3 sm:px-4 py-1 sm:py-2 font-mono text-xs sm:text-sm uppercase tracking-wider font-bold">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                    <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                       {section.title}
                     </h2>
 
-                    <p className="text-lg text-gray-300 leading-relaxed">
+                    <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                       {section.description}
                     </p>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-2 gap-4 mt-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
                       {section.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-yellow-400"></div>
-                          <span className="text-sm text-gray-400 font-mono uppercase tracking-wide">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 flex-shrink-0"></div>
+                          <span className="text-xs sm:text-sm text-gray-400 font-mono uppercase tracking-wide">
                             {feature}
                           </span>
                         </div>
@@ -320,15 +323,15 @@ export default function ProjectPage() {
                   <div
                     className={`${
                       index % 2 === 0 ? "lg:order-2" : "lg:order-1"
-                    }`}
+                    } mt-6 lg:mt-0`}
                   >
-                    <div className="relative border-4 border-white shadow-[8px_8px_0px_0px_#ffffff] bg-white">
+                    <div className="relative border-2 sm:border-4 border-white shadow-[4px_4px_0px_0px_#ffffff] sm:shadow-[8px_8px_0px_0px_#ffffff] bg-white rounded-lg lg:rounded-none">
                       <Image
                         src={section.imageSrc}
                         alt={section.imageAlt}
                         width={600}
                         height={400}
-                        className="w-full h-auto object-contain"
+                        className="w-full h-auto object-contain rounded-lg lg:rounded-none"
                       />
                     </div>
                   </div>
@@ -337,12 +340,12 @@ export default function ProjectPage() {
             </div>
 
             {/* Technical Stack Section */}
-            <div className="max-w-4xl mx-auto mt-32">
-              <div className="bg-white border-4 border-yellow-400 shadow-[8px_8px_0px_0px_#facc15] p-8">
-                <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">
+            <div className="max-w-4xl mx-auto mt-20 sm:mt-32">
+              <div className="bg-white border-2 sm:border-4 border-yellow-400 shadow-[4px_4px_0px_0px_#facc15] sm:shadow-[8px_8px_0px_0px_#facc15] p-4 sm:p-8 rounded-lg lg:rounded-none">
+                <h3 className="text-xl sm:text-2xl font-black text-gray-900 mb-4 sm:mb-6 text-center">
                   TECHNICAL SPECIFICATIONS
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                   {[
                     { tech: "Next.js 14", category: "Framework" },
                     { tech: "TypeScript", category: "Language" },
@@ -354,10 +357,10 @@ export default function ProjectPage() {
                     { tech: "Vercel", category: "Deployment" },
                   ].map((item, idx) => (
                     <div key={idx} className="text-center">
-                      <div className="font-mono text-sm text-gray-600 uppercase tracking-wider mb-1">
+                      <div className="font-mono text-xs sm:text-sm text-gray-600 uppercase tracking-wider mb-1">
                         {item.category}
                       </div>
-                      <div className="font-black text-gray-900">
+                      <div className="font-black text-gray-900 text-sm sm:text-base">
                         {item.tech}
                       </div>
                     </div>

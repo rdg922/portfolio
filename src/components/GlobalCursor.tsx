@@ -118,7 +118,7 @@ export default function GlobalCursor() {
       {/* Main cursor */}
       <div
         ref={cursorRef}
-        className={`fixed w-8 h-8 pointer-events-none z-[99999] mix-blend-difference transition-colors duration-300 ${
+        className={`hidden md:inline fixed w-8 h-8 pointer-events-none z-[99999] mix-blend-difference transition-colors duration-300 ${
           isClicking
             ? "bg-red-500 border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
             : isHovering

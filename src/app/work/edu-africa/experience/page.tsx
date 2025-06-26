@@ -221,41 +221,42 @@ export default function ExperiencePage() {
           </div>
 
           {/* Hero Section */}
-          <div className="relative py-60 px-8 z-10">
+          <div className="relative py-40 sm:py-60 px-4 sm:px-8 z-10">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-12 gap-8 items-center">
-                <div className="col-span-8">
-                  <div className="space-y-8">
+              <div className="flex flex-col items-center text-center lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center lg:text-left">
+                {/* Header content - centered on mobile, left-aligned on desktop */}
+                <div className="w-full lg:col-span-8 mb-8 lg:mb-0">
+                  <div className="space-y-6 sm:space-y-8">
                     <div className="overflow-hidden">
-                      <h1 className="text-6xl md:text-8xl font-black leading-none mb-6 transform hover:skew-y-1 transition-transform duration-300">
+                      <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black leading-none mb-4 sm:mb-6 transform hover:skew-y-1 transition-transform duration-300">
                         <span className="block text-white animate-pulse">
                           Ubuntu
                         </span>
-                        <span className="block text-yellow-300 ml-8 transform rotate-1">
+                        <span className="block text-yellow-300 lg:ml-8 transform rotate-1">
                           Journey
                         </span>
                       </h1>
                     </div>
 
-                    <div className="flex items-center space-x-4">
-                      <div className="w-20 h-1 bg-yellow-300 transform skew-x-12"></div>
-                      <div className="w-12 h-1 bg-yellow-300 transform -skew-x-12"></div>
-                      <div className="w-8 h-1 bg-yellow-300"></div>
+                    <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4">
+                      <div className="w-12 sm:w-20 h-0.5 sm:h-1 bg-yellow-300 transform skew-x-12"></div>
+                      <div className="w-8 sm:w-12 h-0.5 sm:h-1 bg-yellow-300 transform -skew-x-12"></div>
+                      <div className="w-4 sm:w-8 h-0.5 sm:h-1 bg-yellow-300"></div>
                     </div>
 
                     <div className="relative">
-                      <p className="text-xl text-green-100 max-w-lg ml-8 leading-relaxed mb-8 transform hover:translate-x-2 transition-transform duration-300">
+                      <p className="text-base sm:text-xl text-green-100 max-w-lg mx-auto lg:mx-0 lg:ml-8 leading-relaxed mb-6 sm:mb-8 transform hover:translate-x-2 transition-transform duration-300">
                         Four transformative weeks in South Africa—from Cape
                         Town's vibrant streets to Durban's coastal energy. A
                         journey of cultural immersion, community connection, and
                         discovering how technology bridges hearts across
                         continents.
                       </p>
-                      <div className="absolute -left-4 top-0 w-2 h-full bg-yellow-300 opacity-50 transform skew-y-12"></div>
+                      <div className="absolute -left-2 lg:-left-4 top-0 w-1 sm:w-2 h-full bg-yellow-300 opacity-50 transform skew-y-12 hidden lg:block"></div>
                     </div>
 
                     {/* Flowing Navigation Links */}
-                    <div className="ml-8 flex flex-wrap gap-6">
+                    <div className="lg:ml-8 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start">
                       <button
                         onClick={(e) =>
                           triggerPageTransition(
@@ -264,9 +265,9 @@ export default function ExperiencePage() {
                             "bg-gray-50"
                           )
                         }
-                        className="group relative overflow-hidden bg-amber-50 text-green-800 px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-500 hover:scale-105 cursor-pointer border-2 border-green-800 z-20"
+                        className="group relative overflow-hidden bg-amber-50 text-green-800 px-6 sm:px-8 py-3 sm:py-4 transform -rotate-1 hover:rotate-0 transition-all duration-500 hover:scale-105 cursor-pointer border-2 border-green-800 z-20 text-sm sm:text-base"
                       >
-                        <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-amber-50 transition-colors duration-300">
+                        <span className="relative z-10 font-mono uppercase tracking-wider font-bold group-hover:text-amber-50 transition-colors duration-300">
                           More Adventures
                         </span>
                         <div className="absolute inset-0 bg-green-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -280,9 +281,9 @@ export default function ExperiencePage() {
                             "bg-gray-900"
                           )
                         }
-                        className="group relative overflow-hidden bg-transparent border-2 border-amber-200 text-amber-100 px-8 py-4 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105 cursor-pointer z-20"
+                        className="group relative overflow-hidden bg-transparent border-2 border-amber-200 text-amber-100 px-6 sm:px-8 py-3 sm:py-4 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105 cursor-pointer z-20 text-sm sm:text-base"
                       >
-                        <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-green-800 transition-colors duration-300">
+                        <span className="relative z-10 font-mono uppercase tracking-wider font-bold group-hover:text-green-800 transition-colors duration-300">
                           Technical Deep Dive
                         </span>
                         <div className="absolute inset-0 bg-amber-200 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></div>
@@ -290,16 +291,18 @@ export default function ExperiencePage() {
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4">
+
+                {/* Image - below text on mobile, right side on desktop */}
+                <div className="w-full max-w-md lg:max-w-none lg:col-span-4 mt-8 lg:mt-0">
                   <div className="relative group">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-yellow-300 to-green-300 rounded-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300 blur"></div>
+                    <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-yellow-300 to-green-300 rounded-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300 blur"></div>
                     <div className="relative bg-white rounded-lg overflow-hidden transform rotate-2 group-hover:-rotate-1 transition-transform duration-500">
                       <Image
                         src={"/images/2025-05-17-007.jpg"}
                         alt="Ubuntu journey - South Africa experience"
                         width={500}
                         height={400}
-                        className="w-full h-full object-cover"
+                        className="w-full h-64 sm:h-80 lg:h-full object-cover"
                       />
                     </div>
                   </div>
@@ -309,8 +312,8 @@ export default function ExperiencePage() {
           </div>
 
           {/* Fluid Experience Sections */}
-          <div className="relative py-20 px-8 z-10">
-            <div className="max-w-6xl mx-auto space-y-32">
+          <div className="relative py-12 sm:py-20 px-4 sm:px-8 z-10">
+            <div className="max-w-6xl mx-auto space-y-20 sm:space-y-32">
               {experienceSections.map((section, index) => {
                 const isEven = index % 2 === 0;
                 const rotationClass = isEven ? "rotate-1" : "-rotate-1";
@@ -331,20 +334,20 @@ export default function ExperiencePage() {
                       className={`absolute inset-0 ${section.color} opacity-20 rounded-full transform scale-150 blur-3xl animate-pulse`}
                     ></div>
 
-                    <div className="relative bg-green-900 bg-opacity-60 backdrop-blur-sm border-2 border-amber-200 border-opacity-50 rounded-3xl p-8 md:p-12 hover:bg-opacity-80 transition-all duration-500 shadow-2xl">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="relative bg-green-900 bg-opacity-60 backdrop-blur-sm border-2 border-amber-200 border-opacity-50 rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 hover:bg-opacity-80 transition-all duration-500 shadow-2xl">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
                         {/* Content */}
                         <div
                           className={`${
                             isEven ? "lg:order-1" : "lg:order-2"
-                          } space-y-6`}
+                          } space-y-4 sm:space-y-6`}
                         >
-                          <div className="flex items-center space-x-4">
+                          <div className="flex items-center space-x-3 sm:space-x-4">
                             <div
-                              className={`w-3 h-3 ${section.color} rounded-full animate-bounce`}
+                              className={`w-2 h-2 sm:w-3 sm:h-3 ${section.color} rounded-full animate-bounce`}
                             ></div>
                             <div
-                              className={`w-2 h-2 ${section.color} rounded-full animate-bounce`}
+                              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 ${section.color} rounded-full animate-bounce`}
                               style={{ animationDelay: "0.1s" }}
                             ></div>
                             <div
@@ -353,40 +356,40 @@ export default function ExperiencePage() {
                             ></div>
                           </div>
 
-                          <div className="space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight transform hover:skew-y-1 transition-transform duration-300">
+                          <div className="space-y-3 sm:space-y-4">
+                            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight transform hover:skew-y-1 transition-transform duration-300">
                               {section.title}
                             </h2>
                             {section.subtitle && (
-                              <h3 className="text-xl text-green-900 font-bold bg-amber-200 inline-block px-3 py-1 rounded-lg transform hover:translate-x-2 transition-transform duration-300">
+                              <h3 className="text-base sm:text-xl text-green-900 font-bold bg-amber-200 inline-block px-2 sm:px-3 py-1 rounded-lg transform hover:translate-x-2 transition-transform duration-300">
                                 {section.subtitle}
                               </h3>
                             )}
                           </div>
 
-                          <div className="space-y-4">
-                            <p className="text-lg text-amber-50 leading-relaxed font-medium bg-green-900 bg-opacity-80 p-4 rounded-lg backdrop-blur-sm border border-green-700">
+                          <div className="space-y-3 sm:space-y-4">
+                            <p className="text-sm sm:text-lg text-amber-50 leading-relaxed font-medium bg-green-900 bg-opacity-80 p-3 sm:p-4 rounded-lg backdrop-blur-sm border border-green-700">
                               {section.description}
                             </p>
                             {section.extendedText && (
-                              <p className="text-base text-amber-100 leading-relaxed bg-green-800 bg-opacity-70 p-4 rounded-lg backdrop-blur-sm border border-green-600">
+                              <p className="text-xs sm:text-base text-amber-100 leading-relaxed bg-green-800 bg-opacity-70 p-3 sm:p-4 rounded-lg backdrop-blur-sm border border-green-600">
                                 {section.extendedText}
                               </p>
                             )}
                           </div>
 
                           {/* Flowing decorative elements */}
-                          <div className="flex space-x-2 mt-6">
+                          <div className="flex space-x-2 mt-4 sm:mt-6">
                             <div
-                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-24`}
-                              style={{ width: "4rem" }}
-                            ></div>
-                            <div
-                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-16`}
+                              className={`h-0.5 sm:h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-16 sm:hover:w-24`}
                               style={{ width: "2rem" }}
                             ></div>
                             <div
-                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-12`}
+                              className={`h-0.5 sm:h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-12 sm:hover:w-16`}
+                              style={{ width: "1.5rem" }}
+                            ></div>
+                            <div
+                              className={`h-0.5 sm:h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-8 sm:hover:w-12`}
                               style={{ width: "1rem" }}
                             ></div>
                           </div>
@@ -396,11 +399,11 @@ export default function ExperiencePage() {
                         <div
                           className={`${
                             isEven ? "lg:order-2" : "lg:order-1"
-                          } relative`}
+                          } relative mt-6 lg:mt-0`}
                         >
                           {section.photoCluster &&
                             section.photoCluster.length > 0 && (
-                              <div className="relative space-y-4">
+                              <div className="relative space-y-3 sm:space-y-4">
                                 {section.photoCluster.map(
                                   (photo, photoIndex) => (
                                     <div
@@ -409,26 +412,26 @@ export default function ExperiencePage() {
                                         photoIndex === 0
                                           ? "rotate-2 hover:-rotate-1"
                                           : photoIndex === 1
-                                          ? "-rotate-3 hover:rotate-2 translate-x-8"
-                                          : "rotate-1 hover:-rotate-2 -translate-x-4"
+                                          ? "-rotate-3 hover:rotate-2 translate-x-4 sm:translate-x-8"
+                                          : "rotate-1 hover:-rotate-2 -translate-x-2 sm:-translate-x-4"
                                       }`}
                                       style={{
                                         marginTop:
-                                          photoIndex > 0 ? "-2rem" : "0",
+                                          photoIndex > 0 ? "-1rem" : "0",
                                         marginLeft:
-                                          photoIndex % 2 === 0 ? "0" : "2rem",
+                                          photoIndex % 2 === 0 ? "0" : "1rem",
                                       }}
                                     >
-                                      <div className="relative bg-white p-2 rounded-lg shadow-2xl">
+                                      <div className="relative bg-white p-1 sm:p-2 rounded-lg shadow-2xl">
                                         <MediaDisplay
                                           src={photo}
                                           alt={`${section.title} - Image ${
                                             photoIndex + 1
                                           }`}
-                                          className="w-full h-48 object-cover rounded"
+                                          className="w-full h-32 sm:h-48 object-cover rounded"
                                         />
                                         <div
-                                          className={`absolute -bottom-2 -right-2 w-6 h-6 bg-green-800 border-2 border-amber-200 rounded-full`}
+                                          className={`absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-green-800 border-2 border-amber-200 rounded-full`}
                                         ></div>
                                       </div>
                                     </div>
@@ -444,28 +447,28 @@ export default function ExperiencePage() {
               })}
 
               {/* Flowing conclusion */}
-              <div className="text-center mt-32 max-w-4xl mx-auto">
-                <div className="relative bg-green-900 bg-opacity-80 backdrop-blur-sm rounded-3xl p-12 transform hover:scale-105 transition-all duration-500 border-2 border-amber-200 border-opacity-50 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-green-300 rounded-3xl opacity-15 animate-pulse"></div>
-                  <div className="relative space-y-6">
-                    <h3 className="text-3xl font-black text-amber-100">
+              <div className="text-center mt-20 sm:mt-32 max-w-4xl mx-auto">
+                <div className="relative bg-green-900 bg-opacity-80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-12 transform hover:scale-105 transition-all duration-500 border-2 border-amber-200 border-opacity-50 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-green-300 rounded-2xl sm:rounded-3xl opacity-15 animate-pulse"></div>
+                  <div className="relative space-y-4 sm:space-y-6">
+                    <h3 className="text-xl sm:text-3xl font-black text-amber-100">
                       Ubuntu: "I am because we are"
                     </h3>
-                    <p className="text-lg text-amber-50 leading-relaxed max-w-2xl mx-auto font-medium">
+                    <p className="text-sm sm:text-lg text-amber-50 leading-relaxed max-w-2xl mx-auto font-medium">
                       This journey taught me that the most powerful technology
                       isn't code—it's the connections we build between cultures,
                       communities, and hearts. Every line of code became a
                       bridge, every feature a way to serve something greater
                       than ourselves.
                     </p>
-                    <div className="flex justify-center space-x-4">
-                      <div className="w-3 h-3 bg-amber-300 rounded-full animate-bounce"></div>
+                    <div className="flex justify-center space-x-3 sm:space-x-4">
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-amber-300 rounded-full animate-bounce"></div>
                       <div
-                        className="w-3 h-3 bg-green-300 rounded-full animate-bounce"
+                        className="w-2 h-2 sm:w-3 sm:h-3 bg-green-300 rounded-full animate-bounce"
                         style={{ animationDelay: "0.1s" }}
                       ></div>
                       <div
-                        className="w-3 h-3 bg-emerald-300 rounded-full animate-bounce"
+                        className="w-2 h-2 sm:w-3 sm:h-3 bg-emerald-300 rounded-full animate-bounce"
                         style={{ animationDelay: "0.2s" }}
                       ></div>
                     </div>

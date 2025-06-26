@@ -357,18 +357,21 @@ export default function WorkPage() {
         </div>
 
         {/* Header */}
-        <div ref={headerRef} className="relative z-10 pt-32 pb-20 px-8">
+        <div
+          ref={headerRef}
+          className="relative z-10 pt-20 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-8"
+        >
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-12 gap-8 items-end">
-              <div className="col-span-8 relative">
-                <h1 className="text-7xl md:text-9xl font-black tracking-tight leading-none relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end">
+              <div className="lg:col-span-8 relative">
+                <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tight leading-none relative">
                   <span className="block">MY</span>
-                  <span className="block text-red-500 ml-12">WORK</span>
+                  <span className="block text-red-500 ml-6 sm:ml-12">WORK</span>
                 </h1>
-                <div className="w-32 h-1 bg-black mt-4 ml-12"></div>
+                <div className="w-20 sm:w-32 h-1 bg-black mt-4 ml-6 sm:ml-12"></div>
               </div>
-              <div className="col-span-4 relative">
-                <div className="border-2 border-dotted border-gray-400 p-6 bg-white/50 relative z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="lg:col-span-4 relative">
+                <div className="border-2 border-dotted border-gray-400 p-4 sm:p-6 bg-white/50 relative z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <p className="text-sm font-mono leading-relaxed">
                     Some of my top projects...!
                   </p>
@@ -379,9 +382,9 @@ export default function WorkPage() {
         </div>
 
         {/* Projects Grid */}
-        <div className="relative z-10 px-8 pb-20">
+        <div className="relative z-10 px-4 sm:px-8 pb-20 sm:pb-32">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-16 lg:gap-20">
               {projects.map((project, index) => (
                 <div
                   key={project.id}
@@ -391,7 +394,7 @@ export default function WorkPage() {
                   className="group relative"
                 >
                   {/* Project number annotation */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-yellow-400 border-2 border-black font-black text-lg flex items-center justify-center z-20 rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-yellow-400 border-2 border-black font-black text-base sm:text-lg flex items-center justify-center z-20 rotate-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
@@ -417,19 +420,19 @@ export default function WorkPage() {
                       <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
 
                       {/* Project title overlay */}
-                      <div className="absolute bottom-4 left-4 z-10">
-                        <div className="font-mono text-sm bg-white/90 px-3 py-1 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm">
+                      <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-10">
+                        <div className="font-mono text-xs sm:text-sm bg-white/90 px-2 sm:px-3 py-1 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm">
                           {project.title.replace(/\s+/g, "_")}
                         </div>
                       </div>
 
                       {/* Tech stack overlay - neobrutalist badges */}
-                      <div className="tech-stack absolute top-3 right-3 bg-yellow-400 border-2 border-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="grid grid-cols-2 gap-1 w-32">
+                      <div className="tech-stack absolute top-2 sm:top-3 right-2 sm:right-3 bg-yellow-400 border-2 border-black p-1 sm:p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="grid grid-cols-2 gap-1 w-24 sm:w-32">
                           {project.technologies.slice(0, 4).map((tech) => (
                             <div
                               key={tech}
-                              className="text-[8px] font-black bg-white border border-black px-1 py-0.5 text-center leading-none uppercase tracking-tight shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                              className="text-[7px] sm:text-[8px] font-black bg-white border border-black px-0.5 sm:px-1 py-0.5 text-center leading-none uppercase tracking-tight shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
                               style={
                                 {
                                   // writingMode:
@@ -449,19 +452,19 @@ export default function WorkPage() {
                     </div>
 
                     {/* Project details */}
-                    <div className="p-8">
-                      <div className="flex items-start justify-between mb-6">
-                        <h3 className="text-2xl font-black leading-tight max-w-xs">
+                    <div className="p-4 sm:p-8">
+                      <div className="flex items-start justify-between mb-4 sm:mb-6">
+                        <h3 className="text-xl sm:text-2xl font-black leading-tight max-w-xs">
                           {project.title}
                         </h3>
-                        <div className="text-right">
-                          <div className="font-mono text-sm bg-gray-100 px-3 py-1 border border-gray-300">
+                        <div className="text-right ml-2">
+                          <div className="font-mono text-xs sm:text-sm bg-gray-100 px-2 sm:px-3 py-1 border border-gray-300">
                             {project.year}
                           </div>
                         </div>
                       </div>
 
-                      <p className="text-gray-700 leading-relaxed mb-8 font-light">
+                      <p className="text-gray-700 leading-relaxed mb-6 sm:mb-8 font-light text-sm sm:text-base">
                         {project.description}
                       </p>
 
@@ -475,9 +478,9 @@ export default function WorkPage() {
                               project.backgroundColor
                             );
                           }}
-                          className={`group inline-flex items-center space-x-2 text-black hover:text-red-500 transition-colors duration-300 px-4 py-2 border-2 border-black font-black uppercase text-sm tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-200 cursor-pointer`}
+                          className={`group inline-flex items-center space-x-2 text-black hover:text-red-500 transition-colors duration-300 px-3 sm:px-4 py-2 border-2 border-black font-black uppercase text-xs sm:text-sm tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-200 cursor-pointer`}
                         >
-                          <span className="font-mono text-sm uppercase tracking-wider">
+                          <span className="font-mono text-xs sm:text-sm uppercase tracking-wider">
                             View Project →
                           </span>
                         </button>
@@ -487,15 +490,15 @@ export default function WorkPage() {
 
                   {/* Decorative elements */}
                   {/* <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-blue-500 border border-black rotate-45 opacity-80 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div> */}
-                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 border-2 border-black rotate-12 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
-                  <div className="absolute -bottom-3 -left-3 w-5 h-5 bg-green-500 border border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
+                  <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-red-500 border-2 border-black rotate-12 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
+                  <div className="absolute -bottom-2 sm:-bottom-3 -left-2 sm:-left-3 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 border border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
                   {/* {index % 3 === 0 && (
                       <div className="absolute -top-2 right-8 text-xl opacity-30 rotate-12 bg-pink-300 w-8 h-8 flex items-center justify-center border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                         ✦
                       </div>
                     )} */}
                   {index % 2 === 0 && (
-                    <div className="absolute top-4 -left-3 w-3 h-8 bg-orange-400 border border-black rotate-45 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"></div>
+                    <div className="absolute top-3 sm:top-4 -left-2 sm:-left-3 w-2 sm:w-3 h-6 sm:h-8 bg-orange-400 border border-black rotate-45 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"></div>
                   )}
                 </div>
               ))}

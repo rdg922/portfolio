@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ===== NAVBAR CONFIGURATION =====
 const SCROLL_THRESHOLD = 20; // Pixels to scroll before switching states
 const TRANSITION_DURATION = 0.6; // Animation duration in seconds
+const MOBILE_BREAKPOINT = 768; // Mobile breakpoint in pixels
 // ================================
 
 interface NavbarContextType {
@@ -75,10 +76,12 @@ export const NavbarProvider = ({ children }: NavbarProviderProps) => {
       // Function to update widths and timeline
       const updateWidths = () => {
         initialWidth = window.innerWidth;
+        const currentIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
 
         // Check current scroll position to determine width
         const currentScrollY = window.scrollY;
-        const shouldBeScrolled = currentScrollY > SCROLL_THRESHOLD;
+        const shouldBeScrolled =
+          currentScrollY > SCROLL_THRESHOLD && !currentIsMobile;
 
         // Set width based on scroll state
         if (shouldBeScrolled) {
@@ -93,6 +96,9 @@ export const NavbarProvider = ({ children }: NavbarProviderProps) => {
       gsap.set(rightContent, { x: 0, scale: 1 });
       gsap.set(navContainer, { width: initialWidth });
 
+      // Set initial mobile state
+      // const initialIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
+
       // Add resize event listener
       const handleResize = (e: UIEvent) => {
         console.log(e);
@@ -106,24 +112,30 @@ export const NavbarProvider = ({ children }: NavbarProviderProps) => {
         trigger: "body",
         start: `${SCROLL_THRESHOLD}px top`,
         onEnter: () => {
-          // Animate to current screen width * 0.5
-          gsap.to(navContainer, {
-            width: window.innerWidth * 0.5,
-            duration: TRANSITION_DURATION,
-            ease: "power2.out",
-          });
-          // Delay the state change to allow outline to animate properly
-          gsap.delayedCall(0, () => setIsScrolled(true));
+          // Only animate and set scrolled state if not mobile
+          if (window.innerWidth >= MOBILE_BREAKPOINT) {
+            // Animate to current screen width * 0.5
+            gsap.to(navContainer, {
+              width: window.innerWidth * 0.5,
+              duration: TRANSITION_DURATION,
+              ease: "power2.out",
+            });
+            // Delay the state change to allow outline to animate properly
+            gsap.delayedCall(0, () => setIsScrolled(true));
+          }
         },
         onLeaveBack: () => {
-          // Keep outline visible until animation completes
-          gsap.delayedCall(TRANSITION_DURATION, () => setIsScrolled(false));
-          // Animate to current screen width
-          gsap.to(navContainer, {
-            width: window.innerWidth,
-            duration: TRANSITION_DURATION,
-            ease: "power2.out",
-          });
+          // Only animate and set scrolled state if not mobile
+          if (window.innerWidth >= MOBILE_BREAKPOINT) {
+            // Keep outline visible until animation completes
+            gsap.delayedCall(TRANSITION_DURATION, () => setIsScrolled(false));
+            // Animate to current screen width
+            gsap.to(navContainer, {
+              width: window.innerWidth,
+              duration: TRANSITION_DURATION,
+              ease: "power2.out",
+            });
+          }
         },
       });
 
@@ -136,7 +148,7 @@ export const NavbarProvider = ({ children }: NavbarProviderProps) => {
   );
 
   const contextValue: NavbarContextType = {
-    isScrolled,
+    isScrolled: isScrolled, // Always false on mobile
     handleNavigation,
     navbarRefs: {
       container,
