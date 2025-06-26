@@ -211,238 +211,265 @@ export default function ExperiencePage() {
   return (
     <>
       <TransitionOverlay />
-      <PageTransition backgroundColor="bg-gray-50">
-        <div className="min-h-screen bg-gray-50 text-gray-900 relative">
+      <PageTransition backgroundColor="bg-green-600">
+        <div className="min-h-screen bg-green-600 text-white relative overflow-hidden">
+          {/* Flowing background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-green-400 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute bottom-32 right-16 w-96 h-96 bg-emerald-400 rounded-full opacity-15 animate-bounce"></div>
+            <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-lime-400 rounded-full opacity-10 animate-ping"></div>
+          </div>
+
           {/* Hero Section */}
-          <div className="relative pt-32 pb-20 px-8 bg-gradient-to-br from-gray-100 to-gray-200">
+          <div className="relative pt-40 pb-20 px-8 z-10">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-12 gap-8 items-center">
                 <div className="col-span-8">
-                  <h1 className="text-6xl md:text-8xl font-black leading-none mb-6">
-                    <span className="block text-gray-900">Global</span>
-                    <span className="block text-green-600 ml-16">
-                      Experience
-                    </span>
-                  </h1>
-                  <div className="w-40 h-2 bg-green-600 ml-16 mb-8"></div>
-                  <p className="text-xl text-gray-700 max-w-lg ml-16 leading-relaxed mb-8">
-                    Four transformative weeks in South Africa working with Safe
-                    Cities, exploring Cape Town and Durban, and discovering how
-                    technology can create meaningful community impact through
-                    Ubuntu philosophy.
-                  </p>
+                  <div className="space-y-8">
+                    <div className="overflow-hidden">
+                      <h1 className="text-6xl md:text-8xl font-black leading-none mb-6 transform hover:skew-y-1 transition-transform duration-300">
+                        <span className="block text-white animate-pulse">
+                          Ubuntu
+                        </span>
+                        <span className="block text-yellow-300 ml-8 transform rotate-1">
+                          Journey
+                        </span>
+                      </h1>
+                    </div>
 
-                  {/* Navigation Links */}
-                  <div className="ml-16 flex flex-wrap gap-4">
-                    <button
-                      onClick={(e) =>
-                        triggerPageTransition(
-                          "/#my-work",
-                          e.currentTarget,
-                          "bg-gray-50"
-                        )
-                      }
-                      className="group inline-flex items-center space-x-2 bg-white border-2 border-gray-900 px-6 py-3 hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
-                    >
-                      <span className="font-mono text-sm uppercase tracking-wider">
-                        See more works
-                      </span>
-                      <span className="group-hover:translate-x-1 transition-transform">
-                        →
-                      </span>
-                    </button>
+                    <div className="flex items-center space-x-4">
+                      <div className="w-20 h-1 bg-yellow-300 transform skew-x-12"></div>
+                      <div className="w-12 h-1 bg-yellow-300 transform -skew-x-12"></div>
+                      <div className="w-8 h-1 bg-yellow-300"></div>
+                    </div>
 
-                    <button
-                      onClick={(e) =>
-                        triggerPageTransition(
-                          "/work/edu-africa/project",
-                          e.currentTarget,
-                          "bg-green-600"
-                        )
-                      }
-                      className="group inline-flex items-center space-x-2 bg-green-600 border-2 border-green-600 px-6 py-3 text-white hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
-                    >
-                      <span className="font-mono text-sm uppercase tracking-wider">
-                        View Project
-                      </span>
-                      <span className="group-hover:translate-x-1 transition-transform">
-                        →
-                      </span>
-                    </button>
+                    <div className="relative">
+                      <p className="text-xl text-green-100 max-w-lg ml-8 leading-relaxed mb-8 transform hover:translate-x-2 transition-transform duration-300">
+                        Four transformative weeks in South Africa—from Cape
+                        Town's vibrant streets to Durban's coastal energy. A
+                        journey of cultural immersion, community connection, and
+                        discovering how technology bridges hearts across
+                        continents.
+                      </p>
+                      <div className="absolute -left-4 top-0 w-2 h-full bg-yellow-300 opacity-50 transform skew-y-12"></div>
+                    </div>
+
+                    {/* Flowing Navigation Links */}
+                    <div className="ml-8 flex flex-wrap gap-6">
+                      <button
+                        onClick={(e) =>
+                          triggerPageTransition(
+                            "/#my-work",
+                            e.currentTarget,
+                            "bg-green-600"
+                          )
+                        }
+                        className="group relative overflow-hidden bg-amber-50 text-green-800 px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-500 hover:scale-105 cursor-pointer border-2 border-green-800"
+                      >
+                        <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-amber-50 transition-colors duration-300">
+                          More Adventures
+                        </span>
+                        <div className="absolute inset-0 bg-green-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      </button>
+
+                      <button
+                        onClick={(e) =>
+                          triggerPageTransition(
+                            "/work/edu-africa/project",
+                            e.currentTarget,
+                            "bg-gray-900"
+                          )
+                        }
+                        className="group relative overflow-hidden bg-transparent border-2 border-amber-200 text-amber-100 px-8 py-4 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105 cursor-pointer"
+                      >
+                        <span className="relative z-10 font-mono text-sm uppercase tracking-wider font-bold group-hover:text-green-800 transition-colors duration-300">
+                          Technical Deep Dive
+                        </span>
+                        <div className="absolute inset-0 bg-amber-200 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></div>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div className="col-span-4">
-                  <div className="relative">
-                    <Image
-                      src={"/images/2025-05-17-007.jpg"}
-                      alt="Cape Town experience - Table Mountain and team collaboration"
-                      width={500}
-                      height={400}
-                      className="w-full h-full"
-                    />
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-yellow-300 to-green-300 rounded-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300 blur"></div>
+                    <div className="relative bg-white rounded-lg overflow-hidden transform rotate-2 group-hover:-rotate-1 transition-transform duration-500">
+                      <Image
+                        src={"/images/2025-05-17-007.jpg"}
+                        alt="Ubuntu journey - South Africa experience"
+                        width={500}
+                        height={400}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Experience Sections */}
-          <div className="py-20 px-8">
-            <div className="max-w-6xl mx-auto space-y-24">
-              {experienceSections.map((section, index) => (
-                <div
-                  key={section.id}
-                  ref={(el) => {
-                    if (el) experienceSectionsRef.current[index] = el;
-                  }}
-                  className="relative"
-                >
-                  {/* Main content area with background */}
+          {/* Fluid Experience Sections */}
+          <div className="relative py-20 px-8 z-10">
+            <div className="max-w-6xl mx-auto space-y-32">
+              {experienceSections.map((section, index) => {
+                const isEven = index % 2 === 0;
+                const rotationClass = isEven ? "rotate-1" : "-rotate-1";
+                const flowDirection = isEven
+                  ? "translate-x-8"
+                  : "-translate-x-8";
+
+                return (
                   <div
-                    className={`relative ${section.color} border-2 border-dotted border-gray-400 p-12 mb-8`}
+                    key={section.id}
+                    ref={(el) => {
+                      if (el) experienceSectionsRef.current[index] = el;
+                    }}
+                    className={`relative transform ${rotationClass} hover:rotate-0 transition-all duration-700 hover:scale-105`}
                   >
-                    <div className="grid lg:grid-cols-3 gap-12 items-start">
-                      {/* Text content */}
-                      <div className="lg:col-span-2 space-y-6">
-                        <div className="space-y-2">
-                          <span className="font-mono text-sm text-gray-700 uppercase tracking-wider">
-                            Chapter {String(index + 1).padStart(2, "0")}
-                          </span>
-                          <h3 className="text-4xl font-black text-gray-900 leading-tight">
-                            {section.title}
-                          </h3>
-                          {section.subtitle && (
-                            <p className="text-xl font-bold text-gray-700 italic">
-                              {section.subtitle}
-                            </p>
-                          )}
-                        </div>
+                    {/* Flowing background blob */}
+                    <div
+                      className={`absolute inset-0 ${section.color} opacity-20 rounded-full transform scale-150 blur-3xl animate-pulse`}
+                    ></div>
 
-                        <p className="text-lg text-gray-800 leading-relaxed">
-                          {section.description}
-                        </p>
+                    <div className="relative bg-green-900 bg-opacity-60 backdrop-blur-sm border-2 border-amber-200 border-opacity-50 rounded-3xl p-8 md:p-12 hover:bg-opacity-80 transition-all duration-500 shadow-2xl">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        {/* Content */}
+                        <div
+                          className={`${
+                            isEven ? "lg:order-1" : "lg:order-2"
+                          } space-y-6`}
+                        >
+                          <div className="flex items-center space-x-4">
+                            <div
+                              className={`w-3 h-3 ${section.color} rounded-full animate-bounce`}
+                            ></div>
+                            <div
+                              className={`w-2 h-2 ${section.color} rounded-full animate-bounce`}
+                              style={{ animationDelay: "0.1s" }}
+                            ></div>
+                            <div
+                              className={`w-1 h-1 ${section.color} rounded-full animate-bounce`}
+                              style={{ animationDelay: "0.2s" }}
+                            ></div>
+                          </div>
 
-                        {section.extendedText && (
-                          <p className="text-base text-gray-700 leading-relaxed border-l-4 border-gray-600 pl-6">
-                            {section.extendedText}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Photo cluster */}
-                      <div className="lg:col-span-1">
-                        {section.photoCluster && (
                           <div className="space-y-4">
-                            <span className="font-mono text-xs text-gray-600 uppercase tracking-wider">
-                              Memories from {section.title.toLowerCase()}
-                            </span>
-
-                            {/* Dynamic photo grid layouts - Simplified for fewer, larger images */}
-                            {section.photoCluster.length === 1 && (
-                              // Single large image
-                              <div className="w-full h-64 border border-gray-500 overflow-hidden relative">
-                                <MediaDisplay
-                                  src={section.photoCluster[0]}
-                                  alt={`Memory from ${section.title}`}
-                                  className="object-cover"
-                                />
-                              </div>
-                            )}
-
-                            {section.photoCluster.length === 2 && (
-                              // Two images layout
-                              <div className="space-y-4">
-                                <div className="w-full h-56 border border-gray-500 overflow-hidden relative">
-                                  <MediaDisplay
-                                    src={section.photoCluster[0]}
-                                    alt={`Memory from ${section.title}`}
-                                    className="object-cover"
-                                  />
-                                </div>
-                                <div className="w-4/5 h-48 border border-gray-500 ml-auto overflow-hidden relative">
-                                  <MediaDisplay
-                                    src={section.photoCluster[1]}
-                                    alt={`Memory from ${section.title}`}
-                                    className="object-cover"
-                                  />
-                                </div>
-                              </div>
-                            )}
-
-                            {section.photoCluster.length === 3 && (
-                              // Three images layout
-                              <div className="space-y-4">
-                                <div className="w-full h-48 border border-gray-500 overflow-hidden relative">
-                                  <MediaDisplay
-                                    src={section.photoCluster[0]}
-                                    alt={`Memory from ${section.title}`}
-                                    className="object-cover"
-                                  />
-                                </div>
-                                <div className="grid grid-cols-2 gap-4">
-                                  {section.photoCluster
-                                    .slice(1, 3)
-                                    .map((photo, photoIndex) => (
-                                      <div
-                                        key={photoIndex}
-                                        className="h-40 border border-gray-500 overflow-hidden relative"
-                                      >
-                                        <MediaDisplay
-                                          src={photo}
-                                          alt={`Memory from ${section.title}`}
-                                          className="object-cover"
-                                        />
-                                      </div>
-                                    ))}
-                                </div>
-                              </div>
+                            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight transform hover:skew-y-1 transition-transform duration-300">
+                              {section.title}
+                            </h2>
+                            {section.subtitle && (
+                              <h3 className="text-xl text-green-900 font-bold bg-amber-200 inline-block px-3 py-1 rounded-lg transform hover:translate-x-2 transition-transform duration-300">
+                                {section.subtitle}
+                              </h3>
                             )}
                           </div>
-                        )}
+
+                          <div className="space-y-4">
+                            <p className="text-lg text-amber-50 leading-relaxed font-medium bg-green-900 bg-opacity-80 p-4 rounded-lg backdrop-blur-sm border border-green-700">
+                              {section.description}
+                            </p>
+                            {section.extendedText && (
+                              <p className="text-base text-amber-100 leading-relaxed bg-green-800 bg-opacity-70 p-4 rounded-lg backdrop-blur-sm border border-green-600">
+                                {section.extendedText}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Flowing decorative elements */}
+                          <div className="flex space-x-2 mt-6">
+                            <div
+                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-24`}
+                              style={{ width: "4rem" }}
+                            ></div>
+                            <div
+                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-16`}
+                              style={{ width: "2rem" }}
+                            ></div>
+                            <div
+                              className={`h-1 ${section.color} rounded-full transition-all duration-1000 hover:w-12`}
+                              style={{ width: "1rem" }}
+                            ></div>
+                          </div>
+                        </div>
+
+                        {/* Photo cluster */}
+                        <div
+                          className={`${
+                            isEven ? "lg:order-2" : "lg:order-1"
+                          } relative`}
+                        >
+                          {section.photoCluster &&
+                            section.photoCluster.length > 0 && (
+                              <div className="relative space-y-4">
+                                {section.photoCluster.map(
+                                  (photo, photoIndex) => (
+                                    <div
+                                      key={photoIndex}
+                                      className={`relative transform transition-all duration-500 hover:scale-110 hover:z-10 ${
+                                        photoIndex === 0
+                                          ? "rotate-2 hover:-rotate-1"
+                                          : photoIndex === 1
+                                          ? "-rotate-3 hover:rotate-2 translate-x-8"
+                                          : "rotate-1 hover:-rotate-2 -translate-x-4"
+                                      }`}
+                                      style={{
+                                        marginTop:
+                                          photoIndex > 0 ? "-2rem" : "0",
+                                        marginLeft:
+                                          photoIndex % 2 === 0 ? "0" : "2rem",
+                                      }}
+                                    >
+                                      <div className="relative bg-white p-2 rounded-lg shadow-2xl">
+                                        <MediaDisplay
+                                          src={photo}
+                                          alt={`${section.title} - Image ${
+                                            photoIndex + 1
+                                          }`}
+                                          className="w-full h-48 object-cover rounded"
+                                        />
+                                        <div
+                                          className={`absolute -bottom-2 -right-2 w-6 h-6 bg-green-800 border-2 border-amber-200 rounded-full`}
+                                        ></div>
+                                      </div>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            )}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Decorative elements */}
-                    {index % 4 === 0 && (
-                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-yellow-400 border-2 border-black transform rotate-45"></div>
-                    )}
-                    {index % 4 === 1 && (
-                      <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-red-400 border border-black transform -rotate-12"></div>
-                    )}
-                    {index % 4 === 2 && (
-                      <div className="absolute top-6 -right-2 text-3xl opacity-60 rotate-12">
-                        ✦
-                      </div>
-                    )}
-                    {index % 4 === 3 && (
-                      <div className="absolute -top-2 left-8 w-4 h-4 bg-blue-500 transform rotate-45"></div>
-                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
-              {/* Reflection Section */}
+              {/* Flowing conclusion */}
               <div className="text-center mt-32 max-w-4xl mx-auto">
-                <div className="bg-white border-2 border-dotted border-gray-400 p-12">
-                  <h3 className="text-4xl font-black mb-8 text-gray-900">
-                    Ubuntu Lives On
-                  </h3>
-                  <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                    Those four weeks in South Africa—three in Cape Town and one
-                    exploring Durban and Saint Lucia—fundamentally transformed
-                    how I approach technology, community, and my role as a
-                    global citizen. Working with Safe Cities taught me that
-                    sustainable change comes from relationships, not just
-                    solutions.
-                  </p>
-                  <p className="text-lg text-gray-600 leading-relaxed italic">
-                    The platform was just the beginning. The real impact has
-                    been the ongoing collaboration with South African
-                    communities, the Ubuntu philosophy that now guides my work,
-                    and the understanding that the best technology amplifies
-                    human connection rather than replacing it.
-                  </p>
-                  <div className="w-32 h-2 bg-green-600 mx-auto mt-8"></div>
+                <div className="relative bg-green-900 bg-opacity-80 backdrop-blur-sm rounded-3xl p-12 transform hover:scale-105 transition-all duration-500 border-2 border-amber-200 border-opacity-50 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-green-300 rounded-3xl opacity-15 animate-pulse"></div>
+                  <div className="relative space-y-6">
+                    <h3 className="text-3xl font-black text-amber-100">
+                      Ubuntu: "I am because we are"
+                    </h3>
+                    <p className="text-lg text-amber-50 leading-relaxed max-w-2xl mx-auto font-medium">
+                      This journey taught me that the most powerful technology
+                      isn't code—it's the connections we build between cultures,
+                      communities, and hearts. Every line of code became a
+                      bridge, every feature a way to serve something greater
+                      than ourselves.
+                    </p>
+                    <div className="flex justify-center space-x-4">
+                      <div className="w-3 h-3 bg-amber-300 rounded-full animate-bounce"></div>
+                      <div
+                        className="w-3 h-3 bg-green-300 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.1s" }}
+                      ></div>
+                      <div
+                        className="w-3 h-3 bg-emerald-300 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

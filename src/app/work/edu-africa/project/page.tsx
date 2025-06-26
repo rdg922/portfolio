@@ -20,55 +20,94 @@ interface ProjectSection {
   imageAlt: string;
 }
 
+interface ProjectSection {
+  id: string;
+  title: string;
+  description: string;
+  imageAlt: string;
+  imageSrc: string;
+  features: string[];
+}
+
 const projectSections: ProjectSection[] = [
   {
-    id: "platform-overview",
-    title: "Notion-Inspired Workspace",
-    description:
-      "A comprehensive project management platform combining Notion's content editing capabilities with collaboration features tailored for Safe Cities South Africa. Built with Next.js 14, TypeScript, and Supabase to streamline programme coordination and team collaboration.",
-    imageAlt: "Platform Dashboard",
-  },
-  {
-    id: "hierarchical-structure",
-    title: "Programme Organization",
-    description:
-      "Hierarchical programme structure that organizes projects and pages in nested structures. Teams can create programmes, sub-programmes, and individual pages with clear parent-child relationships, enabling efficient navigation and content management.",
-    imageAlt: "Programme Hierarchy",
-  },
-  {
-    id: "real-time-collaboration",
-    title: "Live Collaboration Engine",
-    description:
-      "Real-time collaborative editing with conflict resolution powered by Supabase's real-time capabilities. Multiple team members can edit content simultaneously, with live cursors, change highlighting, and automatic conflict resolution.",
-    imageAlt: "Real-time Collaboration",
-  },
-  {
-    id: "wysiwyg-editor",
+    id: "page-editor",
     title: "Rich Text Editor",
     description:
       "WYSIWYG markdown editor with keyboard shortcuts and drag-and-drop functionality. Supports rich formatting, embedded media, tables, and custom blocks. Built for non-technical users with intuitive editing tools.",
-    imageAlt: "Content Editor",
+    imageAlt: "Page Editor Interface",
+    imageSrc: "/images/safe-cities/Page Editor.png",
+    features: [
+      "Real-time editing",
+      "Markdown support",
+      "Drag & drop",
+      "Custom blocks",
+    ],
   },
   {
-    id: "permissions-system",
-    title: "Granular Access Control",
-    description:
-      "Per-page permissions system with View, Comment, and Edit access levels. Role-based permissions ensure sensitive programme information stays secure while enabling appropriate collaboration across teams.",
-    imageAlt: "Permissions Management",
-  },
-  {
-    id: "communication-hub",
+    id: "chat-system",
     title: "Integrated Chat System",
     description:
       "Page-level chat rooms with @mention functionality and a global chat hub for centralized communication. Real-time notifications for mentions, comments, and permission changes keep teams connected and informed.",
     imageAlt: "Chat Interface",
+    imageSrc: "/images/safe-cities/Chat.png",
+    features: [
+      "@mention system",
+      "Real-time messaging",
+      "Thread organization",
+      "Notification system",
+    ],
   },
   {
-    id: "tech-stack",
-    title: "Modern Tech Foundation",
+    id: "forms-management",
+    title: "Dynamic Forms System",
+    description:
+      "Comprehensive form builder with validation, conditional logic, and data collection capabilities. Enables Safe Cities to create surveys, applications, and data entry forms with ease.",
+    imageAlt: "Forms Management",
+    imageSrc: "/images/safe-cities/Forms.png",
+    features: [
+      "Form builder",
+      "Validation rules",
+      "Conditional logic",
+      "Data export",
+    ],
+  },
+  {
+    id: "file-management",
+    title: "File Management System",
+    description:
+      "Secure file upload and organization system with version control and sharing capabilities. Supports multiple file types with preview functionality and access controls.",
+    imageAlt: "File Dialog",
+    imageSrc: "/images/safe-cities/Add File Dialog.png",
+    features: [
+      "Secure uploads",
+      "Version control",
+      "File previews",
+      "Access controls",
+    ],
+  },
+  {
+    id: "sharing-permissions",
+    title: "Granular Sharing Controls",
+    description:
+      "Per-page permissions system with View, Comment, and Edit access levels. Role-based permissions ensure sensitive programme information stays secure while enabling appropriate collaboration across teams.",
+    imageAlt: "Sharing and Permissions",
+    imageSrc: "/images/safe-cities/Share.png",
+    features: [
+      "Role-based access",
+      "Permission levels",
+      "Secure sharing",
+      "Team collaboration",
+    ],
+  },
+  {
+    id: "system-architecture",
+    title: "Technical Architecture",
     description:
       "Built on Next.js 14 with TypeScript for type safety, Tailwind CSS for responsive design, tRPC for end-to-end type-safe APIs, Drizzle ORM with Supabase PostgreSQL, and Clerk for authentication. Deployed with modern DevOps practices.",
-    imageAlt: "Technology Architecture",
+    imageAlt: "System Architecture Diagram",
+    imageSrc: "/images/safe-cities/System Architecture.png",
+    features: ["Next.js 14", "TypeScript", "Supabase", "Real-time sync"],
   },
 ];
 
@@ -158,25 +197,25 @@ export default function ProjectPage() {
   return (
     <>
       <TransitionOverlay />
-      <PageTransition backgroundColor="bg-gray-50">
-        <div className="min-h-screen bg-gray-50 text-gray-900 relative">
+      <PageTransition backgroundColor="bg-gray-900">
+        <div className="min-h-screen bg-gray-900 text-white relative">
           {/* Hero Section */}
-          <div className="relative pt-32 pb-20 px-8 bg-gradient-to-br from-gray-100 to-gray-200">
+          <div className="relative pt-60 pb-20 px-8 bg-gray-900">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-12 gap-8 items-center">
                 <div className="col-span-8">
                   <h1 className="text-6xl md:text-8xl font-black leading-none mb-6">
-                    <span className="block text-gray-900">Safe Cities</span>
-                    <span className="block text-green-600 ml-16">
+                    <span className="block text-white">Safe Cities</span>
+                    <span className="block text-yellow-400 ml-16">
                       Project Platform
                     </span>
                   </h1>
-                  <div className="w-40 h-2 bg-green-600 ml-16 mb-8"></div>
-                  <p className="text-xl text-gray-700 max-w-lg ml-16 leading-relaxed mb-8">
-                    Building a comprehensive project management platform for
-                    Safe Cities South Africa—a Notion-inspired workspace that
-                    streamlines programme coordination and enhances team
-                    collaboration for community impact.
+                  <div className="w-40 h-2 bg-yellow-400 ml-16 mb-8"></div>
+                  <p className="text-xl text-gray-300 max-w-lg ml-16 leading-relaxed mb-8">
+                    A comprehensive project management platform designed for
+                    Safe Cities South Africa. Built with modern web technologies
+                    to streamline programme coordination and enhance team
+                    collaboration.
                   </p>
 
                   {/* Navigation Links */}
@@ -189,7 +228,7 @@ export default function ProjectPage() {
                           "bg-gray-50"
                         )
                       }
-                      className="group inline-flex items-center space-x-2 bg-white border-2 border-gray-900 px-6 py-3 hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                      className="group inline-flex items-center space-x-2 bg-white border-2 border-white px-6 py-3 text-gray-900 hover:bg-gray-900 hover:text-white hover:border-yellow-400 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
                     >
                       <span className="font-mono text-sm uppercase tracking-wider">
                         See more works
@@ -219,13 +258,13 @@ export default function ProjectPage() {
                   </div>
                 </div>
                 <div className="col-span-4">
-                  <div className="relative">
+                  <div className="relative border-4 border-yellow-400 shadow-[8px_8px_0px_0px_#facc15]">
                     <Image
-                      src={"/images/2025-05-17-007.jpg"}
-                      alt="Safe Cities South Africa team working on the project management platform"
+                      src={"/images/safe-cities/System Architecture.png"}
+                      alt="Safe Cities Project Management Platform Architecture"
                       width={500}
                       height={400}
-                      className="w-full h-full"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
@@ -234,374 +273,97 @@ export default function ProjectPage() {
           </div>
 
           {/* Project Sections */}
-          <div className="py-20 px-8">
-            <div className="max-w-7xl mx-auto space-y-32">
-              {projectSections.map((section, index) => {
-                // Define color schemes for each section
-                const colorSchemes = [
-                  {
-                    bg: "bg-yellow-400",
-                    accent: "bg-black",
-                    text: "text-black",
-                    border: "border-black",
-                    shadow: "shadow-[8px_8px_0px_0px_#000000]",
-                  },
-                  {
-                    bg: "bg-cyan-400",
-                    accent: "bg-purple-600",
-                    text: "text-purple-900",
-                    border: "border-purple-600",
-                    shadow: "shadow-[8px_8px_0px_0px_#7c3aed]",
-                  },
-                  {
-                    bg: "bg-lime-300",
-                    accent: "bg-red-500",
-                    text: "text-red-900",
-                    border: "border-red-500",
-                    shadow: "shadow-[8px_8px_0px_0px_#ef4444]",
-                  },
-                  {
-                    bg: "bg-pink-400",
-                    accent: "bg-green-700",
-                    text: "text-green-900",
-                    border: "border-green-700",
-                    shadow: "shadow-[8px_8px_0px_0px_#15803d]",
-                  },
-                  {
-                    bg: "bg-orange-400",
-                    accent: "bg-blue-800",
-                    text: "text-blue-900",
-                    border: "border-blue-800",
-                    shadow: "shadow-[8px_8px_0px_0px_#1e40af]",
-                  },
-                  {
-                    bg: "bg-emerald-400",
-                    accent: "bg-purple-800",
-                    text: "text-purple-900",
-                    border: "border-purple-800",
-                    shadow: "shadow-[8px_8px_0px_0px_#6b21a8]",
-                  },
-                  {
-                    bg: "bg-rose-400",
-                    accent: "bg-gray-900",
-                    text: "text-gray-900",
-                    border: "border-gray-900",
-                    shadow: "shadow-[8px_8px_0px_0px_#111827]",
-                  },
-                ];
+          <div className="py-20 px-8 bg-gray-900">
+            <div className="max-w-7xl mx-auto space-y-24">
+              {projectSections.map((section, index) => (
+                <div
+                  key={section.id}
+                  ref={(el) => {
+                    if (el) projectSectionsRef.current[index] = el;
+                  }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                >
+                  {/* Content */}
+                  <div
+                    className={`${
+                      index % 2 === 0 ? "lg:order-1" : "lg:order-2"
+                    } space-y-6`}
+                  >
+                    <div className="inline-block">
+                      <span className="bg-yellow-400 text-gray-900 px-4 py-2 font-mono text-sm uppercase tracking-wider font-bold">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
 
-                const colors = colorSchemes[index % colorSchemes.length];
-                const layoutType = index % 4;
+                    <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                      {section.title}
+                    </h2>
 
-                if (layoutType === 0) {
-                  // Asymmetric hero layout with bold geometric shapes
-                  return (
-                    <div
-                      key={section.id}
-                      ref={(el) => {
-                        if (el) projectSectionsRef.current[index] = el;
-                      }}
-                      className="relative"
-                    >
-                      <div
-                        className={`${colors.bg} ${colors.border} border-8 p-16 transform -rotate-1 hover:rotate-0 transition-transform duration-500`}
-                      >
-                        <div className="grid grid-cols-12 gap-8 items-center">
-                          <div className="col-span-7">
-                            <div className="space-y-8">
-                              <div className="flex items-center space-x-6">
-                                <div
-                                  className={`w-16 h-16 ${colors.accent} flex items-center justify-center`}
-                                >
-                                  <span className="text-white font-black text-2xl">
-                                    {String(index + 1).padStart(2, "0")}
-                                  </span>
-                                </div>
-                                <span
-                                  className={`font-mono text-lg ${colors.text} uppercase tracking-widest font-bold`}
-                                >
-                                  Core Feature
-                                </span>
-                              </div>
+                    <p className="text-lg text-gray-300 leading-relaxed">
+                      {section.description}
+                    </p>
 
-                              <h3
-                                className={`text-6xl font-black leading-none ${colors.text} transform hover:scale-105 transition-transform cursor-default`}
-                              >
-                                {section.title.split(" ").map((word, i) => (
-                                  <span
-                                    key={i}
-                                    className="block"
-                                    style={{ marginLeft: i * 20 }}
-                                  >
-                                    {word}
-                                  </span>
-                                ))}
-                              </h3>
-
-                              <p
-                                className={`text-xl leading-relaxed ${colors.text} max-w-2xl font-medium`}
-                              >
-                                {section.description}
-                              </p>
-
-                              <div className="flex space-x-4">
-                                <div
-                                  className={`w-20 h-4 ${colors.accent}`}
-                                ></div>
-                                <div
-                                  className={`w-12 h-4 ${colors.accent} opacity-70`}
-                                ></div>
-                                <div
-                                  className={`w-8 h-4 ${colors.accent} opacity-40`}
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="col-span-5">
-                            <div className="relative">
-                              <div
-                                className={`w-full h-80 ${colors.accent} border-4 ${colors.border} flex items-center justify-center transform rotate-3 hover:-rotate-1 transition-transform duration-300`}
-                              >
-                                <div className="text-center">
-                                  <div className="text-6xl mb-4 text-white opacity-80">
-                                    ⚡
-                                  </div>
-                                  <div className="font-mono text-sm text-white uppercase tracking-wider">
-                                    {section.imageAlt}
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                className={`absolute -top-4 -right-4 w-12 h-12 ${colors.bg} ${colors.border} border-4 transform rotate-45`}
-                              ></div>
-                              <div
-                                className={`absolute -bottom-4 -left-4 w-8 h-8 ${colors.accent} transform -rotate-12`}
-                              ></div>
-                            </div>
-                          </div>
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-2 gap-4 mt-8">
+                      {section.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-yellow-400"></div>
+                          <span className="text-sm text-gray-400 font-mono uppercase tracking-wide">
+                            {feature}
+                          </span>
                         </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Image */}
+                  <div
+                    className={`${
+                      index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                    }`}
+                  >
+                    <div className="relative border-4 border-white shadow-[8px_8px_0px_0px_#ffffff] bg-white">
+                      <Image
+                        src={section.imageSrc}
+                        alt={section.imageAlt}
+                        width={600}
+                        height={400}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Technical Stack Section */}
+            <div className="max-w-4xl mx-auto mt-32">
+              <div className="bg-white border-4 border-yellow-400 shadow-[8px_8px_0px_0px_#facc15] p-8">
+                <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">
+                  TECHNICAL SPECIFICATIONS
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {[
+                    { tech: "Next.js 14", category: "Framework" },
+                    { tech: "TypeScript", category: "Language" },
+                    { tech: "Supabase", category: "Database" },
+                    { tech: "tRPC", category: "API Layer" },
+                    { tech: "Tailwind CSS", category: "Styling" },
+                    { tech: "Drizzle ORM", category: "ORM" },
+                    { tech: "Clerk", category: "Auth" },
+                    { tech: "Vercel", category: "Deployment" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="text-center">
+                      <div className="font-mono text-sm text-gray-600 uppercase tracking-wider mb-1">
+                        {item.category}
+                      </div>
+                      <div className="font-black text-gray-900">
+                        {item.tech}
                       </div>
                     </div>
-                  );
-                } else if (layoutType === 1) {
-                  // Stacked brutalist cards
-                  return (
-                    <div
-                      key={section.id}
-                      ref={(el) => {
-                        if (el) projectSectionsRef.current[index] = el;
-                      }}
-                      className="relative max-w-4xl mx-auto"
-                    >
-                      <div
-                        className={`${colors.bg} ${colors.border} border-6 p-12 transform rotate-1 hover:-rotate-1 transition-all duration-500 hover:scale-105`}
-                      >
-                        <div className="space-y-8">
-                          <div className="flex justify-between items-start">
-                            <div className="space-y-4">
-                              <div
-                                className={`inline-flex items-center space-x-3 ${colors.accent} px-6 py-3`}
-                              >
-                                <span className="text-white font-black text-lg">
-                                  {String(index + 1).padStart(2, "0")}
-                                </span>
-                                <span className="text-white font-mono uppercase tracking-widest">
-                                  Feature
-                                </span>
-                              </div>
-                              <h3
-                                className={`text-5xl font-black ${colors.text} leading-tight max-w-lg`}
-                              >
-                                {section.title}
-                              </h3>
-                            </div>
-
-                            <div
-                              className={`w-24 h-24 ${colors.accent} ${colors.border} border-4 flex items-center justify-center transform -rotate-12 hover:rotate-12 transition-transform`}
-                            >
-                              <span className="text-white text-3xl">🚀</span>
-                            </div>
-                          </div>
-
-                          <div
-                            className={`h-48 ${colors.accent} ${colors.border} border-4 flex items-center justify-center transform -skew-x-3 hover:skew-x-0 transition-transform`}
-                          >
-                            <div className="text-center transform skew-x-3 hover:skew-x-0 transition-transform">
-                              <div className="text-4xl mb-4 text-white">💻</div>
-                              <div className="font-mono text-white uppercase tracking-wider">
-                                {section.imageAlt}
-                              </div>
-                            </div>
-                          </div>
-
-                          <p
-                            className={`text-xl ${colors.text} leading-relaxed font-medium`}
-                          >
-                            {section.description}
-                          </p>
-
-                          <div className="flex justify-end">
-                            <div
-                              className={`w-32 h-6 ${colors.accent} transform skew-x-12`}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                } else if (layoutType === 2) {
-                  // Grid-based explosive layout
-                  return (
-                    <div
-                      key={section.id}
-                      ref={(el) => {
-                        if (el) projectSectionsRef.current[index] = el;
-                      }}
-                      className="grid grid-cols-3 gap-8"
-                    >
-                      <div
-                        className={`col-span-1 ${colors.accent} ${colors.border} border-6 p-8 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110`}
-                      >
-                        <div className="text-center space-y-4">
-                          <div
-                            className={`w-16 h-16 ${colors.bg} mx-auto flex items-center justify-center`}
-                          >
-                            <span
-                              className={`font-black text-2xl ${colors.text}`}
-                            >
-                              {String(index + 1).padStart(2, "0")}
-                            </span>
-                          </div>
-                          <div className="text-white text-4xl">⚙️</div>
-                          <p className="text-white font-mono uppercase text-sm tracking-wider">
-                            {section.imageAlt}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div
-                        className={`col-span-2 ${colors.bg} ${colors.border} border-6 p-12 transform rotate-1 hover:-rotate-1 transition-all duration-500`}
-                      >
-                        <div className="space-y-6">
-                          <div className="space-y-4">
-                            <span
-                              className={`font-mono text-lg ${colors.text} uppercase tracking-widest font-bold`}
-                            >
-                              Technical Implementation
-                            </span>
-                            <h3
-                              className={`text-4xl font-black ${colors.text} leading-tight`}
-                            >
-                              {section.title}
-                            </h3>
-                          </div>
-
-                          <p
-                            className={`text-lg ${colors.text} leading-relaxed font-medium`}
-                          >
-                            {section.description}
-                          </p>
-
-                          <div className="flex space-x-3">
-                            <div
-                              className={`px-4 py-2 ${colors.accent} text-white font-mono text-sm uppercase transform -skew-x-12`}
-                            >
-                              Next.js
-                            </div>
-                            <div
-                              className={`px-4 py-2 ${colors.accent} text-white font-mono text-sm uppercase transform skew-x-12`}
-                            >
-                              TypeScript
-                            </div>
-                            <div
-                              className={`px-4 py-2 ${colors.accent} text-white font-mono text-sm uppercase`}
-                            >
-                              Supabase
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                } else {
-                  // Split diagonal layout
-                  return (
-                    <div
-                      key={section.id}
-                      ref={(el) => {
-                        if (el) projectSectionsRef.current[index] = el;
-                      }}
-                      className="relative"
-                    >
-                      <div className="grid grid-cols-2 gap-12 items-stretch">
-                        <div
-                          className={`${colors.bg} ${colors.border} border-6 p-12 transform rotate-2 hover:-rotate-1 transition-all duration-500 order-2`}
-                        >
-                          <div className="space-y-8">
-                            <div className="flex items-center space-x-4">
-                              <div
-                                className={`w-3 h-3 ${colors.accent} transform rotate-45`}
-                              ></div>
-                              <span
-                                className={`font-mono text-lg ${colors.text} uppercase tracking-widest font-bold`}
-                              >
-                                Feature {String(index + 1).padStart(2, "0")}
-                              </span>
-                            </div>
-
-                            <h3
-                              className={`text-4xl font-black ${colors.text} leading-tight`}
-                            >
-                              {section.title}
-                            </h3>
-
-                            <p
-                              className={`text-lg ${colors.text} leading-relaxed font-medium`}
-                            >
-                              {section.description}
-                            </p>
-
-                            <div className="space-y-3">
-                              <div
-                                className={`w-full h-2 ${colors.accent}`}
-                              ></div>
-                              <div
-                                className={`w-3/4 h-2 ${colors.accent} opacity-70`}
-                              ></div>
-                              <div
-                                className={`w-1/2 h-2 ${colors.accent} opacity-40`}
-                              ></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div
-                          className={`${colors.accent} ${colors.border} border-6 p-16 transform -rotate-2 hover:rotate-1 transition-all duration-500 order-1 flex items-center justify-center`}
-                        >
-                          <div className="text-center space-y-6">
-                            <div className="text-6xl text-white">🔧</div>
-                            <div className="font-mono text-white uppercase tracking-wider text-lg">
-                              {section.imageAlt}
-                            </div>
-                            <div
-                              className={`w-16 h-1 ${colors.bg} mx-auto`}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Floating decorative elements */}
-                      <div
-                        className={`absolute -top-6 left-1/2 w-8 h-8 ${colors.bg} ${colors.border} border-4 transform rotate-45 -translate-x-1/2`}
-                      ></div>
-                      <div
-                        className={`absolute -bottom-6 right-1/4 w-6 h-6 ${colors.accent} transform -rotate-12`}
-                      ></div>
-                    </div>
-                  );
-                }
-              })}
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
