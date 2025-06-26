@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import PageTransition, {
   TransitionOverlay,
+  triggerPageTransition,
 } from "../../../components/PageTransition";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -174,6 +175,25 @@ export default function DinoLuzziPage() {
             <div className="absolute -top-2 -right-2 text-yellow-400 text-2xl">
               💨
             </div>
+          </div>
+
+          {/* Back to Works button */}
+          <div
+            className="fixed top-28 left-8 z-50"
+            onClick={(e) => {
+              e.preventDefault();
+              triggerPageTransition("/#my-work", e.currentTarget, "bg-gray-50");
+            }}
+          >
+            <Link
+              href="/#my-work"
+              className="group bg-white border-2 border-black px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 font-black text-black flex items-center gap-2"
+            >
+              <span className="text-xl group-hover:translate-x-[-4px] transition-transform duration-300">
+                ←
+              </span>
+              Back to Works
+            </Link>
           </div>
 
           {/* Header with racing theme */}
