@@ -200,7 +200,7 @@ export default function SwampHacks2025Page() {
           {/* Header Section */}
           <div
             ref={headerRef}
-            className="relative z-10 pt-20 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-8"
+            className="relative z-10 pt-40 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-8"
           >
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">

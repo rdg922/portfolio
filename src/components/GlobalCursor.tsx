@@ -143,7 +143,7 @@ export default function GlobalCursor() {
       {/* Cursor dot - follows faster */}
       <div
         ref={cursorDotRef}
-        className="fixed w-2 h-2 bg-white border border-black pointer-events-none z-[9998] mix-blend-difference"
+        className="hidden md:inline fixed w-2 h-2 bg-white border border-black pointer-events-none z-[9998] mix-blend-difference"
       ></div>
 
       {/* Cursor trail particles */}
