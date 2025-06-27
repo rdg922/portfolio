@@ -127,29 +127,29 @@ export default function ProjectPage() {
         gsap.set(section, {
           scale: 0.8,
           opacity: 0,
-          rotation: isEven ? -5 : 5,
+          rotation: isEven ? -3 : 3,
           y: 100,
         });
       } else if (animationType === 1) {
         gsap.set(section, {
-          x: isEven ? -150 : 150,
+          x: isEven ? -50 : 50,
           opacity: 0,
           rotation: isEven ? -3 : 3,
-          skewX: isEven ? -5 : 5,
+          skewX: isEven ? -2 : 2,
         });
       } else if (animationType === 2) {
         gsap.set(section, {
-          scale: 0.6,
+          scale: 0.85,
           opacity: 0,
-          rotation: Math.random() * 40 - 20,
-          y: 150,
+          rotation: Math.random() * 8 - 4,
+          y: 30,
         });
       } else {
         gsap.set(section, {
-          x: isEven ? -200 : 200,
+          x: isEven ? -40 : 40,
           opacity: 0,
-          rotation: isEven ? -8 : 8,
-          scale: 0.9,
+          rotation: isEven ? -1 : 1,
+          scale: 0.95,
         });
       }
 
