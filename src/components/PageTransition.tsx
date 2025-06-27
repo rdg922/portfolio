@@ -65,6 +65,56 @@ export function TransitionOverlay() {
       `;
       document.body.appendChild(overlay);
     }
+
+    // Function to reset transition overlay
+    const resetTransitionOverlay = () => {
+      const overlay = document.getElementById("transition-overlay");
+      if (overlay) {
+        // Reset overlay to initial state
+        gsap.set(overlay, {
+          clipPath: "circle(0px at 50% 50%)",
+          className: "",
+          pointerEvents: "none",
+        });
+        // Clear any background classes
+        overlay.className = "";
+        overlay.style.backgroundColor = "";
+      }
+    };
+
+    // Handle browser back/forward navigation
+    const handlePopState = (event: PopStateEvent) => {
+      resetTransitionOverlay();
+    };
+
+    // Handle page show event (fires when page is loaded from back/forward cache)
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        resetTransitionOverlay();
+      }
+    };
+
+    // Handle visibility change (when tab becomes visible again)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        resetTransitionOverlay();
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener("popstate", handlePopState);
+    window.addEventListener("pageshow", handlePageShow);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Reset overlay on component mount (in case of any stale state)
+    resetTransitionOverlay();
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("pageshow", handlePageShow);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   return null;
