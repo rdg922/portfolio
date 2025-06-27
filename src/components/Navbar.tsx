@@ -62,9 +62,9 @@ export default function Navbar() {
                       e
                     )
                   }
-                  className="bg-yellow-300 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 tracking-wide outline-2 outline-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+                  className="relative inline-flex items-center justify-center bg-yellow-300 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 tracking-wide outline-3 outline-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] transform -rotate-1 hover:rotate-0 hover:scale-105 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-500 before:skew-x-12 overflow-hidden"
                 >
-                  ROHIT
+                  <span className="relative z-10 drop-shadow-sm">ROHIT</span>
                 </Link>
               </h1>
             </div>

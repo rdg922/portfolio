@@ -30,7 +30,7 @@ export default function Home() {
             {" "}
             <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10 pt-20 pb-20">
               <div className="w-full max-w-4xl mx-auto bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-4 sm:p-8 transform -rotate-1 mb-8 hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-rotate-2 transition-all duration-300">
-                <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-black mb-6 uppercase tracking-tight transform rotate-1 leading-none">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl font-ultra-bold text-black uppercase tracking-tight transform rotate-1 leading-none">
                   ROHIT
                   <br />
                   <span className="text-red-500 hover:text-blue-500 transition-colors duration-300">
@@ -55,9 +55,6 @@ export default function Home() {
                     <h3 className="text-sm sm:text-2xl font-black text-black mb-2 sm:mb-4 uppercase tracking-tight">
                       📄 GET MY RESUME
                     </h3>
-                    <p className="text-xs hidden sm:inline sm:text-lg font-bold text-black mb-3 sm:mb-6 uppercase tracking-wide">
-                      Download my latest resume with all experience and skills
-                    </p>
                     <button
                       onClick={handleResumeDownload}
                       className="bg-green-500  hover:bg-black text-white hover:text-green-500 px-3 sm:px-8 py-2 sm:py-4 font-black text-xs sm:text-lg uppercase tracking-wide border-2 sm:border-4 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] sm:hover:translate-x-[3px] sm:hover:translate-y-[3px] w-full"
@@ -69,9 +66,6 @@ export default function Home() {
                     <h3 className="text-sm sm:text-2xl font-black text-black mb-2 sm:mb-4 uppercase tracking-tight">
                       CONNECT WITH ME
                     </h3>{" "}
-                    <p className="text-xs hidden sm:inline sm:text-lg font-bold text-black mb-3 sm:mb-6 uppercase tracking-wide">
-                      CHECK OUT MY CODE AND PROFILE
-                    </p>
                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2 justify-center">
                       <Link
                         href="https://github.com/rdg922"
