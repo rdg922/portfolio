@@ -183,9 +183,9 @@ export default function ExperiencePage() {
       if (!section) return;
 
       gsap.set(section, {
-        scale: 0.8,
+        scale: 0.9,
         opacity: 0,
-        rotation: Math.random() * 20 - 10,
+        rotation: Math.random() * 6 - 3,
       });
 
       ScrollTrigger.create({
@@ -195,8 +195,8 @@ export default function ExperiencePage() {
           scale: 1,
           opacity: 1,
           rotation: 0,
-          duration: 0.6,
-          ease: "back.out(1.7)",
+          duration: 0.8,
+          ease: "power2.out",
           delay: index * 0.1,
         }),
         toggleActions: "play none none reverse",
